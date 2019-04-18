@@ -6,6 +6,7 @@ db.pda.insertMany([
   "type":"boolean",
   "difficulty":"medium",
   "question":"",
+  "image":"",
   "correct_answer":"True",
   "incorrect_answers":"False"}
 
