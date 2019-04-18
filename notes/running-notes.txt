@@ -6,3 +6,6 @@ npm run server:dev
 "build": "webpack -w"  - add this to package.json
 Terminal: npm install webpack webpack-cli
 npm install mongodb
+npm install mocha
+"test": "mocha specs" under scripts in package.json
+"mocha": "^6.1.4" under devDependencies in package.json
