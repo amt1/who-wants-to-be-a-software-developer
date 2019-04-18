@@ -1,0 +1,8 @@
+Terminal:  npm install express in terminal window
+"start": "node server.js" under test in package.json
+Terminal: npm install -D nodemon
+"server:dev": "nodemon server.js" in package.json
+npm run server:dev
+"build": "webpack -w"  - add this to package.json
+Terminal: npm install webpack webpack-cli
+npm install mongodb
