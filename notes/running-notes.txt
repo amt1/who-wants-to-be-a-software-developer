@@ -1,5 +1,5 @@
 Terminal:  npm install express in terminal window
-"start": "node server.js" under test in package.json
+"server": "node server.js" under test in package.json
 Terminal: npm install -D nodemon
 "server:dev": "nodemon server.js" in package.json
 npm run server:dev
