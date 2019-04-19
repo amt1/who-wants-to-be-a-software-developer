@@ -95,7 +95,58 @@ db.pda.insertMany([
   "question": "The suitability of our software for serving its intended purpose is an example of which concern?",
   "correct_answer": ["functionality"],
   "incorrect_answers": ["reliability", "portability", "efficiency", "maintainability"]
-  }
+},
+{"category":"software development",
+"type":"boolean",
+"difficulty":"easy",
+"image":"/waterfall.png"
+"question":"Does attached picture display the agile development model?",
+"correct_answer":"False",
+"incorrect_answer":"True"
+},
+{"category":"software development",
+"type":"boolean",
+"difficulty":"easy",
+"image":"/SDLC.png"
+"question":"Does attached picture display all stages of Software Development Life Cycle?",
+"correct_answer":"True",
+"incorrect_answer":"False"
+},
+
+{"category":"software development",
+"type":"boolean",
+"difficulty":"easy",
+"image":""
+"question":"Does the SDLC stand for Systematic Development Language for CRUD?",
+"correct_answer":"False",
+"incorrect_answer":"True"
+},
+
+{"category":"software development",
+"type":"boolean",
+"difficulty":"medium",
+"image":""
+"question":"Architectural Design defines the relationship among major structural elements of the program. True or false",
+"correct_answer":"True",
+"incorrect_answer":"False"
+},
+{"category":"software development",
+"type":"boolean",
+"difficulty":"medium",
+"image":""
+"question":"Procedural Design describes how the software communicates within itself, to systems that inter-operates with it and humans who use it. True or false",
+"correct_answer":"False",
+"incorrect_answer":"True"
+},
+
+{"category":"software development",
+"type":"boolean",
+"difficulty":"medium",
+"image":""
+"question":"The primary activity during Data Design is to select logical respresentation of data objects identified during the requirements definition and specification phase. True or false",
+"correct_answer":"True",
+"incorrect_answer":"False"
+}
 
 
 
