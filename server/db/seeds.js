@@ -130,6 +130,7 @@ db.pda.insertMany([
 "correct_answer":"True",
 "incorrect_answer":"False"
 },
+
 {"category":"software development",
 "type":"boolean",
 "difficulty":"medium",
@@ -146,8 +147,125 @@ db.pda.insertMany([
 "question":"The primary activity during Data Design is to select logical respresentation of data objects identified during the requirements definition and specification phase. True or false",
 "correct_answer":"True",
 "incorrect_answer":"False"
-}
+},
 
+{
+"category": "Dictionary",
+"type": "multiple",
+"difficulty": "medium",
+"question": "What is a data dictionary?",
+"correct_answer": "A collection of data about data.",
+"incorrect_answers": [
+"A list of terms regarding data with descriptions.",
+"The container of grouped data.",
+"A popular database app."
+]
+},
 
+{
+"category": "Dictionary",
+"type": "multiple",
+"difficulty": "medium",
+"question": "Which of the following is NOT an attribute of a data element?",
+"correct_answer": "Value",
+"incorrect_answers": [
+"Aliases or synonyms",
+"Parent structure",
+"Description"
+]
+},
+
+{
+"category": "Dictionary",
+"type": "multiple",
+"difficulty": "easy",
+"question": "The term ‘to instantiate’ refers to:",
+"correct_answer": "Creating an object from a class.",
+"incorrect_answers": [
+"Defining a prototype function.",
+"Shortening code for ease of editing.",
+"Locating an object within a database."
+]
+},
+
+{
+"category": "Dictionary",
+"type": "multiple",
+"difficulty": "easy",
+"question": "An object is defined as:",
+"correct_answer": "A value created from a class.",
+"incorrect_answers": [
+"A collection of values.",
+"An inanimate item.",
+"A hash."
+]
+},
+
+{
+"category": "Dictionary",
+"type": "boolean",
+"difficulty": "easy",
+"question": "An instance variable is a type of variable that is attached to a class.",
+"correct_answer": "False",
+"incorrect_answers": [
+"True"
+]
+},
+
+"category": "Functional and non-functional requirements",
+"type": "multiple",
+"difficulty": "medium",
+"question": "Which group is an example of non-functional requirements?",
+"correct_answer": "Usability, Reliability, Performance, Supportability",
+"incorrect_answers": [
+"Clarity, Scalability, Vairability, Accuracy",
+"Verifiability, Readability, Functionality, Accessibility",
+"Changeability, Maintainability, Precision, Simplicity"
+]
+},
+
+"category": "Functional and non-functional requirements",
+"type": "multiple",
+"difficulty": "hard",
+"question": "Which of the following examples does NOT qualify as a functional requirement?",
+"correct_answer": "Security",
+"incorrect_answers": [
+"Historical data",
+"Authentication",
+"Authorization levels"
+]
+},
+
+"category": "Functional and non-functional requirements",
+"type": "boolean",
+"difficulty": "medium",
+"question": "Functional requirements describe how the system works.",
+"correct_answer": "False",
+"incorrect_answers": [
+"True"
+]
+},
+
+"category": "Functional and non-functional requirements",
+"type": "boolean",
+"difficulty": "medium",
+"question": "Functional requirements specify a behaviour or function.",
+"correct_answer": "True",
+"incorrect_answers": [
+"False"
+]
+},
+
+"category": "Functional and non-functional requirements",
+"type": "multiple",
+"difficulty": "hard",
+"question": "What is the difference between functional and non-functional requirements?",
+"correct_answer": "Non-functional requirements describe how the system works, while functional requirements describe what the system should do",
+"incorrect_answers": [
+"Non-functional requirements describe the framework used, while functional requirements describe the essential functions of an application.",
+"Non-functional requirements describe front-end aspects, while functional requirements describe the back-end of an application.",
+"Non-functional requirements describe testing and in-code comments, while functional requirements describe logic and server code."
+]
+},
 
 ]);
