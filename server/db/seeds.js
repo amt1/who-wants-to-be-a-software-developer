@@ -53,7 +53,7 @@ db.pda.insertMany([
   "type": "multiple",
   "difficulty": "easy",
   "question": "Which of the following are NOT interface elements known as an navigational components?",
-  "correct_answer": ["toggles"],
+  "correct_answer": "toggles",
   "incorrect_answers": ["breadcrumb", "slider", "search-field", "pagination"]
   },
   {
