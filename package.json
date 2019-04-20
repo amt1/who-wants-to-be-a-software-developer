@@ -7,7 +7,6 @@
     "express": "^4.16.4",
     "moch": "0.0.1",
     "mongodb": "^3.2.3",
-    "specs": "^0.1.0",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.0"
   },
@@ -18,7 +17,7 @@
   "scripts": {
     "test": "mocha specs",
     "server": "node server.js",
-    "server:dev": "nodemon server.js",
+    "server:dev": "nodemon server/server.js",
     "build": "webpack -w"
   },
   "repository": {
