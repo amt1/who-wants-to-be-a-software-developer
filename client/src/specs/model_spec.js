@@ -9,6 +9,8 @@ describe("QuizModel", function(){
   });
   it("should have a number of questions", function(){
     // Arrange
+    quizModel = new QuizModel("0,2");
+
     // Act
     const actual = quizModel.numberOfQuestions;
     // Assert
@@ -18,4 +20,4 @@ describe("QuizModel", function(){
 //  xit("should have a model");
 // x misses out the test. skip does this in ruby.
 
-}; // end of spec file
+}); // end of spec file

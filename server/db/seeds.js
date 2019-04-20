@@ -5,7 +5,7 @@ db.pda_questions.insertMany([
   {
      category: "User Interface Design",
      type: "boolean",
-     difficulty: "easy",
+     difficulty: 0,
      question: "A container is an example of an interface element.",
      correct_answer: "{'true'}",
      incorrect_answers: "{'false'}",
@@ -15,7 +15,7 @@ db.pda_questions.insertMany([
      {
         category: "Effective Visual Communication",
         type: "boolean",
-        difficulty: "medium",
+        difficulty: 1,
         question: "There are 6 concern relating to the qualities of great software: Functionality, reliability, usability, efficiency, maintainability and portability concerns. True or false? ",
         correct_answer: "{'true'}",
         incorrect_answers: "{'false'}",

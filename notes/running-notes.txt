@@ -24,3 +24,6 @@ Got the DB to read in the seeds hash fields by using a combination of double and
 correct_answer: "{'true'}",
 Will need to test reading from this to make sure it will work.
 May be the same as what stringify does anyway?
+
+Trying to get mocha to work
+npm install --save-dev mocha
