@@ -10,7 +10,17 @@ db.pda_questions.insertMany([ // NEW
     name: "Norman",
     type: "Penguin",
     age: 5
-  }
+  },
+  {
+     category: "User Interface Design",
+     type: "boolean",
+     difficulty: "easy",
+     question: "A container is an example of an interface element.",
+     // correct_answer: {"true"},
+     // incorrect_answers: {"false"},
+     image: "",
+     link: "https://blog.prototypr.io/how-to-teach-yourself-ux-design-31f16e41b189"
+     },
 ]);
 
 
