@@ -15,3 +15,12 @@ Finally got GET route working in insomnia:
 http://localhost:3000/api/pda_questions
 
 (db name is pda_quiz)
+
+Seems URL may be a reserved word in Mongo DB
+as I got this error when trying to use it as a key: SyntaxError: missing : after property id
+Changed it to Link instead
+
+Got the DB to read in the seeds hash fields by using a combination of double and single quotes ie
+correct_answer: "{'true'}",
+Will need to test reading from this to make sure it will work.
+May be the same as what stringify does anyway?
