@@ -9,6 +9,10 @@ Terminal: npm install webpack webpack-cli
 npm install mongodb
 npm install mocha
 "test": "mocha specs" under scripts in package.json
+** CORRECTION
+This needed changing to
+"test": "mocha ./client/src/specs",
+as mocha couldn't find the test file
 "mocha": "^6.1.4" under devDependencies in package.json
 
 Finally got GET route working in insomnia:
