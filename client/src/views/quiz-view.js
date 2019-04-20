@@ -1,5 +1,5 @@
 const PubSub = require('../helpers/pub_sub.js')
-//Require result-view
+
 
 const QuizView = function(quizElement) {
   this.element = quizElement;
