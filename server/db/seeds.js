@@ -1,7 +1,7 @@
 use pda_quiz;
 db.dropDatabase();
 
-db.animals.insertMany([ // NEW
+db.pda_questions.insertMany([ // NEW
   {
     name: "Janet",
     type: "Polar Bear"

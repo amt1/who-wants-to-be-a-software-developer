@@ -2,6 +2,7 @@ Terminal:  npm install express in terminal window
 "server": "node server.js" under test in package.json
 Terminal: npm install -D nodemon
 "server:dev": "nodemon server.js" in package.json
+** CORRECTION server/server.js
 npm run server:dev
 "build": "webpack -w"  - add this to package.json
 Terminal: npm install webpack webpack-cli
@@ -9,3 +10,8 @@ npm install mongodb
 npm install mocha
 "test": "mocha specs" under scripts in package.json
 "mocha": "^6.1.4" under devDependencies in package.json
+
+Finally got GET route working in insomnia:
+http://localhost:3000/api/pda_questions
+
+(db name is pda_quiz)
