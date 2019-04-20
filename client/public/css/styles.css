@@ -1,3 +1,461 @@
-body {
-  background-color: pink;
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Code Pro', monospace;
+  color: #143243;
+  background: radial-gradient(#7D8491, #C0C5C1);
+  /* background-image:
+  radial-gradient(#003C5A, #00283C); */
+}
+
+/* NAVBAR */
+
+.nav {
+    width: 100%;
+    height: 65px;
+    position: fixed;
+    line-height: 65px;
+    text-align: center;
+}
+
+.nav div.logo {
+    float: left;
+    width: auto;
+    height: auto;
+    padding-left: 3rem;
+}
+
+.nav div.logo a {
+    text-decoration: none;
+    color: #143243;
+    font-size: 2.5rem;
+}
+
+.nav div.logo a:hover {
+    color: #00E676;
+}
+
+.nav div.main_list {
+    height: 65px;
+    float: right;
+}
+
+.nav div.main_list ul {
+    width: 100%;
+    height: 65px;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav div.main_list ul li {
+    width: auto;
+    height: 65px;
+    padding: 0;
+    padding-right: 3rem;
+}
+
+.nav div.main_list ul li a {
+    text-decoration: none;
+    color: #143243;
+    line-height: 65px;
+    font-size: 2.4rem;
+}
+
+.nav div.main_list ul li a:hover {
+    color: #00E676;
+}
+
+
+/* Home section */
+
+.home {
+  width: 100%;
+  height: 450px;
+  background-image: url(https://dzbc.org/wp-content/uploads/data/2018/2/15/grey-and-white-geometric-wallpapers-images-Is-Cool-Wallpapers-PIC-MCH070032.jpg);
+  background-position: center top;
+  background-size: auto;
+}
+
+.navTrigger {
+  display: none;
+}
+
+.nav {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.wrapper {
+  width: 430px;
+  margin: 0 auto;
+  height: 100%;
+  padding-top: 0px;
+}
+
+#quiz {
+  background-color: #34495E;
+  padding-bottom: 60px;
+  width: 100%;
+  border-radius: 2%;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+#quiz > h1 {
+  text-align: center;
+  padding-top: 25px;
+  font-size: 20px;
+}
+
+.questions {
+  font-size: 28px;
+  font-weight: 700;
+  font-style: italic;
+  border-top: 1px solid #FFFFFF;
+  border-bottom: 1px solid #FFFFFF;
+  padding: 20px;
+}
+
+.answers div {
+  padding: 10px 0 0 0;
+  font-size: 16px;
+}
+
+.answers div:hover {
+  cursor: pointer;
+  color: #FBCB43;
+}
+
+.answers {
+  padding: 0px 0 10px 0px;
+}
+
+.answers div {
+  width: 50%;
+  margin: 0 auto;
+  padding-bottom: 15px;
+  border-top: 1px solid grey;
+}
+
+.answers div:first-child {
+  border: none;
+}
+
+.checker {
+  display: inline-block;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.correct, .false {
+  background-color: #109D59;
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 4px;
+  float: left;
+  margin-left: 2px;
+  margin-top: 2px;
+}
+
+.false {
+  background-color: #DC4437;
+}
+
+/* FOOTER */
+
+.footer #button{
+	width:35px;
+	height:35px;
+	border: #727172 12px solid;
+	border-radius:35px;
+	margin:0 auto;
+	position:relative;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.footer #button:hover{
+	width:35px;
+	height:35px;
+	border: #3A3A3A 12px solid;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	position:relative;
+}
+.footer {
+	bottom:0;
+	left:0;
+	position:fixed;
+    width: 100%;
+    height: 2em;
+    overflow:hidden;
+    margin:0 auto;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	z-index:999;
+}
+.footer:hover {
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	height: 10em;
+}
+.footer #container{
+	margin-top:5px;
+	width:100%;
+height:100%;
+  position:relative;
+  top:0;
+  left:0;
+	background: #3A3A3A;
+}
+.footer #cont{
+  position:relative;
+  top:-45px;
+  right:190px;
+	width:150px;
+	height:auto;
+	margin:0 auto;
+}
+.footer_center{
+	width:500px;
+	float:left;
+  text-align:center;
+}
+.footer h3{
+	font-family: 'Helvetica';
+	font-size: 30px;
+	font-weight: 100;
+	margin-top:70px;
+	margin-left:40px;
+}
+
+/* SOCIALS  */
+/* .footer_center {
+	padding: 20px;
+	text-align: center;
+}
+
+hr{
+	margin: 30px 20px;
+	border-top:2px solid #1C1E26 ;
+	border-bottom:2px solid #38404D;
+}
+.list-unstyled {
+	padding-left: 0;
+	list-style: none;
+}
+.list-inline li {
+	display: inline-block;
+	padding-right: 5px;
+	padding-left: 5px;
+	margin-bottom: 10px;
+}
+
+/*Change icons size here*/
+/* .social-icons .fa {
+	font-size: 1.8em;
+} */
+/*Change icons circle size and color here*/
+/* .social-icons .fa {
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: #FFF;
+	color: rgba(255, 255, 255, 0.8);
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.social-icons.icon-rotate .fa:hover, .social-icons.icon-rotate .fa:active {
+	-webkit-transform: scale(1.1) rotate(360deg);
+	-moz-transform: scale(1.1) rotate(360deg);
+	-ms-transform: scale(1.1) rotate(360deg);
+	-o-transform: scale(1.1) rotate(360deg);
+	transform: scale(1.1) rotate(360deg);
+}
+
+.social-icons .fa-github,.social-icons .fa-github-alt,.social-icons .fa-github-square{background-color:#070709;}
+.social-icons .fa-linkedin,.social-icons .fa-linkedin-square{background-color:#0085AE;} */ */
+
+/* WHEEL */
+
+.wheel-content{
+  background-color: transparent;
+  background-image:
+    linear-gradient(0deg, transparent 50%,
+      #004669 51%,
+      #004669 52%,
+      transparent 53%, transparent 97%,
+      #004669 98%,
+      #004669 99%,
+      transparent 100%, transparent),
+    linear-gradient(45deg, transparent 24%,
+      #004669 25%,
+      #004669 26%,
+      transparent 27%, transparent 74%,
+      #004669 75%,
+      #004669 76%,
+      transparent 77%, transparent),
+    linear-gradient(-45deg, transparent 24%,
+      #004669 25%,
+      #004669 26%,
+      transparent 27%, transparent 74%,
+      #004669 75%,
+      #004669 76%,
+      transparent 77%, transparent);
+  height: 100%;
+  background-size: 35px 35px;
+}
+
+.circle-menu {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0px auto;
+}
+
+.circle-menu span {
+    position: absolute;
+    top: 30px;
+    left: 24px;
+    color: #fff;
+}
+
+.circle-menu ul {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    margin: 50px;
+    padding: 0;
+    list-style: none;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.circle-menu .center{
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    top: 162px;
+    left: 162px;
+    z-index: 1;
+    border-radius: 50%;
+    background-color: #003C5A;
+    background-image:
+      linear-gradient(0deg, transparent 50%,
+        #004669 51%,
+        #004669 52%,
+        transparent 53%, transparent 97%,
+        #004669 98%,
+        #004669 99%,
+        transparent 100%, transparent),
+      linear-gradient(45deg, transparent 24%,
+        #004669 25%,
+        #004669 26%,
+        transparent 27%, transparent 74%,
+        #004669 75%,
+        #004669 76%,
+        transparent 77%, transparent),
+      linear-gradient(-45deg, transparent 24%,
+        #004669 25%,
+        #004669 26%,
+        transparent 27%, transparent 74%,
+        #004669 75%,
+        #004669 76%,
+        transparent 77%, transparent);
+    background-size: 35px 35px;
+    background-position: 23px 13px;
+}
+
+.circle-menu li {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 160px;
+    height: 160px;
+    transform-origin: 100% 100%;
+    overflow: hidden;
+}
+
+.circle-menu li:nth-child(1) {
+    transform: rotate(0deg) skew(30deg);
+}
+
+.circle-menu li:nth-child(2) {
+     transform: rotate(60deg) skew(30deg);
+}
+
+.circle-menu li:nth-child(3) {
+     transform: rotate(120deg) skew(30deg);
+}
+
+.circle-menu li:nth-child(4) {
+     transform: rotate(180deg) skew(30deg);
+}
+
+.circle-menu li:nth-child(5) {
+     transform: rotate(240deg) skew(30deg);
+}
+
+.circle-menu li:nth-child(6) {
+     transform: rotate(300deg) skew(30deg);
+}
+
+.circle-menu li a{
+    display: block;
+    width: 160px;
+    height: 160px;
+    margin-top: 40px;
+    margin-left: 40px;
+    background: rgba(100, 100, 100, 0.3) url('https://htmlacademy.ru/assets/icons/monitor-4x.png') no-repeat 50% 40%;
+    transform: skew(-30deg) rotate(-60deg);
+    transition: background-color 0.5s;
+}
+
+.circle-menu li:nth-child(even) a {
+    background-color: rgba(100, 100, 100, 0.8);
+}
+
+.circle-menu li a:hover {
+    background-color: rgba(100, 100, 100, 0);
+}
+
+
+.circle-menu li:nth-child(2) a {
+    background-image: url('https://htmlacademy.ru/assets/icons/aperture-4x.png');
+}
+.circle-menu li:nth-child(3) a {
+    background-image: url('https://htmlacademy.ru/assets/icons/audio-4x.png');
+}
+.circle-menu li:nth-child(4) a {
+    background-image: url('https://htmlacademy.ru/assets/icons/battery-empty-4x.png');
+}
+.circle-menu li:nth-child(5) a {
+    background-image: url('https://htmlacademy.ru/assets/icons/bluetooth-4x.png');
+}
+.circle-menu li:nth-child(6) a {
+    background-image: url('https://htmlacademy.ru/assets/icons/browser-4x.png');
 }
