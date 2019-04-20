@@ -82,7 +82,7 @@ QuizView.prototype.renderPossibleAnswers = function (possibleAnswers) {
 };
 
 QuizView.prototype.handleAnswerClick = function(evt) {
-  const selectedAnswer = evt.detail;
+  const selectedAnswer = evt.target;
   PubSub.publish('QuizView:answer-selected', selectedAnswer)
 };
 
