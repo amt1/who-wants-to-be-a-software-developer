@@ -1,28 +1,41 @@
 use pda_quiz;
 db.dropDatabase();
 
-db.pda_questions.insertMany([
+db.animals.insertMany([ // NEW
   {
-  category: "User Interface Design",
-  type: "boolean",
-  difficulty: "easy",
-  question: "A container is an example of an interface element.",
-  correct_answer: {"true"},
-  incorrect_answers: {"false"},
-  image: "",
-  URL: "https://blog.prototypr.io/how-to-teach-yourself-ux-design-31f16e41b189"
+    name: "Janet",
+    type: "Polar Bear"
   },
   {
-  category: "Effective Visual Communication",
-  type: "boolean",
-  difficulty: "medium",
-  question: "There are 6 concern relating to the qualities of great software: Functionality, reliability, usability, efficiency, maintainability and portability concerns. True or false? ",
-  correct_answer: {"true"},
-  incorrect_answers: {"false"},
-  image: "",
-  URL: "https://practicingruby.com/articles/qualities-of-great-software"
-   }
-   ]);
+    name: "Norman",
+    type: "Penguin",
+    age: 5
+  }
+]);
+
+
+// db.pda_questions.insertMany([
+//   {
+//   category: "User Interface Design",
+//   type: "boolean",
+//   difficulty: "easy",
+//   question: "A container is an example of an interface element.",
+//   correct_answer: {"true"},
+//   incorrect_answers: {"false"},
+//   image: "",
+//   URL: "https://blog.prototypr.io/how-to-teach-yourself-ux-design-31f16e41b189"
+//   },
+//   {
+//   category: "Effective Visual Communication",
+//   type: "boolean",
+//   difficulty: "medium",
+//   question: "There are 6 concern relating to the qualities of great software: Functionality, reliability, usability, efficiency, maintainability and portability concerns. True or false? ",
+//   correct_answer: {"true"},
+//   incorrect_answers: {"false"},
+//   image: "",
+//   URL: "https://practicingruby.com/articles/qualities-of-great-software"
+//    }
+//    ]);
 
 
 
