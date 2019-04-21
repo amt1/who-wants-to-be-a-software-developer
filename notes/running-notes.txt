@@ -31,3 +31,7 @@ May be the same as what stringify does anyway?
 
 Trying to get mocha to work
 npm install --save-dev mocha
+
+moving specs to same directory as package.json
+
+mongo < seeds.js

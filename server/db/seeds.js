@@ -13,40 +13,94 @@ db.pda_questions.insertMany([
      link: "https://blog.prototypr.io/how-to-teach-yourself-ux-design-31f16e41b189"
      },
      {
-        category: "Effective Visual Communication",
+        category: "Qualities of Great Software",
         type: "boolean",
         difficulty: 1,
-        question: "There are 6 concern relating to the qualities of great software: Functionality, reliability, usability, efficiency, maintainability and portability concerns. True or false? ",
+        question: "There are 6 concerns relating to the qualities of great software: Functionality, reliability, usability, efficiency, maintainability and portability concerns. True or false? ",
         correct_answer: "{'true'}",
         incorrect_answers: "{'false'}",
         image: "",
-        Link: "https://practicingruby.com/articles/qualities-of-great-software"
-         }
+        link: "https://practicingruby.com/articles/qualities-of-great-software"
+      },
+      {
+        category: "Software Development",
+      type: "boolean",
+      difficulty: 0,
+      image: "",
+      question: "Does SDLC stand for Systematic Development Language for CRUD?",
+      correct_answer: "{'true'}",
+      incorrect_answers: "{'false'}",
+      image: "",
+      link: "https://www.tutorialspoint.com/sdlc/sdlc_overview.htm"
+    },
+      {
+        category: "Software Development",
+      type: "boolean",
+      difficulty: 1,
+      image: "",
+      question: "Architectural Design defines the relationship among major structural elements of the program. True or false",
+      correct_answer: "{'true'}",
+      incorrect_answers: "{'false'}",
+      image: "",
+      link: "https://www.geeksforgeeks.org/software-engineering-architectural-design/"
+      },
+      {
+        category: "Software Development",
+      type: "boolean",
+      difficulty: 1,
+      image: "",
+      question: "Procedural Design describes how the software communicates within itself, to systems that inter-operates with it and humans who use it. True or false",
+      correct_answer: "{'true'}",
+      incorrect_answers: "{'false'}",
+      image: "",
+      link: "https://en.wikipedia.org/wiki/Procedural_design"
+      },
+      {
+        category: "Software Development",
+      type: "boolean",
+      difficulty: 1,
+      image: "",
+      question: "The primary activity during Data Design is to select logical respresentation of data objects identified during the requirements definition and specification phase. True or false",
+      correct_answer: "{'true'}",
+      incorrect_answers: "{'false'}",
+      image: "",
+      link: "https://en.wikipedia.org/wiki/Database_design"
+      },
+      {
+      category: "Dictionary",
+      type: "boolean",
+      difficulty: 0,
+      question: "An instance variable is a type of variable that is attached to a class.",
+      correct_answer: "{'true'}",
+      incorrect_answers: "{'false'}",
+      image: "",
+      link: "https://www.computerhope.com/jargon/program.htm"
+      },
+      {
+      category: "Functional and non-functional requirements",
+      type: "boolean",
+      difficulty: 1,
+      question: "Functional requirements describe how the system works: True or False?",
+      correct_answer: "{'true'}",
+      incorrect_answers: "{'false'}",
+      image: "",
+      link: "https://reqtest.com/requirements-blog/functional-vs-non-functional-requirements/"
+      },
+      {
+        category: "Functional and non-functional requirements",
+      type: "boolean",
+      difficulty: 1,
+      question: "Functional requirements specify a behaviour or function: True or False?",
+      correct_answer: "{'true'}",
+      incorrect_answers: "{'false'}",
+      image: "",
+      link: "https://reqtest.com/requirements-blog/functional-vs-non-functional-requirements/"
+      },
 ]);
 
 
 // db.pda_questions.insertMany([
-//   {
-//   category: "User Interface Design",
-//   type: "boolean",
-//   difficulty: "easy",
-//   question: "A container is an example of an interface element.",
-//   correct_answer: {"true"},
-//   incorrect_answers: {"false"},
-//   image: "",
-//   URL: "https://blog.prototypr.io/how-to-teach-yourself-ux-design-31f16e41b189"
-//   },
-//   {
-//   category: "Effective Visual Communication",
-//   type: "boolean",
-//   difficulty: "medium",
-//   question: "There are 6 concern relating to the qualities of great software: Functionality, reliability, usability, efficiency, maintainability and portability concerns. True or false? ",
-//   correct_answer: {"true"},
-//   incorrect_answers: {"false"},
-//   image: "",
-//   URL: "https://practicingruby.com/articles/qualities-of-great-software"
-//    }
-//    ]);
+
 
 
 
@@ -56,14 +110,7 @@ db.pda_questions.insertMany([
      //Qualities of Great Software
 
 //,
-//   {
-//   "category": "Qualities of Great Software",
-//   "type": "boolean",
-//   "difficulty": "medium",
-//   "question": "There are 6 concern relating to the qualities of great software: Functionality, reliability, usability, efficiency, maintainability and portability concerns. True or false? ",
-//   "correct_answer": ["true"],
-//   "incorrect_answers": ["false"]
-//   },
+//
 //   {
 //   "category": "User Interface Design",
 //   "type": "multiple",
@@ -145,41 +192,7 @@ db.pda_questions.insertMany([
 // "incorrect_answer":"False"
 // },
 //
-// {"category":"software development",
-// "type":"boolean",
-// "difficulty":"easy",
-// "image":""
-// "question":"Does the SDLC stand for Systematic Development Language for CRUD?",
-// "correct_answer":"False",
-// "incorrect_answer":"True"
-// },
 //
-// {"category":"software development",
-// "type":"boolean",
-// "difficulty":"medium",
-// "image":""
-// "question":"Architectural Design defines the relationship among major structural elements of the program. True or false",
-// "correct_answer":"True",
-// "incorrect_answer":"False"
-// },
-//
-// {"category":"software development",
-// "type":"boolean",
-// "difficulty":"medium",
-// "image":""
-// "question":"Procedural Design describes how the software communicates within itself, to systems that inter-operates with it and humans who use it. True or false",
-// "correct_answer":"False",
-// "incorrect_answer":"True"
-// },
-//
-// {"category":"software development",
-// "type":"boolean",
-// "difficulty":"medium",
-// "image":""
-// "question":"The primary activity during Data Design is to select logical respresentation of data objects identified during the requirements definition and specification phase. True or false",
-// "correct_answer":"True",
-// "incorrect_answer":"False"
-// },
 //
 // {
 // "category": "Dictionary",
@@ -233,16 +246,7 @@ db.pda_questions.insertMany([
 // ]
 // },
 //
-// {
-// "category": "Dictionary",
-// "type": "boolean",
-// "difficulty": "easy",
-// "question": "An instance variable is a type of variable that is attached to a class.",
-// "correct_answer": "False",
-// "incorrect_answers": [
-// "True"
-// ]
-// },
+
 //
 // "category": "Functional and non-functional requirements",
 // "type": "multiple",
@@ -268,25 +272,7 @@ db.pda_questions.insertMany([
 // ]
 // },
 //
-// "category": "Functional and non-functional requirements",
-// "type": "boolean",
-// "difficulty": "medium",
-// "question": "Functional requirements describe how the system works.",
-// "correct_answer": "False",
-// "incorrect_answers": [
-// "True"
-// ]
-// },
-//
-// "category": "Functional and non-functional requirements",
-// "type": "boolean",
-// "difficulty": "medium",
-// "question": "Functional requirements specify a behaviour or function.",
-// "correct_answer": "True",
-// "incorrect_answers": [
-// "False"
-// ]
-// },
+
 //
 // "category": "Functional and non-functional requirements",
 // "type": "multiple",
