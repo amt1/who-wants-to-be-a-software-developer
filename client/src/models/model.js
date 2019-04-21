@@ -2,7 +2,7 @@ const RequestHelper = require('../helpers/request_helper.js');
 const PubSub = require('../helpers/pub_sub.js');
 
 const QuizModel = function (level, numberOfQuestions) {
-  this.quizUrl = 'https://localhost:3000/api/pda_questions';
+  this.quizUrl = 'http://localhost:3000/api/pda_questions';
   this.request = new RequestHelper(this.quizUrl);
   this.numberOfQuestions = numberOfQuestions;
   this.levels = ["easy","medium","hard"];
@@ -49,10 +49,11 @@ QuizModel.prototype.bindEvents = function () {
 QuizModel.prototype.getQuestions = function (difficulty, numberOfQuestions) {
   this.request.get()
      .then((questions) => {
-       this.questions = questions;
+  //     this.questions = questions;
   //     PubSub.publish('BucketList:data-loaded', bucketList);
-    console.log('questions = ', this.questions);
-      return this.questions;
+    console.log('questions = ', questions);
+//      return this.questions;
+return questions;
      })
      .catch(console.error);
 };
