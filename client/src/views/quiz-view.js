@@ -2,7 +2,7 @@ const PubSub = require('../helpers/pub_sub.js')
 
 
 const QuizView = function(quizElement) {
-  this.element = quizElement;
+  this.element = quizElement; //refers to class=Wrapper?
 };
 
 QuizView.prototype.bindEvents = function() {
@@ -29,7 +29,7 @@ QuizView.prototype.emptyElement = function () {
 };
 
 QuizView.prototype.renderQuizHeader = function(quizName, questionNumber) {
-  const quizBox = document.querySelector('.quiz-box');
+  const quizBox = document.querySelector('#quiz');
   const quizHeader = document.createElement('div');
   quizHeader.classList.add('quiz-header');
 
@@ -59,16 +59,17 @@ QuizView.prototype.renderQuizBox = function () {
 };
 
 QuizView.prototype.renderQuestion = function(question) {
-  const quizBox = document.querySelector('.quiz-box');
-  const questionText = document.createElement('h2');
-  questionText.classList.add('question-text');
+  const quizBox = document.querySelector('#quiz');
+  const questionText = document.createElement('p');
+  questionText.classList.add('questions');
   questionText.textContent = question;
   quizBox.appendChild(questionText);
 };
 
 QuizView.prototype.renderPossibleAnswers = function (possibleAnswers) {
-  const quizBox = document.querySelector('.quiz-box');
+  const quizBox = document.querySelector('#quiz');
   const possibleAnswersBox = document.createElement('div');
+  possibleAnswersBox.classList.add('answers')
   possibleAnswers.forEach((answer) => {
     const possibleAnswer = document.createElement('div');
     possibleAnswer.classList.add('possible-answer');
