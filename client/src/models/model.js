@@ -10,9 +10,12 @@ const QuizModel = function (level, numberOfQuestions) {
   this.difficulty = this.levels[this.level];
   this.runningTotal = 0;
 //  this.questions = this.getQuestions( this.level, this.numberOfQuestions);
-this.questions = [
+this.fakeDB = [
   {
-    _id: "5cbb93be1d7658a0ee8bb5b1",
+// copy-pasted from Insomnia - somewhere in the process it added quotes around the keys.
+// I don't know if the real database will do this or not.
+// They aren't there in MongoDB Compass Community so I've deleted them here
+    _id: "5cbce40e18d9ea149bcfe028",
     category: "User Interface Design",
     type: "boolean",
     difficulty: 0,
@@ -23,18 +26,99 @@ this.questions = [
     link: "https://blog.prototypr.io/how-to-teach-yourself-ux-design-31f16e41b189"
   },
   {
-  _id: "5cbb93be1d7658a0ee8bb5b2",
-  category: "Effective Visual Communication",
-  type: "boolean",
-  difficulty: 1,
-  question: "There are 6 concern relating to the qualities of great software: Functionality, reliability, usability, efficiency, maintainability and portability concerns. True or false? ",
-  correct_answer: "{'true'}",
-  incorrect_answers: "{'false'}",
-  image: "",
-  link: "https://practicingruby.com/articles/qualities-of-great-software"
+    _id: "5cbce40e18d9ea149bcfe029",
+    category: "Qualities of Great Software",
+    type: "boolean",
+    difficulty: 1,
+    question: "There are 6 concerns relating to the qualities of great software: Functionality, reliability, usability, efficiency, maintainability and portability concerns. True or false? ",
+    correct_answer: "{'true'}",
+    incorrect_answers: "{'false'}",
+    image: "",
+    link: "https://practicingruby.com/articles/qualities-of-great-software"
+  },
+  {
+    _id: "5cbce40e18d9ea149bcfe02a",
+    category: "Software Development",
+    type: "boolean",
+    difficulty: 0,
+    image: "",
+    question: "Does SDLC stand for Systematic Development Language for CRUD?",
+    correct_answer: "{'true'}",
+    incorrect_answers: "{'false'}",
+    link: "https://www.tutorialspoint.com/sdlc/sdlc_overview.htm"
+  },
+  {
+    _id: "5cbce40e18d9ea149bcfe02b",
+    category: "Software Development",
+    type: "boolean",
+    difficulty: 1,
+    image: "",
+    question: "Architectural Design defines the relationship among major structural elements of the program. True or false",
+    correct_answer: "{'true'}",
+    incorrect_answers: "{'false'}",
+    link: "https://www.geeksforgeeks.org/software-engineering-architectural-design/"
+  },
+  {
+    _id: "5cbce40e18d9ea149bcfe02c",
+    category: "Software Development",
+    type: "boolean",
+    difficulty: 1,
+    image: "",
+    question: "Procedural Design describes how the software communicates within itself, to systems that inter-operates with it and humans who use it. True or false",
+    correct_answer: "{'true'}",
+    incorrect_answers: "{'false'}",
+    link: "https://en.wikipedia.org/wiki/Procedural_design"
+  },
+  {
+    _id: "5cbce40e18d9ea149bcfe02d",
+    category: "Software Development",
+    type: "boolean",
+    difficulty: 1,
+    image: "",
+    question: "The primary activity during Data Design is to select logical respresentation of data objects identified during the requirements definition and specification phase. True or false",
+    correct_answer: "{'true'}",
+    incorrect_answers: "{'false'}",
+    link: "https://en.wikipedia.org/wiki/Database_design"
+  },
+  {
+    _id: "5cbce40e18d9ea149bcfe02e",
+    category: "Dictionary",
+    type: "boolean",
+    difficulty: 0,
+    question: "An instance variable is a type of variable that is attached to a class.",
+    correct_answer: "{'true'}",
+    incorrect_answers: "{'false'}",
+    image: "",
+    link: "https://www.computerhope.com/jargon/program.htm"
+  },
+  {
+    _id: "5cbce40e18d9ea149bcfe02f",
+    category: "Functional and non-functional requirements",
+    type: "boolean",
+    difficulty: 1,
+    question: "Functional requirements describe how the system works: True or False?",
+    correct_answer: "{'true'}",
+    incorrect_answers: "{'false'}",
+    image: "",
+    link: "https://reqtest.com/requirements-blog/functional-vs-non-functional-requirements/"
+  },
+  {
+    _id: "5cbce40e18d9ea149bcfe030",
+    category: "Functional and non-functional requirements",
+    type: "boolean",
+    difficulty: 1,
+    question: "Functional requirements specify a behaviour or function: True or False?",
+    correct_answer: "{'true'}",
+    incorrect_answers: "{'false'}",
+    image: "",
+    link: "https://reqtest.com/requirements-blog/functional-vs-non-functional-requirements/"
   }
 ];
-};
+
+
+this.questions = [];
+
+};  // end of constructor
 
 QuizModel.prototype.bindEvents = function () {
   // PubSub.subscribe('BucketListItemView:delete-clicked', (evt) => {
