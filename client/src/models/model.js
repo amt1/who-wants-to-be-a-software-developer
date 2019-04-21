@@ -3,13 +3,13 @@ const PubSub = require('../helpers/pub_sub.js');
 
 const QuizModel = function (level, numberOfQuestions) {
   this.quizUrl = 'http://localhost:3000/api/pda_questions';
-  this.quizRequest = new RequestHelper(this.quizUrl);
+  this.request = new RequestHelper(this.quizUrl);
   this.numberOfQuestions = numberOfQuestions;
   this.levels = ["easy","medium","hard"];
   this.level = level % 3;
   this.difficulty = this.levels[this.level];
   this.runningTotal = 0;
-  this.questions = [];
+  this.questions = this.getQuestions(this.numberOfQuestions, this.level);
 };
 
 QuizModel.prototype.bindEvents = function () {
@@ -23,22 +23,31 @@ QuizModel.prototype.bindEvents = function () {
 };
 
 QuizModel.prototype.getQuestions = function (numberOfQuestions, difficulty) {
-  // this.request.get()
-  //   .then((bucketList) => {
+  this.request.get()
+     .then((questions) => {
+       this.questions = questions;
   //     PubSub.publish('BucketList:data-loaded', bucketList);
-  //   })
-  //   .catch(console.error);
+    console.log('questions = ', this.questions);
+      return this.questions;
+     })
+     .catch(console.error);
 };
 
-QuizModel.scrollLevel = function (level) {
+QuizModel.prototype.scrollLevel = function (level) {
     return (level++) % 3;
 };
-QuizModel.levelUp = function (level) {
+QuizModel.prototype.levelUp = function (level) {
     if (level) return 2;
     return 1;
 };
-QuizModel.levelDown = function (level) {
-    return (level--) % 3;
+QuizModel.prototype.levelDown = function (level) {
+  if (level<=1) return 0;
+  return 1;
+};
+
+QuizModel.prototype.updateDifficulty = function (level) {
+  this.difficulty = this.levels[level];
+  return this.difficulty;
 };
 
 QuizModel.prototype.quizLoop = function () {
