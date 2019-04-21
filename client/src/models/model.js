@@ -10,6 +10,30 @@ const QuizModel = function (level, numberOfQuestions) {
   this.difficulty = this.levels[this.level];
   this.runningTotal = 0;
 //  this.questions = this.getQuestions( this.level, this.numberOfQuestions);
+this.questions = [
+  {
+    _id: "5cbb93be1d7658a0ee8bb5b1",
+    category: "User Interface Design",
+    type: "boolean",
+    difficulty: 0,
+    question: "A container is an example of an interface element.",
+    correct_answer: "{'true'}",
+    incorrect_answers: "{'false'}",
+    image: "",
+    link: "https://blog.prototypr.io/how-to-teach-yourself-ux-design-31f16e41b189"
+  },
+  {
+  _id: "5cbb93be1d7658a0ee8bb5b2",
+  category: "Effective Visual Communication",
+  type: "boolean",
+  difficulty: 1,
+  question: "There are 6 concern relating to the qualities of great software: Functionality, reliability, usability, efficiency, maintainability and portability concerns. True or false? ",
+  correct_answer: "{'true'}",
+  incorrect_answers: "{'false'}",
+  image: "",
+  link: "https://practicingruby.com/articles/qualities-of-great-software"
+  }
+];
 };
 
 QuizModel.prototype.bindEvents = function () {
@@ -37,9 +61,26 @@ QuizModel.prototype.addScoreToTotal = function (score) {
   this.runningTotal += score;
 };
 
+QuizModel.prototype.checkAnswer = function (question, answer) {
+let wrongness = 0;
+let rightness = 0;
+let result = [];
+const currentQuestion = question;
+const playersAnswer = answer;
+const wrongAnswers = [];
+let counter = answer.length;
+while (counter--) {
+  if (currentQuestion.incorrect_answers.includes(playersAnswer[counter])) {
+    wrongness = wrongAnswers.push(answer.pop());
+  }
+};
+rightness = answer.length;
+result = [Boolean(wrongness), rightness];
+return result;
+};
 
 QuizModel.prototype.scrollLevel = function (level) {
-    return (level++) % 3;
+    return (level+1) % 3;
 };
 QuizModel.prototype.levelUp = function (level) {
     if (level) return 2;
@@ -51,7 +92,8 @@ QuizModel.prototype.levelDown = function (level) {
 };
 
 QuizModel.prototype.updateDifficulty = function (level) {
-  this.difficulty = this.levels[level];
+  this.level = level % 3;
+  this.difficulty = this.levels[this.level];
   return this.difficulty;
 };
 
