@@ -36,15 +36,18 @@ describe("QuizModel", function(){
     // actual goes first then expected
   });
 
-  it("should check if the answer is correct", function(){
+  it("should check if the answer is correct and return a score", function(){
     // Arrange
     quizModel = new QuizModel(0,2);
     let isItWrong1 = false;
     let isItWrong2 = true;
     let isItWrong3 = false;
+    let isItWrong4 = true;
+
     let howRightIsIt1 = 4;
     let howRightIsIt2 = 4;
     let howRightIsIt3 = 4;
+    let howRightIsIt4 = 4;
 
 
     const question = {
@@ -54,28 +57,44 @@ describe("QuizModel", function(){
       difficulty: 0,
       question: "A container is an example of an interface element.",
       correct_answer: "{'true'}",
-      incorrect_answers: "{'false'}",
+  //   incorrect_answers: "{'false'}",
+      incorrect_answers: "{'false', 'true'}",
       image: "",
       link: "https://blog.prototypr.io/how-to-teach-yourself-ux-design-31f16e41b189"
     };
     const veryRightAnswer = ['true', 'very true'];
     const rightAnswer = ['true'];
     const wrongAnswer = ['false'];
+    const beyondRightAnswer = ['only true stuff here', 'very true', 'only a bit true'];
 
     // Act
     isItWrong1 = quizModel.checkAnswer(question, rightAnswer)[0];
     isItWrong2 = quizModel.checkAnswer(question, wrongAnswer)[0];
-    isItWrong3 = quizModel.checkAnswer(question, veryRightAnswer)[0];
-    howRightIsIt1 = quizModel.checkAnswer(question, rightAnswer)[1];
+     isItWrong3 = quizModel.checkAnswer(question, veryRightAnswer)[0];
+    isItWrong4 = quizModel.checkAnswer(question, beyondRightAnswer)[0];
+    howRightIsIt4 = quizModel.checkAnswer(question, beyondRightAnswer)[1];
+   howRightIsIt1 = quizModel.checkAnswer(question, rightAnswer)[1];
     howRightIsIt2 = quizModel.checkAnswer(question, wrongAnswer)[1];
     howRightIsIt3 = quizModel.checkAnswer(question, veryRightAnswer)[1];
     // Assert
-    assert.strictEqual(isItWrong1, false);
+    // with only 'false' in incorrect_answers
+    // assert.strictEqual(isItWrong1, false);
+    // assert.strictEqual(isItWrong2, true);
+    // assert.strictEqual(isItWrong3, false);
+    // assert.strictEqual(howRightIsIt1, 1);
+    // assert.strictEqual(howRightIsIt2, 0);
+    // assert.strictEqual(howRightIsIt3, 2);
+
+    // with ['false','true'] in incorrect_answers
+    assert.strictEqual(isItWrong1, true);
     assert.strictEqual(isItWrong2, true);
-    assert.strictEqual(isItWrong3, false);
-    assert.strictEqual(howRightIsIt1, 1);
+    assert.strictEqual(isItWrong3, true);
+    assert.strictEqual(howRightIsIt3, 1);
+    assert.strictEqual(isItWrong4, false);
+    assert.strictEqual(howRightIsIt4, 3);
+    assert.strictEqual(howRightIsIt1, 0);
     assert.strictEqual(howRightIsIt2, 0);
-    assert.strictEqual(howRightIsIt3, 2);
+
 
     // actual goes first then expected
   });

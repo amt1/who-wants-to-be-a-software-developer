@@ -68,13 +68,13 @@ let result = [];
 const currentQuestion = question;
 const playersAnswer = answer;
 const wrongAnswers = [];
-let counter = answer.length;
+let counter = playersAnswer.length;
 while (counter--) {
   if (currentQuestion.incorrect_answers.includes(playersAnswer[counter])) {
-    wrongness = wrongAnswers.push(answer.pop());
+    wrongness = wrongAnswers.push(playersAnswer.splice(counter,1));
   }
 };
-rightness = answer.length;
+rightness = playersAnswer.length;
 result = [Boolean(wrongness), rightness];
 return result;
 };
