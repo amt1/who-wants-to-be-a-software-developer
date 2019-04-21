@@ -15,9 +15,9 @@
     "nodemon": "^1.18.11"
   },
   "scripts": {
-    "test": "mocha ./client/src/specs",
+    "test": "mocha specs",
     "server": "node server.js",
-    "server:dev": "nodemon server/server.js",
+    "server:dev": "nodemon server.js",
     "build": "webpack -w"
   },
   "repository": {
