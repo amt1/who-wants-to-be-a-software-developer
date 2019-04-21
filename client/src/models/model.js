@@ -2,7 +2,7 @@ const RequestHelper = require('../helpers/request_helper.js');
 const PubSub = require('../helpers/pub_sub.js');
 
 const QuizModel = function (level, numberOfQuestions) {
-  this.quizUrl = 'http://localhost:3000/api/pda_questions';
+  this.quizUrl = 'https://localhost:3000/api/pda_questions';
   this.request = new RequestHelper(this.quizUrl);
   this.numberOfQuestions = numberOfQuestions;
   this.levels = ["easy","medium","hard"];

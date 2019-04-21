@@ -3,7 +3,9 @@ const RequestHelper = function (url) {
 };
 
 RequestHelper.prototype.get = function () {
-  return fetch(this.url)
+  // fetch(request, {mode: 'cors'});
+
+  return fetch(this.url, {mode: 'cors'})
     .then((response) => response.json())
     .catch(err => console.log(err));
 };
