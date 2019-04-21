@@ -9,7 +9,7 @@ const QuizModel = function (level, numberOfQuestions) {
   this.level = level % 3;
   this.difficulty = this.levels[this.level];
   this.runningTotal = 0;
-//  this.questions = this.getQuestions(this.numberOfQuestions, this.level);
+//  this.questions = this.getQuestions( this.level, this.numberOfQuestions);
 };
 
 QuizModel.prototype.bindEvents = function () {
@@ -22,7 +22,7 @@ QuizModel.prototype.bindEvents = function () {
   // })
 };
 
-QuizModel.prototype.getQuestions = function (numberOfQuestions, difficulty) {
+QuizModel.prototype.getQuestions = function (difficulty, numberOfQuestions) {
   this.request.get()
      .then((questions) => {
        this.questions = questions;

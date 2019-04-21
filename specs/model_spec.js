@@ -1,5 +1,6 @@
 const assert = require('assert');
-const QuizModel = require('../models/model.js');
+// const QuizModel = require('./client/src/models/model.js');
+const QuizModel = require('/Users/annabelt/Documents/codeclan/codeclan_work/Group-Project/project/client/src/models/model.js');
 
 describe("QuizModel", function(){
   let quizModel;
@@ -35,11 +36,13 @@ describe("QuizModel", function(){
     // actual goes first then expected
   });
 
-  xit("should have a list of questions", function(){
+  it("should have a list of questions", function(){
     // Arrange
     quizModel = new QuizModel(0,2);
 
     // Act
+    const questionsFetched = quizModel.getQuestions(0, 2);
+
     const actual = quizModel.questions;
     // Assert
     console.log('questions in test:', actual);
