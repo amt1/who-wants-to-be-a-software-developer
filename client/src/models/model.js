@@ -9,7 +9,7 @@ const QuizModel = function (level, numberOfQuestions) {
   this.level = level % 3;
   this.difficulty = this.levels[this.level];
   this.runningTotal = 0;
-  this.questions = this.getQuestions(this.numberOfQuestions, this.level);
+//  this.questions = this.getQuestions(this.numberOfQuestions, this.level);
 };
 
 QuizModel.prototype.bindEvents = function () {
@@ -32,6 +32,11 @@ QuizModel.prototype.getQuestions = function (numberOfQuestions, difficulty) {
      })
      .catch(console.error);
 };
+
+QuizModel.prototype.addScoreToTotal = function (score) {
+  this.runningTotal += score;
+};
+
 
 QuizModel.prototype.scrollLevel = function (level) {
     return (level++) % 3;
