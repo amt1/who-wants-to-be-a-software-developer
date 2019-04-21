@@ -7,6 +7,23 @@ describe("QuizModel", function(){
   beforeEach(function(){
 //    quizModel = new QuizModel();
   });
+
+  it ("should add each score to a running total", function() {
+      // Arrange
+      quizModel = new QuizModel(0,2);
+
+      // Act
+      const actual = quizModel.runningTotal;
+      quizModel.addScoreToTotal(5);
+      const updated = quizModel.runningTotal;
+      quizModel.addScoreToTotal(5);
+      // Assert
+      assert.strictEqual(actual, 0);
+      assert.strictEqual(updated, 5);
+
+      // actual goes first then expected
+  });
+
   it("should have a number of questions", function(){
     // Arrange
     quizModel = new QuizModel(0,2);
@@ -18,7 +35,7 @@ describe("QuizModel", function(){
     // actual goes first then expected
   });
 
-  it("should have a list of questions", function(){
+  xit("should have a list of questions", function(){
     // Arrange
     quizModel = new QuizModel(0,2);
 
@@ -144,7 +161,7 @@ const actual4 = quizModelSafetyCheck3.difficulty;
   // check scope of variables
 
 
-  it("should be able to decrease the difficulty level from hard down to medium then easy", function(){
+  xit("should be able to decrease the difficulty level from hard down to medium then easy", function(){
     // Arrange
     quizModel = new QuizModel(2,2);
 
