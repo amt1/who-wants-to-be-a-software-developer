@@ -1,15 +1,19 @@
+
+
 body, html {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Source Code Pro', monospace;
-  color: #143243;
-  background: radial-gradient(#7D8491, #C0C5C1);
-  /* background-image:
-  radial-gradient(#003C5A, #00283C); */
+  font-family: 'Marvel', sans-serif;
+  color: #c5c6c7;
+  background-image: url('../images/pattern.jpg');
+  background-repeat: repeat;
 }
 
+p {
+  font-family: 'Lora', serif;
+}
 /* NAVBAR */
 
 .nav {
@@ -29,12 +33,12 @@ body, html {
 
 .nav div.logo a {
     text-decoration: none;
-    color: #143243;
+    color: #c5c6c7;
     font-size: 2.5rem;
 }
 
 .nav div.logo a:hover {
-    color: #00E676;
+    color: #FBCB43;
 }
 
 .nav div.main_list {
@@ -60,13 +64,13 @@ body, html {
 
 .nav div.main_list ul li a {
     text-decoration: none;
-    color: #143243;
+    color: #c5c6c7;
     line-height: 65px;
     font-size: 2.4rem;
 }
 
 .nav div.main_list ul li a:hover {
-    color: #00E676;
+    color: #FBCB43;
 }
 
 
@@ -74,8 +78,8 @@ body, html {
 
 .home {
   width: 100%;
-  height: 450px;
-  background-image: url(https://dzbc.org/wp-content/uploads/data/2018/2/15/grey-and-white-geometric-wallpapers-images-Is-Cool-Wallpapers-PIC-MCH070032.jpg);
+  height: 300px;
+  background-image: url(../images/banner3.png);
   background-position: center top;
   background-size: auto;
 }
@@ -99,11 +103,11 @@ body, html {
 }
 
 #quiz {
-  background-color: #34495E;
+  background-color: #1f2833;
   padding-bottom: 60px;
   width: 100%;
   border-radius: 2%;
-  color: #fff;
+  color: #c5c6c7;
   text-align: center;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
@@ -118,8 +122,8 @@ body, html {
   font-size: 28px;
   font-weight: 700;
   font-style: italic;
-  border-top: 1px solid #FFFFFF;
-  border-bottom: 1px solid #FFFFFF;
+  border-top: 1px solid #66fcf1;
+  border-bottom: 1px solid #66fcf1;
   padding: 20px;
 }
 
@@ -141,7 +145,7 @@ body, html {
   width: 50%;
   margin: 0 auto;
   padding-bottom: 15px;
-  border-top: 1px solid grey;
+  border-top: 1px solid #66fcf1;
 }
 
 .answers div:first-child {
@@ -174,7 +178,7 @@ body, html {
 .footer #button{
 	width:35px;
 	height:35px;
-	border: #727172 12px solid;
+	border: #45a29e 12px solid;
 	border-radius:35px;
 	margin:0 auto;
 	position:relative;
@@ -187,7 +191,7 @@ body, html {
 .footer #button:hover{
 	width:35px;
 	height:35px;
-	border: #3A3A3A 12px solid;
+	border: #45a29e 12px solid;
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
@@ -225,7 +229,7 @@ height:100%;
   position:relative;
   top:0;
   left:0;
-	background: #3A3A3A;
+	background: #1f2833;
 }
 .footer #cont{
   position:relative;
@@ -241,7 +245,6 @@ height:100%;
   text-align:center;
 }
 .footer h3{
-	font-family: 'Helvetica';
 	font-size: 30px;
 	font-weight: 100;
 	margin-top:70px;
@@ -340,34 +343,6 @@ content:'https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_ci
 
 /* WHEEL */
 
-/* .wheel-content{
-  background-color: transparent;
-  background-image:
-    linear-gradient(0deg, transparent 50%,
-      #004669 51%,
-      #004669 52%,
-      transparent 53%, transparent 97%,
-      #004669 98%,
-      #004669 99%,
-      transparent 100%, transparent),
-    linear-gradient(45deg, transparent 24%,
-      #004669 25%,
-      #004669 26%,
-      transparent 27%, transparent 74%,
-      #004669 75%,
-      #004669 76%,
-      transparent 77%, transparent),
-    linear-gradient(-45deg, transparent 24%,
-      #004669 25%,
-      #004669 26%,
-      transparent 27%, transparent 74%,
-      #004669 75%,
-      #004669 76%,
-      transparent 77%, transparent);
-  height: 100%;
-  background-size: 35px 35px;
-} */
-
 .circle-menu {
     position: relative;
     width: 400px;
@@ -401,28 +376,28 @@ content:'https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_ci
     left: 162px;
     z-index: 1;
     border-radius: 50%;
-    background-color: #003C5A;
+    background-color: #5d111e;
     background-image:
       linear-gradient(0deg, transparent 50%,
-        #004669 51%,
-        #004669 52%,
+        #e3e2df 51%,
+        #e3e2df 52%,
         transparent 53%, transparent 97%,
-        #004669 98%,
-        #004669 99%,
+        #e3e2df 98%,
+        #e3e2df 99%,
         transparent 100%, transparent),
       linear-gradient(45deg, transparent 24%,
-        #004669 25%,
-        #004669 26%,
+        #e3e2df 25%,
+        #e3e2df 26%,
         transparent 27%, transparent 74%,
-        #004669 75%,
-        #004669 76%,
+        #e3e2df 75%,
+        #e3e2df 76%,
         transparent 77%, transparent),
       linear-gradient(-45deg, transparent 24%,
-        #004669 25%,
-        #004669 26%,
+        #e3e2df 25%,
+        #e3e2df 26%,
         transparent 27%, transparent 74%,
-        #004669 75%,
-        #004669 76%,
+        #e3e2df 75%,
+        #e3e2df 76%,
         transparent 77%, transparent);
     background-size: 35px 35px;
     background-position: 23px 13px;
@@ -468,17 +443,17 @@ content:'https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_ci
     height: 160px;
     margin-top: 40px;
     margin-left: 40px;
-    background: rgba(100, 100, 100, 0.3) url('https://htmlacademy.ru/assets/icons/monitor-4x.png') no-repeat 50% 40%;
+    background: rgba(93,17,30, 08) url(https://htmlacademy.ru/assets/icons/monitor-4x.png) no-repeat 50% 40%;
     transform: skew(-30deg) rotate(-60deg);
     transition: background-color 0.5s;
 }
 
 .circle-menu li:nth-child(even) a {
-    background-color: rgba(100, 100, 100, 0.8);
+    background-color: rgba(227,226,223, 0.8);
 }
 
 .circle-menu li a:hover {
-    background-color: rgba(100, 100, 100, 0);
+    background-color:rgba(237,75,125, 0.8);
 }
 
 
