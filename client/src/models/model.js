@@ -8,6 +8,9 @@ const QuizModel = function (level, numberOfQuestions) {
   this.levels = ["easy","medium","hard"];
   this.level = level % 3;
   this.difficulty = this.levels[this.level];
+  this.allCategories = ["easy","medium","hard"];
+  this.categoryNumber = level % 3;
+  this.category = this.allCategories[this.categoryNumber];
   this.runningTotal = 0;
   this.questionsDB = this.getQuestions( this.level, this.numberOfQuestions);
   console.log('db: ', this.questionsDB);
