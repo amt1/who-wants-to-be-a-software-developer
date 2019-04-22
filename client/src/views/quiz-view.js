@@ -2,7 +2,7 @@ const PubSub = require('../helpers/pub_sub.js')
 
 
 const QuizView = function(quizElement) {
-  this.element = quizElement;
+  this.element = quizElement; //refers to class=Wrapper?
 };
 
 QuizView.prototype.bindEvents = function() {
@@ -28,8 +28,13 @@ QuizView.prototype.emptyElement = function () {
   this.element.innerHTML = '';
 };
 
+QuizView.prototype.renderQuizBox = function () {
+  this.quizBox = document.createElement('div');
+  this.quizBox.classList.add('quiz-box');
+  this.element.appendChild(this.quizBox),
+};
+
 QuizView.prototype.renderQuizHeader = function(quizName, questionNumber) {
-  const quizBox = document.querySelector('.quiz-box');
   const quizHeader = document.createElement('div');
   quizHeader.classList.add('quiz-header');
 
@@ -49,26 +54,19 @@ QuizView.prototype.renderQuizHeader = function(quizName, questionNumber) {
   questionNumber.appendChild(questionNumberText);
   quizHeader.appendChild(questionNumber);
 
-  quizBox.appendChild(quizHeader);
-};
-
-QuizView.prototype.renderQuizBox = function () {
-  const quizBox = document.createElement('div');
-  quizBox.classList.add('quiz-box');
-  this.element.appendChild(quizBox),
+  this.quizBox.appendChild(quizHeader);
 };
 
 QuizView.prototype.renderQuestion = function(question) {
-  const quizBox = document.querySelector('.quiz-box');
-  const questionText = document.createElement('h2');
-  questionText.classList.add('question-text');
+  const questionText = document.createElement('p');
+  questionText.classList.add('questions');
   questionText.textContent = question;
-  quizBox.appendChild(questionText);
+  this.quizBox.appendChild(questionText);
 };
 
 QuizView.prototype.renderPossibleAnswers = function (possibleAnswers) {
-  const quizBox = document.querySelector('.quiz-box');
   const possibleAnswersBox = document.createElement('div');
+  possibleAnswersBox.classList.add('answers')
   possibleAnswers.forEach((answer) => {
     const possibleAnswer = document.createElement('div');
     possibleAnswer.classList.add('possible-answer');
@@ -78,11 +76,11 @@ QuizView.prototype.renderPossibleAnswers = function (possibleAnswers) {
     });
     possibleAnswersBox.appendChild(possibleAnswer);
   });
-  quizBox.appendChild(possibleAnswersBox);
+  this.quizBox.appendChild(possibleAnswersBox);
 };
 
 QuizView.prototype.handleAnswerClick = function(evt) {
-  const selectedAnswer = evt.detail;
+  const selectedAnswer = evt.target;
   PubSub.publish('QuizView:answer-selected', selectedAnswer)
 };
 
