@@ -17,9 +17,11 @@ MongoClient.connect('mongodb://localhost:27017')
     const pda_questions = db.collection('pda_questions');
     const pdaQuizRouter = createRouter(pda_questions)
     app.use('/api/pda_quiz', pdaQuizRouter);
-    const pda_players = db.collection('pda_players');
-    const pdaPlayersRouter = createRouter(pda_players);
-    app.use('/api/pda_players', pdaPlayersRouter);
+
+  // extension option for storing players' previous game data
+    // const pda_players = db.collection('pda_players');
+    // const pdaPlayersRouter = createRouter(pda_players);
+    // app.use('/api/pda_players', pdaPlayersRouter);
 
   })
   .catch(console.err);

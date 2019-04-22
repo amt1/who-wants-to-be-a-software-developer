@@ -13,5 +13,4 @@ console.log("Hello from PDA Quiz!");
 // model
   const quizModel = new QuizModel(0,2);
 //   quizModel.bindEvents();
-   quizModel.getQuestions();
 });
