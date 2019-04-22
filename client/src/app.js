@@ -5,7 +5,7 @@ const ResultView = require('./views/result_view.js');
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const quizSelectViewElement = document.querySelector('#quiz-selector'); //NOT SURE WHICH HTML ELEMENT TO PUT IN HERE
+  const quizSelectViewElement = document.querySelector('#quiz-select'); //NOT SURE WHICH HTML ELEMENT TO PUT IN HERE
   const quizSelectView = new QuizSelectView(quizSelectViewElement);
   quizSelectView.bindEvents();
 
@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultView = new ResultView(resultViewContainer);
   resultView.bindEvents();
 
-  const quizModel = new QuizModel();
-  quizModel.getData();
-  quizModel.bindEvents();
+  const quizModel = new QuizModel(0,2);
+  // quiz.getData();
+  // quiz.bindEvents();
 
 });
