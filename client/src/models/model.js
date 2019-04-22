@@ -122,13 +122,13 @@ this.questions = [];
 };  // end of constructor
 
 QuizModel.prototype.bindEvents = function () {
-  // PubSub.subscribe('BucketListItemView:delete-clicked', (evt) => {
-  //   this.deleteBucketListItem(evt.detail);
-  // });
-  //
-  // PubSub.subscribe('FormView:form-submitted', (evt) => {
-  //   this.postBucketListItem(evt.detail);
-  // })
+  PubSub.subscribe('QuizSelectView:quiz-selected', (evt) => {
+
+  });
+
+  PubSub.publish('Quiz:question-info-ready', (evt) => {
+    this.selectQuestionsByLevel(evt.detail);
+  })
 };
 
 QuizModel.prototype.selectQuestionsByLevel = function (difficulty) {
