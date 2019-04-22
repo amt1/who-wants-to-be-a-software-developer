@@ -10,8 +10,8 @@ QuizView.prototype.bindEvents = function() {
     const question = evt.detail //PULL OUT QUESTION TEXT
     const possibleAnswers = evt.detail //PULL OUT ANSWERS
 
-    console.log(question);
-    console.log(possibleAnswers);
+    // console.log(question);
+    // console.log(possibleAnswers);
 
     // this.emptyElement();
     // this.renderQuizBox();
