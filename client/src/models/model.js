@@ -2,14 +2,15 @@ const RequestHelper = require('../helpers/request_helper.js');
 const PubSub = require('../helpers/pub_sub.js');
 
 const QuizModel = function (level, numberOfQuestions) {
-  this.quizUrl = 'http://localhost:3000/api/pda_questions';
+  this.quizUrl = 'http://localhost:3000/api/pda_quiz';
   this.request = new RequestHelper(this.quizUrl);
   this.numberOfQuestions = numberOfQuestions;
   this.levels = ["easy","medium","hard"];
   this.level = level % 3;
   this.difficulty = this.levels[this.level];
   this.runningTotal = 0;
-//  this.questions = this.getQuestions( this.level, this.numberOfQuestions);
+  this.questionsDB = this.getQuestions( this.level, this.numberOfQuestions);
+  console.log('db: ', this.questionsDB);
 this.fakeDB = [
   {
 // copy-pasted from Insomnia - somewhere in the process it added quotes around the keys.
@@ -131,13 +132,21 @@ QuizModel.prototype.bindEvents = function () {
 };
 
 QuizModel.prototype.getQuestions = function (difficulty, numberOfQuestions) {
+
+// would be good to narrow down the questions with querystring variables
+// when fetching them eg http://localhost:3000/api/pda_questions?difficulty=0
+// This doesn't do anything in insomnia
+// however, insomnia has put quotes around the keys.
+// Also this is a minor issue compared to the current problem of the application
+// not fetching from the database at all.
+
   this.request.get()
      .then((questions) => {
-  //     this.questions = questions;
+      this.questions = questions;
   //     PubSub.publish('BucketList:data-loaded', bucketList);
     console.log('questions = ', questions);
-//      return this.questions;
-return questions;
+     return this.questions;
+// return questions;
      })
      .catch(console.error);
 };
