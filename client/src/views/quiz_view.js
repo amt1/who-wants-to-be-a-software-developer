@@ -1,4 +1,4 @@
-const PubSub = require('../helpers/pub_sub.js')
+const PubSub = require('../helpers/pub_sub.js');
 
 
 const QuizView = function(quizElement) {
@@ -16,12 +16,12 @@ QuizView.prototype.bindEvents = function() {
     this.renderPossibleAnswers(possibleAnswers);
   });
 
-  PubSub.subscribe('Quiz:question-info-ready' (evt) => {
-    const quizName = evt.detail // PULL OUT QUIZ NAME / CATEGORY
-    const questionNumber = evt.detail //PULL OUT QUESTION NUMBER
-
-    this.renderQuizHeader(quizName, questionNumber);
-  });
+  // PubSub.subscribe('Quiz:question-info-ready', (evt) => {
+  //   const quizName = evt.detail // PULL OUT QUIZ NAME / CATEGORY
+  //   const questionNumber = evt.detail //PULL OUT QUESTION NUMBER
+  //
+  //   this.renderQuizHeader(quizName, questionNumber);
+  // });
 }
 
 QuizView.prototype.emptyElement = function () {
@@ -31,14 +31,14 @@ QuizView.prototype.emptyElement = function () {
 QuizView.prototype.renderQuizBox = function () {
   this.quizBox = document.createElement('div');
   this.quizBox.classList.add('quiz-box');
-  this.element.appendChild(this.quizBox),
+  this.element.appendChild(this.quizBox);
 };
 
 QuizView.prototype.renderQuizHeader = function(quizName, questionNumber) {
   const quizHeader = document.createElement('div');
   quizHeader.classList.add('quiz-header');
 
-  const quizName = document.createElement('div');
+  quizName = document.createElement('div');
   quizName.classList.add('quiz-name');
 
   const quizNameText = document.createElement('h3');

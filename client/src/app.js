@@ -1,4 +1,4 @@
-const QuizModel = require('./models/quiz.js');
+const QuizModel = require('./models/model.js');
 const QuizView = require('./views/quiz_view.js');
 const QuizSelectView = require('./views/quiz_select_view.js');
 const ResultView = require('./views/result_view.js');
