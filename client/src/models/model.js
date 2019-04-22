@@ -131,12 +131,20 @@ QuizModel.prototype.bindEvents = function () {
   // })
 };
 
+QuizModel.prototype.selectQuestionsByLevel = function (difficulty) {
+  const filteredQuestions = this.fakeDB.filter(question => ( question.difficulty == difficulty));
+  console.log('filteredQuestions: ', filteredQuestions);
+  return filteredQuestions;
+};
+
+
 QuizModel.prototype.getQuestions = function (difficulty, numberOfQuestions) {
 
 // would be good to narrow down the questions with querystring variables
 // when fetching them eg http://localhost:3000/api/pda_questions?difficulty=0
 // This doesn't do anything in insomnia
 // however, insomnia has put quotes around the keys.
+// been trying to make a route for this but it returns an empty array so far
 // Also this is a minor issue compared to the current problem of the application
 // not fetching from the database at all.
 
@@ -144,7 +152,23 @@ QuizModel.prototype.getQuestions = function (difficulty, numberOfQuestions) {
      .then((questions) => {
       this.questions = questions;
   //     PubSub.publish('BucketList:data-loaded', bucketList);
-    console.log('questions = ', questions);
+  //  console.log('questions = ', questions);
+    const questionsByLevel = this.selectQuestionsByLevel(difficulty);
+    const orderedQuestions = [];
+    if (questionsByLevel.length < numberOfQuestions) {
+      numberOfQuestions = questionsByLevel.length;
+    };
+
+ while (numberOfQuestions > orderedQuestions.push( questionsByLevel.splice(Math.floor(Math.random() * questionsByLevel.length), 1))){
+
+// could put quiz loop in here
+
+console.log('ordered questions = ', orderedQuestions);
+console.log('questionsByLevel = ', questionsByLevel);
+}
+
+   console.log('randomised questions = ', orderedQuestions);
+this.questions = orderedQuestions;
      return this.questions;
 // return questions;
      })
