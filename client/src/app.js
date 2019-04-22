@@ -1,4 +1,4 @@
-const Quiz = require('./models/quiz.js');
+const QuizModel = require('./models/quiz.js');
 const QuizView = require('./views/quiz_view.js');
 const QuizSelectView = require('./views/quiz_select_view.js');
 const ResultView = require('./views/result_view.js');
@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultView = new ResultView(resultViewContainer);
   resultView.bindEvents();
 
-  const quiz = new Quiz();
-  quiz.getData();
-  quiz.bindEvents();
+  const quizModel = new QuizModel(0,2);
+  // quiz.getData();
+  // quiz.bindEvents();
 
 });
