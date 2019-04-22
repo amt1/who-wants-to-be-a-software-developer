@@ -1,16 +1,24 @@
-// const QuizSelectView = require('./views/quiz_select_view.js');
-// const QuizView = require('./views/quiz-view.js');
- const QuizModel = require('./models/model.js');
+const QuizModel = require('./models/quiz.js');
+const QuizView = require('./views/quiz_view.js');
+const QuizSelectView = require('./views/quiz_select_view.js');
+const ResultView = require('./views/result_view.js');
 
 document.addEventListener('DOMContentLoaded', () => {
-console.log("Hello from PDA Quiz!");
-  // form view first
 
+  const quizSelectViewElement = document.querySelector('div.menu'); //NOT SURE WHICH HTML ELEMENT TO PUT IN HERE
+  const quizSelectView = new QuizSelectView(quizSelectViewElement);
+  quizSelectView.bindEvents();
 
-// list view
+  const quizViewElement = document.querySelector('#quiz');
+  const quizView = new QuizView(quizViewElement);
+  quizView.bindEvents();
 
+  const resultViewContainer = document.querySelector('div.checkAnswers');
+  const resultView = new ResultView(resultViewContainer);
+  resultView.bindEvents();
 
-// model
   const quizModel = new QuizModel(0,2);
-//   quizModel.bindEvents();
+  // quiz.getData();
+  // quiz.bindEvents();
+
 });
