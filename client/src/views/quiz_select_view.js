@@ -5,7 +5,7 @@ const QuizSelectView = function(element) {
 };
 
 QuizSelectView.prototype.bindEvents = function () {
-  PubSub.subscribe('Quiz:question-ready', (evt) => {
+  PubSub.subscribe('Quiz:quizes-ready', (evt) => {
     this.populateQuiz(evt.detail);
   });
    this.selectElement.addEventListener('submit', (evt) => {
