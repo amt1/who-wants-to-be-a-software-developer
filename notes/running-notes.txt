@@ -2,10 +2,36 @@ Terminal:  npm install express in terminal window
 "server": "node server.js" under test in package.json
 Terminal: npm install -D nodemon
 "server:dev": "nodemon server.js" in package.json
+** CORRECTION server/server.js
 npm run server:dev
 "build": "webpack -w"  - add this to package.json
 Terminal: npm install webpack webpack-cli
 npm install mongodb
 npm install mocha
 "test": "mocha specs" under scripts in package.json
+** CORRECTION
+This needed changing to
+"test": "mocha ./client/src/specs",
+as mocha couldn't find the test file
 "mocha": "^6.1.4" under devDependencies in package.json
+
+Finally got GET route working in insomnia:
+http://localhost:3000/api/pda_questions
+
+(db name is pda_quiz)
+
+Seems URL may be a reserved word in Mongo DB
+as I got this error when trying to use it as a key: SyntaxError: missing : after property id
+Changed it to Link instead
+
+Got the DB to read in the seeds hash fields by using a combination of double and single quotes ie
+correct_answer: "{'true'}",
+Will need to test reading from this to make sure it will work.
+May be the same as what stringify does anyway?
+
+Trying to get mocha to work
+npm install --save-dev mocha
+
+moving specs to same directory as package.json
+
+mongo < seeds.js

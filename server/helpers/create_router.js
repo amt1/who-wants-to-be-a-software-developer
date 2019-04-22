@@ -17,6 +17,23 @@ const createRouter = function (collection) {
       });
   });
 
+  router.get('/level/:difficulty', (req, res) => {
+    // const level = req.params.difficulty;
+    // console.log('level: ', level);
+    // res.send("level is set to " + req.params.difficulty);
+// why is this returning an empty array?
+    collection
+      .find({ difficulty: req.params.difficulty }).toArray()
+      .then((docs) => {
+        return res.json(docs)
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500);
+        res.json({ status: 500, error: err });
+      });
+  });
+
   router.get('/:id', (req, res) => {
     const id = req.params.id;
     collection
