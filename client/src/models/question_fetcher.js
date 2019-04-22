@@ -12,15 +12,22 @@ QuestionFetcher.prototype.getData = function () {
   .get()
   .then((questions) => {
     this.questions = questions;
-    PubSub.publish('Quiz:data-loaded', this.questions);
-    console.log(this.questions);
   })
     .catch((err) => console.error(err));
 };
 
-QuizModel.prototype.selectQuestionsByCategory = function (category) {
+QuestionFetcher.prototype.bindEvents = function () {
+  PubSub.subscribe('QuizSelectView:quiz-selected', (evt) => {
+    const category = evt.detail;
+    this.selectQuestionsByCategory(category);
+  });
+};
+
+// Need to adapt this to fit with the category model
+QuestionFetcher.prototype.selectQuestionsByCategory = function (category) {
   const filteredQuestions = this.questions.filter(question => ( question.category == category));
-  return filteredQuestions;
+
+  PubSub.publish('QuestionFetcher:questions-by-category-ready', filteredQuestions);
 };
 
 
