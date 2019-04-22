@@ -6,8 +6,8 @@ const QuizSelectView = function(element) {
 
 QuizSelectView.prototype.bindEvents = function () {
    this.selectElement.addEventListener('click', (evt) => {
-    const quiz = evt.target.id;
-    
+    const quiz = evt.target;
+
     // console.log(evt.target.id)
     PubSub.publish('QuizSelectView:quiz-selected', quiz);
   });
