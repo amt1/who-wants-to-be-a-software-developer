@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultView = new ResultView(resultViewContainer);
   resultView.bindEvents();
 
-  const quizModel = new QuizModel(0,2);
-  // quiz.getData();
-  // quiz.bindEvents();
+  const quizModel = new QuizModel();
+  quizModel.getData();
+  quizModel.bindEvents();
 
 });
