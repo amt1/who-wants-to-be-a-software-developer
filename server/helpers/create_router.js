@@ -1,23 +1,25 @@
 const express = require('express');
+const cors = require('cors');
 const ObjectID = require('mongodb').ObjectID;
 
 const createRouter = function (collection) {
 
   const router = express.Router();
+  router.all("*", cors());
 
-  router.get('/', (req, res) => {
+  router.get('/', cors(), (req, res) => {
     collection
       .find()
       .toArray()
       .then((docs) => res.json(docs))
       .catch((err) => {
-        console.error(err);
+        // console.error(err);
         res.status(500);
         res.json({ status: 500, error: err });
       });
   });
 
-  router.get('/level/:difficulty', (req, res) => {
+  router.get('/level/:difficulty', cors(), (req, res) => {
     // const level = req.params.difficulty;
     // console.log('level: ', level);
     // res.send("level is set to " + req.params.difficulty);
@@ -34,7 +36,7 @@ const createRouter = function (collection) {
       });
   });
 
-  router.get('/:id', (req, res) => {
+  router.get('/:id', cors(), (req, res) => {
     const id = req.params.id;
     collection
       .findOne({ _id: ObjectID(id) })
@@ -46,7 +48,7 @@ const createRouter = function (collection) {
       });
   });
 
-  router.post('/', (req, res) => {
+  router.post('/', cors(), (req, res) => {
     const newData = req.body;
     collection
       .insertOne(newData)
@@ -63,7 +65,7 @@ const createRouter = function (collection) {
       });
   });
 
-  router.delete('/:id', (req, res) => {
+  router.delete('/:id', cors(), (req, res) => {
     const id = req.params.id;
     collection
       .deleteOne({ _id: ObjectID(id) })
@@ -76,7 +78,7 @@ const createRouter = function (collection) {
       });
   });
 
-  router.put('/:id', (req, res) => {
+  router.put('/:id', cors(), (req, res) => {
     const id = req.params.id;
     const updatedData = req.body;
     collection

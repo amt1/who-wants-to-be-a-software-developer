@@ -6,11 +6,10 @@ const RequestHelper = function (url) {
 RequestHelper.prototype.get = function () {
   // fetch(request, {mode: 'cors'});
 
-  return fetch(this.url, {mode: 'no-cors'})
-    .then((response) => {
-    console.log('response: ', response);
-     response.json()
-  })
+  // return fetch(this.url, {mode: 'no-cors', credentials: 'same-origin'})
+    return fetch(this.url)
+    .then((response) => response.json())
+    .then((data) => console.log('response: ', data))
     .catch(err => console.log(err));
 };
 
