@@ -1,17 +1,17 @@
 const RequestHelper = function (url) {
   this.url = url;
-  console.log('url to RequestHelper: ', this.url);
+  // console.log('url to RequestHelper: ', this.url);
 };
 
 RequestHelper.prototype.get = function () {
-  // fetch(request, {mode: 'cors'});
+
 
   return fetch(this.url, {mode: 'no-cors'})
     .then((response) => {
-    console.log('response: ', response);
      response.json()
   })
-    .catch(err => console.log(err));
+    .catch((err) =>{ console.error(err)
+    });
 };
 
 RequestHelper.prototype.post = function (payload) {
