@@ -15,9 +15,13 @@ QuizSelectView.prototype.bindEvents = function () {
     console.log(category);
 
     PubSub.publish('QuizSelectView:quiz-selected', category);
+    this.emptyElement();
   });
 };
 
+QuizSelectView.prototype.emptyElement = function () {
+  this.selectElement.innerHTML = '';
+};
 
 module.exports = QuizSelectView;
 
