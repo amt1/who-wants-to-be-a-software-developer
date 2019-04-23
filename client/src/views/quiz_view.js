@@ -57,7 +57,7 @@ QuizView.prototype.renderQuizHeader = function(quizName, questionNumber) {
   answer1.appendChild(firstAnswer);
   answers.appendChild(answer1);
 
-  const answer1 = document.createElement('div');
+  const answer2 = document.createElement('div');
   answer2.classList.add('answer2');
 
   const secondAnswer = document.createElement('p');

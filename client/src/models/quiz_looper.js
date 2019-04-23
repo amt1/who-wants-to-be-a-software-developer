@@ -16,7 +16,7 @@ QuizLooper.prototype.bindEvents = function () {
   this.currentCategory = allSelectedQuestions.detail[1];
   this.loopCounter = this.questionsArray.length;
   for (var questionNumber = 0; questionNumber < this.loopCounter; questionNumber++) {
-    console.log('current question: ', this.questionsArray[questionNumber]);
+    // console.log('current question: ', this.questionsArray[questionNumber]);
 // using a for loop in case we need the counter for any extensions later
     PubSub.publish('QuizLooper:question-ready', this.questionsArray[questionNumber]);
     PubSub.subscribe('QuizView:question-answered', (questionAndAnswer) => {
