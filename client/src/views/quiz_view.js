@@ -23,6 +23,7 @@ QuizView.prototype.bindEvents = function() {
   //
   //   this.renderQuizHeader(quizName, questionNumber);
   // });
+  PubSub.publish('QuizView:question-answered', [question, ["true"]])
 };
 
 QuizView.prototype.gatherAnswers = function(evt.detail) {
