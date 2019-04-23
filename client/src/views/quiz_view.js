@@ -107,11 +107,24 @@ QuizView.prototype.renderPossibleAnswers = function (possibleAnswers) {
 };
 
 QuizView.prototype.handleAnswerClick = function(evt) {
-  const selectedAnswer = evt.target.value;
-  const answerObject = [selectedAnswer, this.question]
-  console.log(answerObject);
+  const selectedAnswer = evt.target.value
+
+  const answerObject = [];
+  answerObject.push(selectedAnswer);
+  answerObject.push(this.question);
 
   PubSub.publish('QuizView:answer-selected', answerObject)
+  console.log(answerObject);
 };
 
 module.exports = QuizView;
+
+
+
+// FOR MULTIPLE ANSWERS
+// const selectedAnswer = [];
+// selectedAnswer.push(evt.target.value);
+//
+// const answerObject = [];
+// answerObject.push(selectedAnswer);
+// answerObject.push(this.question);
