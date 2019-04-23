@@ -10,7 +10,7 @@ const QuizView = function(quizWrapper) {
 QuizView.prototype.bindEvents = function() {
   PubSub.subscribe('QuizLooper:question-ready', (evt) => {
     const question = evt.detail.question
-    this.question = question
+    this.question = evt.detail
     this.gatherAnswers(evt.detail);
 
     this.emptyElement();
@@ -25,7 +25,7 @@ QuizView.prototype.bindEvents = function() {
   //
   //   this.renderQuizHeader(quizName, questionNumber);
   // });
-  // PubSub.publish('QuizView:question-answered', [question, ["true"]])
+
 };
 
 QuizView.prototype.gatherAnswers = function(question) {
