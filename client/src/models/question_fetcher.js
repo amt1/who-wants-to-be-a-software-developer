@@ -31,7 +31,7 @@ QuestionFetcher.prototype.selectQuestionsByCategory = function (categoryIndex) {
 
   PubSub.publish('QuestionFetcher:questions-by-category-ready', [filteredQuestions, categoryIndex]);
 };
-// 
+//
 // QuestionFetcher.prototype.randomiseFilteredQuestions = function (filteredQuestions) {
 //   const length = filteredQuestions.length()
 //

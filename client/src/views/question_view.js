@@ -47,7 +47,7 @@ QuestionView.prototype.renderPossibleAnswers = function () {
 };
 
 QuestionView.prototype.handleAnswerClick = function(evt) {
-  const selectedAnswer = evt.target.value
+  const selectedAnswer = evt.target.value;
 
   const answerObject = [];
   answerObject.push(selectedAnswer);
