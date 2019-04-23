@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizSelectView = new QuizSelectView(quizSelectViewElement);
   quizSelectView.bindEvents();
 
-  const quizViewElement = document.querySelector('#quiz');
+  const quizViewElement = document.querySelector('div.quiz-wrapper');
   const quizView = new QuizView(quizViewElement);
   quizView.bindEvents();
 
