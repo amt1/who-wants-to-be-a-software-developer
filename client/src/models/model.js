@@ -126,14 +126,15 @@ this.questions = [];
 
 QuizModel.prototype.bindEvents = function () {
   PubSub.subscribe('QuizSelectView:quiz-selected', (evt) => {
+    // payload is category number
   const questionToSend = this.getQuestions[0];
   console.log('first question: ', questionToSend);
-  PubSub.publish('Quiz:question-ready', questionToSend);
+  PubSub.publish('QuizModel:question-ready', questionToSend);
+  //   PubSub.subscribe('QuizSelectView:quiz-selected', (evt) => {
+// question answered channel
   });
 
-  //
-  // PubSub.subscribe('FormView:form-submitted', (evt) => {
-  //   this.postBucketListItem(evt.detail);
+
   // })
 };
 
