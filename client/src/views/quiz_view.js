@@ -4,16 +4,22 @@ const QuestionView = require('../views/question_view.js');
 const QuizView = function(quizWrapper) {
   this.element = quizWrapper;
   this.questionNumber = 0
+  this.allQuestions = []
 };
 
 
 QuizView.prototype.bindEvents = function() {
-  PubSub.subscribe('QuizSelectView:quiz-selected', (evt) => {
-    this.category = evt.detail;
-    console.log(this.category);
+  PubSub.subscribe('QuestionFetcher:questions-by-category-ready', (evt) => {
+    this.allQuestions = evt.detail[0];
+    this.category = evt.detail[1];
   });
 
-  PubSub.subscribe('QuizLooper:question-ready', (evt) => {
+
+  // PubSub.subscribe('QuizSelectView:quiz-selected', (evt) => {
+  //   this.category = evt.detail;
+  // });
+
+  PubSub.subscribe('QuestionGenerator:question-ready', (evt) => {
     const question = evt.detail
 
     this.emptyElement();

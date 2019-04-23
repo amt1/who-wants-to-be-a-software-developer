@@ -30,7 +30,7 @@ QuestionView.prototype.renderPossibleAnswers = function () {
   possibleAnswersBox.classList.add('answers')
   this.possibleAnswers.forEach((answer) => {
     const possibleAnswer = document.createElement('button');
-    possibleAnswer.classList.add('possible-answer');
+    possibleAnswer.classList.add('answer`${answer.index}`');
 
     const answerLength = answer.length;
     const answerString = answer.substring(2, (answerLength-2));
@@ -53,17 +53,12 @@ QuestionView.prototype.handleAnswerClick = function(evt) {
   answerObject.push(selectedAnswer);
   answerObject.push(this.question);
 
-  PubSub.publish('QuizView:answer-selected', answerObject)
+  PubSub.publish('QuestionView:answer-selected', answerObject)
 };
 
 module.exports = QuestionView;
 
 
-//BEN RENDER ANSWERS AND QUESTION
-// const question = document.createElement('p');
-// question.textContent = questionText;
-// quizName.appendChild(question);
-//
 // const answers = document.createElement('div');
 // answers.classList.add('answers');
 //
