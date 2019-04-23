@@ -54,11 +54,13 @@ QuizLooper.prototype.checkAnswer = function (question, answer) {
   let wrongness = 0;
   let rightness = 0;
   let result = [];
+  let playersAnswer = [];
   const currentQuestion = question;
   console.log('answer is: ', answer);
   console.log('question is: ', question);
-
-  const playersAnswer = answer;
+//  const playersAnswer = answer;
+// hardcode into an array until one can be sent
+  this.playersAnswer[0] = answer;
   const wrongAnswers = [];
   let counter = playersAnswer.length;
   while (counter--) {
