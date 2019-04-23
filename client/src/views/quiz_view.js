@@ -3,18 +3,18 @@ const PubSub = require('../helpers/pub_sub.js');
 
 const QuizView = function(quizWrapper) {
   this.element = quizWrapper; //refers to class=Wrapper?
+  this.possibleAnswers = []
 };
 
 QuizView.prototype.bindEvents = function() {
   PubSub.subscribe('QuizLooper:question-ready', (evt) => {
     const question = evt.detail.question
-    console.log(question);
-    const possibleAnswers = this.gatherAnswers(evt.detail);
+    this.gatherAnswers(evt.detail);
 
     this.emptyElement();
     this.renderQuizBox();
     this.renderQuestion(question);
-    // this.renderPossibleAnswers(possibleAnswers);
+    this.renderPossibleAnswers(this.possibleAnswers);
   });
 
   // PubSub.subscribe('Quiz:question-info-ready', (evt) => {
@@ -23,11 +23,12 @@ QuizView.prototype.bindEvents = function() {
   //
   //   this.renderQuizHeader(quizName, questionNumber);
   // });
-  PubSub.publish('QuizView:question-answered', [question, ["true"]])
+  // PubSub.publish('QuizView:question-answered', [question, ["true"]])
 };
 
-QuizView.prototype.gatherAnswers = function(evt.detail) {
-
+QuizView.prototype.gatherAnswers = function(question) {
+  this.possibleAnswers.push(question.correct_answer);
+  this.possibleAnswers.push(question.incorrect_answers);
 };
 
 QuizView.prototype.emptyElement = function () {
@@ -79,22 +80,27 @@ QuizView.prototype.renderQuizHeader = function(quizName, questionNumber) {
   this.quizDiv.appendChild(quizName);
 };
 
-//
-// QuizView.prototype.renderPossibleAnswers = function (possibleAnswers) {
-//   const possibleAnswersBox = document.createElement('div');
-//   possibleAnswersBox.classList.add('answers')
-//   possibleAnswers.forEach((answer) => {
-//     const possibleAnswer = document.createElement('div');
-//     possibleAnswer.classList.add('possible-answer');
-//     possibleAnswer.textContent = answer.value; //OR HOW ITS STORED!
-//     possibleAnswer.addEventListener('click', function(evt) {
-//       this.handleAnswerClick(evt);
-//     });
-//     possibleAnswersBox.appendChild(possibleAnswer);
-//   });
-//   this.quizBox.appendChild(possibleAnswersBox);
-// };
-//
+
+QuizView.prototype.renderPossibleAnswers = function (possibleAnswers) {
+  const possibleAnswersBox = document.createElement('div');
+  possibleAnswersBox.classList.add('answers')
+  possibleAnswers.forEach((answer) => {
+    const possibleAnswer = document.createElement('div');
+    possibleAnswer.classList.add('possible-answer');
+
+    const answerLength = answer.length;
+    const answerString = answer.substring(2, (answerLength-2));
+
+    possibleAnswer.textContent = answerString; 
+
+    possibleAnswer.addEventListener('click', function(evt) {
+      this.handleAnswerClick(evt);
+    });
+    possibleAnswersBox.appendChild(possibleAnswer);
+  });
+  this.quizDiv.appendChild(possibleAnswersBox);
+};
+
 QuizView.prototype.handleAnswerClick = function(evt) {
   const selectedAnswer = evt.target;
   const answerObject = selectedAnswer // + object
