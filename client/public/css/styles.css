@@ -16,6 +16,57 @@ p {
 }
 /* NAVBAR */
 
+#user {
+  display: -webkit-box;
+  width:5em;
+}
+
+.label {
+  color: rgba(197,198,199, 0.3);
+  transform-origin: 0 0;
+  transition: all .2s ease;
+}
+.border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #0077FF;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  transition: all .15s ease;
+}
+.name-input {
+  -webkit-appearance: none;
+  width: 100%;
+  border: 0;
+  font-family: inherit;
+  padding: 0 0;
+  height: 48px;
+  font-size: 1em;
+  font-weight: 500;
+  text-align: center;
+  border-bottom: 2px solid #C8CCD4;
+  background: none;
+  border-radius: 0;
+  color: #c5c6c7;
+  transition: all .15s ease;
+}
+.name-input::hover {
+  background: rgba(#c5c6c7,.03);
+}
+
+.name-input::focus{
+    background: none;
+    outline: none;
+    + span
+      color: #0077FF;
+      transform: translateY(-26px) scale(.75);
+      + .border
+          transform: scaleX(1);
+}
+
 header {
   width: 100%;
 }
@@ -39,6 +90,8 @@ header {
     text-decoration: none;
     color: #c5c6c7;
     font-size: 2.5rem;
+    display: flex;
+    margin: 0.25em;
 }
 
 .nav div.logo a:hover {
@@ -179,7 +232,7 @@ header {
 
 /* FOOTER */
 
-.footer #button{
+/* .footer #button{
 	width:35px;
 	height:35px;
 	border: #45a29e 12px solid;
@@ -191,8 +244,30 @@ header {
     -o-transition: all 1s ease;
     -ms-transition: all 1s ease;
     transition: all 1s ease;
+} */
+.footer #button {
+  position: relative;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-top: 27px solid transparent;
+  border-right: 27px solid #66fcf1;
+  transform: rotate(10deg);
 }
-.footer #button:hover{
+.footer #button:after {
+  content: "";
+  position: absolute;
+  border: 0 solid transparent;
+  border-top: 9px solid #66fcf1;
+  border-radius: 60px 0 0 0;
+  top: -36px;
+  left: -27px;
+  width: 36px;
+  height: 36px;
+  transform: rotate(45deg);
+}
+
+/* .footer #button:hover{
 	width:35px;
 	height:35px;
 	border: #45a29e 12px solid;
@@ -202,7 +277,7 @@ header {
     -ms-transition: all 1s ease;
     transition: all 1s ease;
 	position:relative;
-}
+} */
 .footer {
 	bottom:0;
 	left:0;
@@ -337,6 +412,13 @@ hr{
 
 /* WHEEL */
 
+.select-instructions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+  margin-top: 15em;
+}
+
 .circle-menu {
     position: relative;
     width: 400px;
@@ -370,28 +452,28 @@ hr{
     left: 162px;
     z-index: 1;
     border-radius: 50%;
-    background-color: #5d111e;
+    background-color: #0b0c10;
     background-image:
       linear-gradient(0deg, transparent 50%,
-        #e3e2df 51%,
-        #e3e2df 52%,
+        #66fcf1 51%,
+        #66fcf1 52%,
         transparent 53%, transparent 97%,
-        #e3e2df 98%,
-        #e3e2df 99%,
+        #66fcf1 98%,
+        #66fcf1 99%,
         transparent 100%, transparent),
       linear-gradient(45deg, transparent 24%,
-        #e3e2df 25%,
-        #e3e2df 26%,
+        #66fcf1 25%,
+        #66fcf1 26%,
         transparent 27%, transparent 74%,
-        #e3e2df 75%,
-        #e3e2df 76%,
+        #66fcf1 75%,
+        #66fcf1 76%,
         transparent 77%, transparent),
       linear-gradient(-45deg, transparent 24%,
-        #e3e2df 25%,
-        #e3e2df 26%,
+        #66fcf1 25%,
+        #66fcf1 26%,
         transparent 27%, transparent 74%,
-        #e3e2df 75%,
-        #e3e2df 76%,
+        #66fcf1 75%,
+        #66fcf1 76%,
         transparent 77%, transparent);
     background-size: 35px 35px;
     background-position: 23px 13px;
@@ -437,95 +519,277 @@ hr{
     height: 160px;
     margin-top: 40px;
     margin-left: 40px;
-    background: rgba(93,17,30, 08) url(https://htmlacademy.ru/assets/icons/monitor-4x.png) no-repeat 50% 40%;
+    background: rgba(197,198,199, 08) url('../images/1.png') no-repeat 50% 40%;
     transform: skew(-30deg) rotate(-60deg);
     transition: background-color 0.5s;
 }
 
 .circle-menu li:nth-child(even) a {
-    background-color: rgba(227,226,223, 0.8);
+    background-color: rgba(31,40,51, 0.8);
 }
 
 .circle-menu li a:hover {
-    background-color:rgba(237,75,125, 0.8);
+    background-color:rgba(102,252,241, 0.8);
 }
 
 
 .circle-menu li:nth-child(2) a {
-    background-image: url('https://htmlacademy.ru/assets/icons/aperture-4x.png');
+    background-image: url('../images/2.png');
 }
 .circle-menu li:nth-child(3) a {
-    background-image: url('https://htmlacademy.ru/assets/icons/audio-4x.png');
+    background-image: url('../images/3.png');
 }
 .circle-menu li:nth-child(4) a {
-    background-image: url('https://htmlacademy.ru/assets/icons/battery-empty-4x.png');
+    background-image: url('../images/4.png');
 }
 .circle-menu li:nth-child(5) a {
-    background-image: url('https://htmlacademy.ru/assets/icons/bluetooth-4x.png');
+    background-image: url('../images/5.png');
 }
 .circle-menu li:nth-child(6) a {
-    background-image: url('https://htmlacademy.ru/assets/icons/browser-4x.png');
+    background-image: url('../images/6.png');
 }
 
 
 /* progress bars */
 
-.progress {
-	position: relative;
-	z-index: 5;
-	background:#484848;
-	border:10px solid #282828;
-	border-radius: 20px;
-	display: inline-block;
-	box-shadow: 0 5px 17px rgba(40, 40, 40, 0.5),0 0 3px 1px rgba(40, 40, 40, 0.5) inset;
-
+.progress-bar-form {
+  position: relative;
+  border: 5px solid #59616C;
+  border-radius: 400px;
+  width: 400px;
+  height: 400px;
+  margin: 24px auto;
 }
-.progress-text {
+
+input[type=checkbox] {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+label.progress-task {
+  position: absolute;
+  left: 0;
+  width: 400px;
+  cursor: pointer;
+  font: 32px/345px sans-serif;
+  text-align: center;
+  color: transparent;
+}
+
+label.progress-task:before,
+label.progress-task:after {
+  position: absolute;
+  display: block;
+  width: 24px;
+  height: 24px;
+  content: ' ';
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+label.progress-task:before {
+  border: 5px solid #59616c;
+  z-index: 1;
+}
+
+label.progress-task:after {
+  background: #2c3642;
+  border: 12px solid #2c3642;
+  position: absolute;
+}
+
+input[type=checkbox]:invalid ~ label.progress-task {
+  color: #fff;
+}
+
+input[type=checkbox]:invalid ~ label.progress-task:before {
+  border-color: #fdce7e;
+}
+
+input[type=checkbox]:invalid ~ label.progress-task:after {
+  content: '...';
+  color: #fdce7e;
+  font: bold 14px/15px 'entypo', sans-serif;
+  text-align: center;
+}
+
+input[type=checkbox]:invalid + label + input[type=checkbox]:invalid + label,
+input[type=checkbox]:invalid + label + input[type=checkbox]:invalid + label:after {
+  color: transparent;
+}
+
+input[type=checkbox]:invalid + label + input[type=checkbox]:invalid + label:before {
+  border-color: #59616c;
+}
+
+input[type=checkbox]:checked + label:before {
+  content: '\2713';
+  color: #00D9d1;
+  font: bold 14px/24px 'entypo', sans-serif;
+  border-color: #00D9d1;
+  text-align: center;
+  background: #2c3642;
+}
+
+input[type=checkbox]:checked + label:after {
+  display: none;
+}
+
+#progress-task1 + label:before {
+  left: 190px;
+  top: -20px;
+}
+
+#progress-task1 + label:after {
+  left: 183px;
+  top: -27px;
+}
+
+#progress-task2 + label:before {
+  left: 354px;
+  top: 75px;
+}
+
+#progress-task2 + label:after {
+  left: 347px;
+  top: 69px;
+}
+
+#progress-task3 + label:before {
+  left: 354px;
+  top: 290px;
+}
+
+#progress-task3 + label:after {
+  left: 347px;
+  top: 284px;
+}
+
+#progress-task4 + label:before {
+  left: 190px;
+  top: 385px;
+}
+
+#progress-task4 + label:after {
+  left: 183px;
+  top: 378px;
+}
+
+#progress-task5 + label:before {
+  left: 14px;
+  top: 290px;
+}
+
+#progress-task5 + label:after {
+  left: 7px;
+  top: 284px;
+}
+
+#progress-task6 + label:before {
+  left: 14px;
+  top: 75px;
+}
+
+#progress-task6 + label:after {
+  left: 7px;
+  top: 69px;
+}
+
+progress {
+  position: absolute;
+  top: 320px;
+  left: 175px;
+  width: 64px;
+  height: 5px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background-size: auto;
+  color: #00D9d1;
+  background: #59616c !important;
+}
+
+progress::-moz-progress-bar {
+    background: #00D9d1;
+}
+
+progress::-webkit-progress-value {
+    background: #00D9d1;
+}
+
+progress::-webkit-progress-bar {
+    background: #59616c;
+}
+
+label.progress-tasks-completed {
+  position: absolute;
+  left: 0;
+  width: 400px;
+  font: 20px/455px sans-serif;
+  text-align: center;
+  color: #fdce7e;
+}
+
+label.progress-tasks-completed:before {
 	position: absolute;
-	font: bold 14px/20px Arial;
-	text-align: center;
-	top: 0;
-	left: 0;
-}
-.progress, .progress-bar, .progress-text {
-	width: 200px;
-	max-width: 200px;
-	height: 20px;
-}
-.progress .progress-text:first-child {
-	z-index: 5;
-	color: white;
-}
-.progress .progress-text:last-child {
-	z-index: 10;
-	color: black;
-}
-.progress-bar {
-	overflow: hidden;
-	position: relative;
-	z-index: 10;
- 	border-radius: 12px;
-	width: 0;
-	-moz-transition: width .2s linear;
-	-webkit-transition: width .2s linear;
-	-o-transition: width .2s linear;
-	transition: width .2s linear;
+	top: 320px;
+	left: 175px;
+	background: -moz-linear-gradient(left, transparent 0, transparent 7px, #2c3642 8px, #2c3642 11px, transparent 11px, transparent 18px, #2c3642 19px, #2c3642 22px, transparent 22px, transparent 29px, #2c3642 30px, #2c3642 33px, transparent 33px, transparent 40px, #2c3642 41px, #2c3642 44px, transparent 44px, transparent 51px, #2c3642 52px, #2c3642 55px, transparent 55px, transparent 62px, #2c3642 63px, #2c3642 66px);
+	background: -webkit-linear-gradient(left, transparent 0, transparent 7px, #2c3642 8px, #2c3642 11px, transparent 11px, transparent 18px, #2c3642 19px, #2c3642 22px, transparent 22px, transparent 29px, #2c3642 30px, #2c3642 33px, transparent 33px, transparent 40px, #2c3642 41px, #2c3642 44px, transparent 44px, transparent 51px, #2c3642 52px, #2c3642 55px, transparent 55px, transparent 62px, #2c3642 63px, #2c3642 66px);
+	background: -o-linear-gradient(left, transparent 0, transparent 7px, #2c3642 8px, #2c3642 11px, transparent 11px, transparent 18px, #2c3642 19px, #2c3642 22px, transparent 22px, transparent 29px, #2c3642 30px, #2c3642 33px, transparent 33px, transparent 40px, #2c3642 41px, #2c3642 44px, transparent 44px, transparent 51px, #2c3642 52px, #2c3642 55px, transparent 55px, transparent 62px, #2c3642 63px, #2c3642 66px);
+	background: -ms-linear-gradient(left, transparent 0, transparent 7px, #2c3642 8px, #2c3642 11px, transparent 11px, transparent 18px, #2c3642 19px, #2c3642 22px, transparent 22px, transparent 29px, #2c3642 30px, #2c3642 33px, transparent 33px, transparent 40px, #2c3642 41px, #2c3642 44px, transparent 44px, transparent 51px, #2c3642 52px, #2c3642 55px, transparent 55px, transparent 62px, #2c3642 63px, #2c3642 66px);
+	background: linear-gradient(to right, transparent 0, transparent 7px, #2c3642 8px, #2c3642 11px, transparent 11px, transparent 18px, #2c3642 19px, #2c3642 22px, transparent 22px, transparent 29px, #2c3642 30px, #2c3642 33px, transparent 33px, transparent 40px, #2c3642 41px, #2c3642 44px, transparent 44px, transparent 51px, #2c3642 52px, #2c3642 55px, transparent 55px, transparent 62px, #2c3642 63px, #2c3642 66px);
+	width: 64px;
+	height: 5px;
+	content: ' ';
+	display: block;
+	z-index: 1;
 }
 
-/* Pulsating Neon style */
-.progress.neon .progress-bar {
-	background-color: #fff;
-	box-shadow: 0 0 5px #01fe32 inset, 0 0 16px #08ff35, 0 0 20px #08ff35, 0 0 15px #08ff35;
-	-webkit-animation: pulse 2s linear infinite;
-	-moz-animation: pulse 2s linear infinite;
-	animation: pulse 2s linear infinite;
+label.progress-tasks-completed sup {
+  font-size: 12px;
 }
-@-webkit-keyframes pulse {
-50% {box-shadow: 0 0 5px #01fe32 inset, 0 0 10px #08ff35, 0 0 10px #08ff35, 0 0 10px #08ff35;}
+
+.prog {
+  position: relative;
+  float: left;
+  width: 400px;
+  height: 400px;
+  margin: -5px 0 0 -5px;
 }
-@-moz-keyframes pulse {
-50% {box-shadow: 0 0 5px #01fe32 inset, 0 0 10px #08ff35, 0 0 10px #08ff35, 0 0 10px #08ff35;}
+
+.prog > #slice {
+  position: absolute;
+  width: 410px;
+  height: 410px;
+  clip: rect(0,410px,410px,205px);
 }
-@keyframes pulse {
-50% {box-shadow: 0 0 5px #01fe32 inset, 0 0 10px #08ff35, 0 0 10px #08ff35, 0 0 10px #08ff35;}
+
+.prog > #slice.gt50 {
+  clip: rect(auto, auto, auto, auto);
+}
+
+.prog > #slice > .pie {
+  border: 5px solid #00D9d1;
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  clip: rect(0,205px,410px,0);
+  -moz-border-radius: 400px;
+  -webkit-border-radius: 400px;
+  border-radius: 400px;
+}
+
+.prog > #slice > .pie.fill {
+  -moz-transform: rotate(180deg) !important;
+  -webkit-transform: rotate(180deg) !important;
+  -o-transform: rotate(180deg) !important;
+  transform: rotate(180deg) !important;
 }
