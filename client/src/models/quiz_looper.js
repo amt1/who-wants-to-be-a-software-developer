@@ -58,9 +58,10 @@ QuizLooper.prototype.checkAnswer = function (question, answer) {
   const currentQuestion = question;
   console.log('answer is: ', answer);
   console.log('question is: ', question);
-//  const playersAnswer = answer;
+//  const playersAnswer = answer.value;
 // hardcode into an array until one can be sent
-  this.playersAnswer[0] = answer;
+//  this.playersAnswer[0] = answer;
+  playersAnswer.push(answer);
   const wrongAnswers = [];
   let counter = playersAnswer.length;
   while (counter--) {
@@ -70,6 +71,7 @@ QuizLooper.prototype.checkAnswer = function (question, answer) {
   }; // end while
   rightness = playersAnswer.length;
   result = [Boolean(wrongness), rightness];
+  console.log('result: ', result);
   return result;
 }; // end checkAnswer
 
