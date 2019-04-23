@@ -15,17 +15,29 @@ QuizLooper.prototype.bindEvents = function () {
   this.questionsArray = allSelectedQuestions.detail[0];
   this.currentCategory = allSelectedQuestions.detail[1];
   this.loopCounter = this.questionsArray.length;
+  let waitingForAnswer = false;
+
+  // using a for loop in case we need the counter for any extensions later
   for (var questionNumber = 0; questionNumber < this.loopCounter; questionNumber++) {
-    // console.log('current question: ', this.questionsArray[questionNumber]);
-// using a for loop in case we need the counter for any extensions later
-    PubSub.publish('QuizLooper:question-ready', this.questionsArray[questionNumber]);
-    PubSub.subscribe('QuizView:question-answered', (questionAndAnswer) => {
-      this.answerResult = this.checkAnswer(questionAndAnswer);
-      if (this.answerResult[0] == false) {
-        this.addScoreToTotal(this.answerResult[1]);
-      }; // end if
-      PubSub.publish('QuizLooper:answer-checked', this.answerResult);
-      }); // end subscribe
+    console.log('current question: ', this.questionsArray[questionNumber]);
+    if (waitingForAnswer == false) {
+    PubSub.publish('QuizLooper:question-ready', this.questionsArray[questionNumber])
+    waitingForAnswer = true;
+//    while (waitingForAnswer) { // logic works but crashes / hangs browser
+      console.log('waiting for answer: ', waitingForAnswer);
+
+      PubSub.subscribe('QuizView:question-answered', (questionAndAnswer) => {
+      //  console.log('got answer to check');
+        this.answerResult = this.checkAnswer(questionAndAnswer);
+        if (this.answerResult[0] == false) {
+          this.addScoreToTotal(this.answerResult[1]);
+        }; // end if
+        PubSub.publish('QuizLooper:answer-checked', this.answerResult);
+        waitingForAnswer = false;
+        console.log('waiting for answer: ', waitingForAnswer);
+// this waitingForAnswer loop seems to be working but I'm not convinced it should!
+        }); // end subscribe
+      }; // end if / while
     }; // end for
   }); // end subscribe
 }; // end bindEvents
