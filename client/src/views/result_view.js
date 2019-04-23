@@ -5,11 +5,11 @@ const ResultView = function (container) {
 };
 
 ResultView.prototype.bindEvents = function () {
-  PubSub.subscribe('QuizLooper:answer-checked', (evt) => {
-    this.displayResult("true");
-    const result = evt.detail[0]
-    console.log(result)
-  });
+  // PubSub.subscribe('QuizLooper:answer-checked', (evt) => {
+  //   this.displayResult("true");
+  //   const result = evt.detail[0]
+  //   console.log(result)
+  // });
   PubSub.subscribe('QuizView:answer-selected', (evt) => {
     const question = evt.detail[1];
     const playerAnswer = evt.detail[0];
