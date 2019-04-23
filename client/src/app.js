@@ -6,20 +6,20 @@ const ResultView = require('./views/result_view.js');
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // const quizSelectViewElement = document.querySelector('#quiz-select'); //NOT SURE WHICH HTML ELEMENT TO PUT IN HERE
-  // const quizSelectView = new QuizSelectView(quizSelectViewElement);
-  // quizSelectView.bindEvents();
-  //
-  // const quizViewElement = document.querySelector('#quiz');
-  // const quizView = new QuizView(quizViewElement);
-  // quizView.bindEvents();
-  //
-  // const resultViewContainer = document.querySelector('div.checkAnswers');
-  // const resultView = new ResultView(resultViewContainer);
-  // resultView.bindEvents();
+  const quizSelectViewElement = document.querySelector('nav.circle-menu');
+  const quizSelectView = new QuizSelectView(quizSelectViewElement);
+  quizSelectView.bindEvents();
+
+  const quizViewElement = document.querySelector('#quiz');
+  const quizView = new QuizView(quizViewElement);
+  quizView.bindEvents();
+
+  const resultViewContainer = document.querySelector('div.checkAnswers');
+  const resultView = new ResultView(resultViewContainer);
+  resultView.bindEvents();
 
   const questionFetcher = new QuestionFetcher();
   questionFetcher.getData();
-  // questionFetcher.bindEvents();
+  questionFetcher.bindEvents();
 
 });

@@ -19,15 +19,17 @@ QuestionFetcher.prototype.getData = function () {
 QuestionFetcher.prototype.bindEvents = function () {
   PubSub.subscribe('QuizSelectView:quiz-selected', (evt) => {
     const category = evt.detail;
+    console.log(category);
     this.selectQuestionsByCategory(category);
   });
 };
 
 // Need to adapt this to fit with the category model
 QuestionFetcher.prototype.selectQuestionsByCategory = function (category) {
-  const filteredQuestions = this.questions.filter(question => ( question.category == category));
+  const filteredQuestions = this.questions.filter(question => ( question.category == "Dictionary"));
 
   PubSub.publish('QuestionFetcher:questions-by-category-ready', filteredQuestions);
+  console.log(filteredQuestions);
 };
 
 
