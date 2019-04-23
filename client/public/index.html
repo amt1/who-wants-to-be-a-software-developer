@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
     <script type = "text/javascript" src="./js/bundle.js"></script>
+    <script type = "text/javascript" src="../src/views/progress_view.js"></script>
     <title>Who wants to be a software developer?</title>
     <link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
@@ -16,14 +17,24 @@
       <nav class="nav">
               <div class="container">
                   <div class="logo">
-                      <a href="#"> <img src="./images/CC_logo.png" alt="logo"> </a>
+                      <a href="#"> <img src="./images/CC_logo_small.png" alt="logo"> </a>
                   </div>
                   <div id="mainListDiv" class="main_list">
                       <ul class="navlinks">
                           <li><a href="#">Home</a></li>
-                          <li><a href="#">Categories</a></li>
-                          <li><a href="#">Profile</a></li>
-                          <li><a href="#">About us</a></li>
+                          <li><a href="#">Categories<li><a href="#">Profile</a></li>
+                          <li><a href="#">
+
+                            <form>
+                              <div id="user">
+                                <label for="name" class="inp">
+                                  <input class="name-input" type="text" id="inp" placeholder="Name">
+                                  <span class="border"></span>
+                                </label>
+                              </div>
+                            </form></a</li>
+                          </a></li>
+
                       </ul>
                   </div>
                   <span class="navTrigger">
@@ -33,9 +44,11 @@
                   </span>
               </div>
           </nav>
+
           <section class="home">
           </section>
     </header>
+    <p class="select-instructions">To select a category, click on a number below:</p>
     <div id="quiz-selector">
     <div class="wheel-content">
       <div class="menu"></div>
@@ -55,29 +68,9 @@
     </div>
   </div>
 
-  <!-- <div class="quiz-wheel">
-    <select class="category-wheel" name="category-wheel">
-
-    </select>
-  </div> -->
 
 
 
-    <!-- <div class="progress neon" data-width="0%">
-    	<div class="progress-text">0%</div>
-    	<div class="progress-bar">
-    		<div class="progress-text">0%</div>
-    	</div>
-    </div> -->
-    <!-- <br><br>
-
-    <input id="slider" type="range" name="slider" min="0" max="100" value="0">
-    <button class="test" data-val="0%">0%</button>
-    <button class="test" data-val="10%">10%</button>
-    <button class="test" data-val="40%">40%</button>
-    <button class="test" data-val="50%">50%</button>
-    <button class="test" data-val="60%">60%</button>
-    <button class="test" data-val="100%">100%</button> -->
 
 
 
@@ -101,10 +94,14 @@
         </div>
       </div>
 -->
-      <div class="checkAnswers"> Answer</div>
+      <!-- <div class="checkAnswers"> Answer</div> -->
 
 
-    <!-- <footer>
+    <footer>
+      <div class="arrow">
+        <div class="curve"></div>
+        <div class="point"></div>
+      </div>
       <div class="footer">
         <div id="button"></div>
       <div id="container">
@@ -127,6 +124,6 @@
       </div>
       </div>
       </div>
-    </footer> -->
+    </footer>
   </body>
 </html>
