@@ -24,5 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const quizLooper = new QuizLooper();
   quizLooper.bindEvents();
+>>>>>>> develop
 
 });

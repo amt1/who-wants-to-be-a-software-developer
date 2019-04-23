@@ -3,7 +3,7 @@ db.dropDatabase();
 
 db.pda_questions.insertMany([
   {
-     category: "User Interface Design",
+     category: 0,
      type: "boolean",
      difficulty: 0,
      question: "A container is an example of an interface element.",
@@ -13,7 +13,7 @@ db.pda_questions.insertMany([
      link: "https://blog.prototypr.io/how-to-teach-yourself-ux-design-31f16e41b189"
      },
      {
-        category: "Qualities of Great Software",
+        category: 1,
         type: "boolean",
         difficulty: 1,
         question: "There are 6 concerns relating to the qualities of great software: Functionality, reliability, usability, efficiency, maintainability and portability concerns. True or false? ",
@@ -23,7 +23,7 @@ db.pda_questions.insertMany([
         link: "https://practicingruby.com/articles/qualities-of-great-software"
       },
       {
-        category: "Software Development",
+        category: 2,
       type: "boolean",
       difficulty: 0,
       image: "",
@@ -34,7 +34,7 @@ db.pda_questions.insertMany([
       link: "https://www.tutorialspoint.com/sdlc/sdlc_overview.htm"
     },
       {
-        category: "Software Development",
+        category: 2,
       type: "boolean",
       difficulty: 1,
       image: "",
@@ -45,7 +45,7 @@ db.pda_questions.insertMany([
       link: "https://www.geeksforgeeks.org/software-engineering-architectural-design/"
       },
       {
-        category: "Software Development",
+        category: 2,
       type: "boolean",
       difficulty: 1,
       image: "",
@@ -56,7 +56,7 @@ db.pda_questions.insertMany([
       link: "https://en.wikipedia.org/wiki/Procedural_design"
       },
       {
-        category: "Software Development",
+        category: 2,
       type: "boolean",
       difficulty: 1,
       image: "",
@@ -67,7 +67,7 @@ db.pda_questions.insertMany([
       link: "https://en.wikipedia.org/wiki/Database_design"
       },
       {
-      category: "Dictionary",
+      category: 3,
       type: "boolean",
       difficulty: 0,
       question: "An instance variable is a type of variable that is attached to a class.",
@@ -77,7 +77,7 @@ db.pda_questions.insertMany([
       link: "https://www.computerhope.com/jargon/program.htm"
       },
       {
-      category: "Functional and non-functional requirements",
+      category: 4,
       type: "boolean",
       difficulty: 1,
       question: "Functional requirements describe how the system works: True or False?",
@@ -87,7 +87,7 @@ db.pda_questions.insertMany([
       link: "https://reqtest.com/requirements-blog/functional-vs-non-functional-requirements/"
       },
       {
-        category: "Functional and non-functional requirements",
+        category: 4,
       type: "boolean",
       difficulty: 1,
       question: "Functional requirements specify a behaviour or function: True or False?",
