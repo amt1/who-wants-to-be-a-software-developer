@@ -25,7 +25,7 @@ FinalResultView.prototype.renderResults = function (question, selectedAnswer) {
   resultQuestionContainer.id = 'quiz';
 
   const h1 = document.createElement('h1');
-  h1.textContent = question.category;
+  h1.textContent = `Quiz #${parseInt(question.category) + 1}`;
   h1.classList.add('quiz-name');
   resultQuestionContainer.appendChild(h1);
 
