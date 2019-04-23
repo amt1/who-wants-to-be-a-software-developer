@@ -3,15 +3,30 @@ const PubSub = require('../helpers/pub_sub.js');
 
 const QuizView = function(quizWrapper) {
   this.element = quizWrapper; //refers to class=Wrapper?
+<<<<<<< HEAD
   this.question = {}
   this.possibleAnswers = []
+=======
+  this.questions = [];
+>>>>>>> bens_playground
 };
 
+
+
 QuizView.prototype.bindEvents = function() {
+<<<<<<< HEAD
   PubSub.subscribe('QuizLooper:question-ready', (evt) => {
     const question = evt.detail.question
     this.question = question
     this.gatherAnswers(evt.detail);
+=======
+  PubSub.subscribe('Quiz:question-ready', (evt) => {
+    const question = evt.detail //PULL OUT QUESTION TEXT
+    const possibleAnswers = evt.detail //PULL OUT ANSWERS
+    question.push(this.questions)
+    // console.log(question);
+    // console.log(possibleAnswers);
+>>>>>>> bens_playground
 
     this.emptyElement();
     this.renderQuizBox();
@@ -105,10 +120,15 @@ QuizView.prototype.renderPossibleAnswers = function (possibleAnswers) {
 };
 
 QuizView.prototype.handleAnswerClick = function(evt) {
+<<<<<<< HEAD
   const selectedAnswer = evt.target.value;
   const answerObject = [selectedAnswer, this.question]
   console.log(answerObject);
 
+=======
+  const selectedAnswer = evt.target;
+  const answerObject = selectedAnswer + this.questions
+>>>>>>> bens_playground
   PubSub.publish('QuizView:answer-selected', answerObject)
 };
 
