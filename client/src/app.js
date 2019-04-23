@@ -1,4 +1,4 @@
-const QuizLooper = require('./models/quiz_looper.js');
+// const QuizLooper = require('./models/quiz_looper.js');
 const QuestionGenerator = require('./models/question_generator.js');
 const QuestionFetcher = require('./models/question_fetcher.js');
 const QuizView = require('./views/quiz_view.js');
