@@ -1,11 +1,11 @@
 const PubSub = require('../helpers/pub_sub.js');
 const BooleanChecker = require('./boolean_checker.js');
-const ScoreCounter = require('./score_counter.js');
+const LocalScoreCounter = require('./local_score_counter.js');
 
 const QuestionGenerator = function () {
   this.allQuestions = [];
   this.questionCounter = 0;
-  this.scoreCounter = new ScoreCounter();
+  this.localScoreCounter = new LocalScoreCounter();
 };
 
 QuestionGenerator.prototype.bindEvents = function() {
@@ -31,22 +31,21 @@ QuestionGenerator.prototype.sendQuestion = function () {
   };
 
   PubSub.publish('QuestionGenerator:question-ready', question)
-  this.receiveAnswer();
-  // const checkerResult = new BooleanChecker(question);
+  this.receiveAnswer(question);
 };
 
-QuestionGenerator.prototype.receiveAnswer = function() {
+QuestionGenerator.prototype.receiveAnswer = function(question) {
   PubSub.subscribe('QuestionView:answer-selected', (evt) => {
     const resultChecker = new BooleanChecker(evt.detail);
-    console.log(evt.detail);
     resultChecker.checkAnswer();
-    this.respondToResult(resultChecker.result);
+    const resultToPublish = [resultChecker.result, question]
+    this.respondToResult(resultToPublish);
   });
 };
 
-QuestionGenerator.prototype.respondToResult = function (boolean) {
-  PubSub.publish('QuestionGenerator:result-ready', boolean)
-  this.scoreCounter.react(boolean);
+QuestionGenerator.prototype.respondToResult = function ([boolean, question]) {
+  PubSub.publish('QuestionGenerator:result-ready', [boolean, question])
+  this.localScoreCounter.react(boolean);
 };
 
 
