@@ -26,7 +26,7 @@ QuizLooper.prototype.bindEvents = function () {
 //    while (waitingForAnswer) { // logic works but crashes / hangs browser
       console.log('waiting for answer: ', waitingForAnswer);
 
-      PubSub.subscribe('QuizView:question-answered', (questionAndAnswer) => {
+      PubSub.subscribe('QuizView:answer-selected', (questionAndAnswer) => {
       //  console.log('got answer to check');
         this.answerResult = this.checkAnswer(questionAndAnswer);
         if (this.answerResult[0] == false) {
