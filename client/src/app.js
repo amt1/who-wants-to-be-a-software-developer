@@ -22,4 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   questionFetcher.getData();
   questionFetcher.bindEvents();
 
+  const quizLooper = new QuizLooper();
+  quizLooper.bindEvents();
+
 });

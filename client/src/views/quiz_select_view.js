@@ -5,20 +5,34 @@ const QuizSelectView = function(element) {
 };
 
 QuizSelectView.prototype.bindEvents = function () {
+  // PubSub.subscribe('QuestionFetcher:all-questions-ready', (evt) => {
+  //   const allQuestions = evt.detail;
+  //   this.populateWheel(this.allCategories);
+  // });
+
    this.selectElement.addEventListener('click', (evt) => {
     const category = evt.target.id;
+    console.log(category);
 
     PubSub.publish('QuizSelectView:quiz-selected', category);
   });
 };
 
 
-// QuizSelectView.prototype.createQuizOption = function (question, index) {
-//   const option = document.createElement('option');
-//   option.textContent = quiz;
-//   option.value = index;
-//   return option;
-//   console.log(option)
-// };
-
 module.exports = QuizSelectView;
+
+
+
+// QuizSelectView.prototype.populateWheel = function (allCategories) {
+//   console.log(allCategories);
+//
+//   allQuestions.forEach(( question ) => {
+//     console.log("test");
+//     const option = document.createElement('option');
+//     option.textContent = "Test";
+//     // option.value = index;
+//     this.selectElement.appendChild(option);
+//     console.log(option)
+//   });
+//
+// };
