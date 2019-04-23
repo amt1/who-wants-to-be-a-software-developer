@@ -28,9 +28,9 @@ QuestionFetcher.prototype.bindEvents = function () {
 QuestionFetcher.prototype.selectQuestionsByCategory = function (categoryIndex) {
 
   const filteredQuestions = this.questions.filter(question => ( question.category == this.categories[categoryIndex]));
-  console.log(filteredQuestions);
 
-  PubSub.publish('QuestionFetcher:questions-by-category-ready', filteredQuestions);
+  PubSub.publish('QuestionFetcher:questions-by-category-ready', [filteredQuestions, categoryIndex]);
+  
 };
 
 
