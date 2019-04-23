@@ -5,21 +5,32 @@ const ResultView = function (container) {
 };
 
 ResultView.prototype.bindEvents = function () {
-  PubSub.subscribe('Quiz:answer-ready', (evt) => {
-    this.populateAnswer(evt.detail);
+  PubSub.subscribe('QuizLooper:answer-checked', (evt) => {
+    this.displayResult("true");
+    const result = evt.detail[0]
+    console.log(result)
+  });
+  PubSub.subscribe('QuizView:answer-selected', (evt) => {
+    const question = evt.detail[1];
+    const playerAnswer = evt.detail[0];
+    this.populateAnswer(playerAnswer, question)
   });
 };
-ResultView.prototype.populateAnswer = function (quiz) {
-  const quizContainer = document.createElement('div');
-  quizContainer.id = 'quiz';
+ResultView.prototype.displayResult = function(result) {
 
-  const result = this.createHeading(quiz.personAnswer);
+};
+
+ResultView.prototype.populateAnswer = function (answer, question) {
+  const quizContainer = document.createElement('div');
+  quizContainer.id = 'result-view';
+
+  const result = this.createHeading(result);
   quizContainer.appendChild(result);
 
-  const info = this.createDetail('Info', quiz.correctAnswer);
+  const info = this.createDetail('Your answer', quiz.correctAnswer);
   quizContainer.appendChild(info);
 
-  const data = this.createDetail('Data', quiz.score);
+  const data = this.createDetail('Your score', quiz.score);
   quizContainer.appendChild(data);
 
   const nextButton = this.createNextButton(quiz.next_id);
