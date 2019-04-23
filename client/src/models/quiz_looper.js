@@ -27,9 +27,15 @@ this.theVillage('You made it! Or did you? Hear the chimes of Big Ben!');
 }; // end bindEvents
 
 QuizLooper.prototype.quizLoop = function (questionsArray) {
-  const loopCounter = 0;
+  let loopCounter = 0;
   let currentQuestion = questionsArray[0];
-  let numberOfQuestionsAnswered = this.questionLoop(currentQuestion, loopCounter, questionsArray);
+  if (loopCounter <= questionsArray.length){
+    console.log(loopCounter, questionsArray.length);
+    loopCounter = this.questionLoop(currentQuestion, loopCounter, questionsArray);
+  }; // this doesn't stop the loopcounter going over the limit and back into the loop either
+  // the reason why is because it isn't coming back out to this function????
+  // it isn't finishing these statements in order and isn't finishing questionloop at all.
+  // let numberOfQuestionsAnswered = this.questionLoop(currentQuestion, loopCounter, questionsArray);
   console.log('numberOfQuestionsAnswered', this.numberOfQuestionsAnswered);
   return this.numberOfQuestionsAnswered;
 };
@@ -44,6 +50,9 @@ QuizLooper.prototype.questionLoop = function (currentQuestion, loopCounter, ques
 //      console.log('current question: ', currentQuestion);
   //     if (waitingForAnswer == false) {
      if (this.loopCounter < numberOfQuestions) {
+       console.log('this.loopCounter, numberOfQuestions: ', this.loopCounter, numberOfQuestions);
+  // so once loopCounter goes over the limit it doesn't repeat this section but it still gets incremented
+  // subscribe must keep looping - how do I stop it? Or is it not a problem?
          PubSub.publish('QuizLooper:question-ready', currentQuestion)
 //         waitingForAnswer = true;
 //           console.log('waiting for answer: ', waitingForAnswer);
