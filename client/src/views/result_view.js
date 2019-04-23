@@ -5,28 +5,43 @@ const ResultView = function (container) {
 };
 
 ResultView.prototype.bindEvents = function () {
-  PubSub.subscribe('Quiz:answer-ready', (evt) => {
-    this.populateAnswer(evt.detail);
+  PubSub.subscribe('QuizLooper:answer-checked', (evt) => {
+    const view = this.displayResult(evt.detail[0]);
   });
+  // PubSub.subscribe('QuizView:answer-selected', (evt) => {
+  //   const question = evt.detail[1];
+  //   const playerAnswer = evt.detail[0];
+  //   this.populateAnswer(playerAnswer, question)
+  // });
 };
-ResultView.prototype.populateAnswer = function (quiz) {
+ResultView.prototype.displayResult = function(result) {
   const quizContainer = document.createElement('div');
-  quizContainer.id = 'quiz';
+  quizContainer.class = 'result-view';
 
-  const result = this.createHeading(quiz.personAnswer);
-  quizContainer.appendChild(result);
+  const resultText = document.createElement('p');
+  resultText.textContent = result;
+  quizContainer.appendChild(resultText);
+  // const result = this.createHeading(reult);
+  // quizContainer.appendChild(result);
 
-  const info = this.createDetail('Info', quiz.correctAnswer);
-  quizContainer.appendChild(info);
-
-  const data = this.createDetail('Data', quiz.score);
-  quizContainer.appendChild(data);
-
-  const nextButton = this.createNextButton(quiz.next_id);
-  quizContainer.appendChild(nextButton);
-
+  // const info = this.createDetail(text, question);
+  // quizContainer.appendChild(info);
   this.container.appendChild(quizContainer);
+
+  this.createNextButton(quizContainer);
+
 };
+//
+// ResultView.prototype.populateAnswer = function (answer, question) {
+//
+//   const data = this.createDetail('Your score', quiz.score);
+//   quizContainer.appendChild(data);
+//
+//   const nextButton = this.createNextButton(quiz.next_id);
+//   quizContainer.appendChild(nextButton);
+//
+//   this.container.appendChild(quizContainer);
+// };
 
 ResultView.prototype.createHeading = function (textContent) {
   const heading = document.createElement('h3');
@@ -37,16 +52,19 @@ ResultView.prototype.createHeading = function (textContent) {
 ResultView.prototype.createDetail = function (label, text) {
   const detail = document.createElement('p');
   detail.textContent = `${label}: ${text}`;
-  return detail;
+  console.log(detail.textContent);
 };
-
-ResultView.prototype.createDeleteButton = function (quizId) {
+//
+ResultView.prototype.createNextButton = function (quizContainer) {
   const button = document.createElement('button');
   button.classList.add('submit');
-  button.value = quizId;
+  button.textContent = "Next";
+  quizContainer.appendChild(button);
+
 
   button.addEventListener('click', (evt) => {
-    PubSub.publish('ResultView:next-question', evt.target.value);
+    PubSub.publish('ResultView:next-question', evt);
+    console.log(evt);
   });
 
   return button;
