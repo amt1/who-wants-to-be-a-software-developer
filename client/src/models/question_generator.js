@@ -46,6 +46,7 @@ QuestionGenerator.prototype.receiveAnswer = function(question) {
 QuestionGenerator.prototype.respondToResult = function ([boolean, question]) {
   PubSub.publish('QuestionGenerator:result-ready', [boolean, question])
   this.localScoreCounter.react(boolean);
+  console.log(this.localScoreCounter.score);
 };
 
 

@@ -9,16 +9,18 @@ const ResultView = function (container, answerContainer) {
 ResultView.prototype.bindEvents = function () {
 
 
-  PubSub.subscribe('QuizLooper:answer-checked', (evt) => {
+  PubSub.subscribe('QuestionGenerator:result-ready', (evt) => {
     const result = evt.detail[0];
     const view = this.displayResult(evt.detail[0]);
 
   });
 
-  PubSub.subscribe('QuizView:answer-selected', (evt) => {
+  PubSub.subscribe('QuestionView:answer-selected', (evt) => {
     const question = evt.detail[1];
     const playerAnswer = evt.detail[0];
     this.populateAnswer(playerAnswer, question)
+    console.log(playerAnswer);
+    console.log(question);
 
   });
 
