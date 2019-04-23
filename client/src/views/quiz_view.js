@@ -12,17 +12,8 @@ const QuizView = function(quizWrapper) {
 QuizView.prototype.bindEvents = function() {
   PubSub.subscribe('QuizLooper:question-ready', (evt) => {
     const question = evt.detail.question
-<<<<<<< HEAD
     this.question = evt.detail
     this.gatherAnswers(evt.detail);
-=======
-  PubSub.subscribe('Quiz:question-ready', (evt) => {
-    const question = evt.detail //PULL OUT QUESTION TEXT
-    const possibleAnswers = evt.detail //PULL OUT ANSWERS
-    question.push(this.questions)
-    // console.log(question);
-    // console.log(possibleAnswers);
->>>>>>> bens_playground
 
     this.emptyElement();
     this.renderQuizBox();
