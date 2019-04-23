@@ -1,4 +1,4 @@
-const QuizModel = require('./models/model.js');
+const QuizLooper = require('./models/quiz_looper.js');
 const QuestionFetcher = require('./models/question_fetcher.js');
 const QuizView = require('./views/quiz_view.js');
 const QuizSelectView = require('./views/quiz_select_view.js');
@@ -24,6 +24,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const quizLooper = new QuizLooper();
   quizLooper.bindEvents();
->>>>>>> develop
 
 });
