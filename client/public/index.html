@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
     <script type = "text/javascript" src="./js/bundle.js"></script>
+    <script type = "text/javascript" src="../src/views/progress_view.js"></script>
     <title>Who wants to be a software developer?</title>
     <link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
@@ -16,14 +17,24 @@
       <nav class="nav">
               <div class="container">
                   <div class="logo">
-                      <a href="#"> <img src="./images/CC_logo.png" alt="logo"> </a>
+                      <a href="#"> <img src="./images/CC_logo_small.png" alt="logo"> </a>
                   </div>
                   <div id="mainListDiv" class="main_list">
                       <ul class="navlinks">
                           <li><a href="#">Home</a></li>
-                          <li><a href="#">Categories</a></li>
-                          <li><a href="#">Profile</a></li>
-                          <li><a href="#">About us</a></li>
+                          <li><a href="#">Categories<li><a href="#">Profile</a></li>
+                          <li><a href="#">
+
+                            <form>
+                              <div id="user">
+                                <label for="name" class="inp">
+                                  <input class="name-input" type="text" id="inp" placeholder="Name">
+                                  <span class="border"></span>
+                                </label>
+                              </div>
+                            </form></a</li>
+                          </a></li>
+
                       </ul>
                   </div>
                   <span class="navTrigger">
@@ -33,9 +44,11 @@
                   </span>
               </div>
           </nav>
+
           <section class="home">
           </section>
     </header>
+    <p class="select-instructions">To select a category, click on a number below:</p>
     <div id="quiz-selector">
     <div class="wheel-content">
       <div class="menu"></div>
@@ -55,29 +68,25 @@
     </div>
   </div>
 
-  <!-- <div class="quiz-wheel">
-    <select class="category-wheel" name="category-wheel">
-
-    </select>
-  </div> -->
 
 
-
-    <div class="progress neon" data-width="0%">
-    	<div class="progress-text">0%</div>
-    	<div class="progress-bar">
-    		<div class="progress-text">0%</div>
-    	</div>
-    </div>
-    <br><br>
-
-    <input id="slider" type="range" name="slider" min="0" max="100" value="0">
-    <button class="test" data-val="0%">0%</button>
-    <button class="test" data-val="10%">10%</button>
-    <button class="test" data-val="40%">40%</button>
-    <button class="test" data-val="50%">50%</button>
-    <button class="test" data-val="60%">60%</button>
-    <button class="test" data-val="100%">100%</button>
+  <form class="progress-bar-form">
+    <div class="prog"></div>
+    <input type="checkbox" name="progress-tasks" id="progress-task1" value="Question 1" checked required>
+    <label for="progress-task1" class="progress-task">Question 1</label>
+    <input type="checkbox" name="progress-tasks" id="progress-task2" value="Question 2" checked required>
+    <label for="progress-task2" class="progress-task">Question 2</label>
+    <input type="checkbox" name="progress-tasks" id="progress-task3" value="Question 3" required>
+    <label for="progress-task3" class="progress-task">Question 3</label>
+    <input type="checkbox" name="progress-tasks" id="progress-task4" value="Question 4" required>
+    <label for="progress-task4" class="progress-task">Question 4</label>
+    <input type="checkbox" name="progress-tasks" id="progress-task5" value="Question 5" required>
+    <label for="progress-task5" class="progress-task">Question 5</label>
+    <input type="checkbox" name="progress-tasks" id="progress-task6" value="Question 6" required>
+    <label for="progress-task6" class="progress-task">Question 6</label>
+    <label for="progress-tasks-percentage" class="progress-tasks-completed"><span>0</span><sup>%</sup> Completed</label>
+    <progress id="progress-tasks-percentage" name="progress-tasks-percentage" min="0" max="100"></progress>
+  </form>
 
 
 
