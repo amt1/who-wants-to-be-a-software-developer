@@ -5,6 +5,7 @@ const QuestionFetcher = function () {
   this.url = 'http://localhost:3000/api/pda_questions';
   this.request = new RequestHelper(this.url);
   this.questions = []
+  this.categories = [0, 1, 2, 3, 4, 5]
 };
 
 QuestionFetcher.prototype.getData = function () {
@@ -17,19 +18,19 @@ QuestionFetcher.prototype.getData = function () {
 };
 
 QuestionFetcher.prototype.bindEvents = function () {
+  // PubSub.publish('QuestionFetcher:all-questions-ready', this.questions)
   PubSub.subscribe('QuizSelectView:quiz-selected', (evt) => {
     const category = evt.detail;
-    console.log(category);
     this.selectQuestionsByCategory(category);
   });
 };
 
-// Need to adapt this to fit with the category model
-QuestionFetcher.prototype.selectQuestionsByCategory = function (category) {
-  const filteredQuestions = this.questions.filter(question => ( question.category == "Dictionary"));
+QuestionFetcher.prototype.selectQuestionsByCategory = function (categoryIndex) {
+
+  const filteredQuestions = this.questions.filter(question => ( question.category == this.categories[categoryIndex]));
+  console.log(filteredQuestions);
 
   PubSub.publish('QuestionFetcher:questions-by-category-ready', filteredQuestions);
-  console.log(filteredQuestions);
 };
 
 
