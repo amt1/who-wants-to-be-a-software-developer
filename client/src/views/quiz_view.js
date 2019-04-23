@@ -3,12 +3,14 @@ const PubSub = require('../helpers/pub_sub.js');
 
 const QuizView = function(quizWrapper) {
   this.element = quizWrapper; //refers to class=Wrapper?
+  this.question = {}
   this.possibleAnswers = []
 };
 
 QuizView.prototype.bindEvents = function() {
   PubSub.subscribe('QuizLooper:question-ready', (evt) => {
     const question = evt.detail.question
+    this.question = question
     this.gatherAnswers(evt.detail);
 
     this.emptyElement();
@@ -85,15 +87,16 @@ QuizView.prototype.renderPossibleAnswers = function (possibleAnswers) {
   const possibleAnswersBox = document.createElement('div');
   possibleAnswersBox.classList.add('answers')
   possibleAnswers.forEach((answer) => {
-    const possibleAnswer = document.createElement('div');
+    const possibleAnswer = document.createElement('button');
     possibleAnswer.classList.add('possible-answer');
 
     const answerLength = answer.length;
     const answerString = answer.substring(2, (answerLength-2));
 
-    possibleAnswer.textContent = answerString; 
+    possibleAnswer.textContent = answerString;
+    possibleAnswer.value = answerString
 
-    possibleAnswer.addEventListener('click', function(evt) {
+    possibleAnswer.addEventListener('click', (evt) => {
       this.handleAnswerClick(evt);
     });
     possibleAnswersBox.appendChild(possibleAnswer);
@@ -102,8 +105,10 @@ QuizView.prototype.renderPossibleAnswers = function (possibleAnswers) {
 };
 
 QuizView.prototype.handleAnswerClick = function(evt) {
-  const selectedAnswer = evt.target;
-  const answerObject = selectedAnswer // + object
+  const selectedAnswer = evt.target.value;
+  const answerObject = [selectedAnswer, this.question]
+  console.log(answerObject);
+
   PubSub.publish('QuizView:answer-selected', answerObject)
 };
 
