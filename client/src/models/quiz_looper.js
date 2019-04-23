@@ -11,51 +11,78 @@ QuizLooper.prototype.bindEvents = function () {
   PubSub.subscribe('QuestionFetcher:questions-by-category-ready', (allSelectedQuestions) => {
   this.questionsArray = allSelectedQuestions.detail[0];
   this.currentCategory = allSelectedQuestions.detail[1];
-  let numberOfQuestionsAnswered = 0;
-  numberOfQuestionsAnswered = this.quizLoop( this.questionsArray );
-//  console.log('all done, number answered: ', numberOfQuestionsAnswered);
+//  let numberOfQuestionsAnswered = 0;
+//  let numberOfQuestionsAnswered = this.quizLoop( this.questionsArray );
+  let finishesAfterNotReturningThis = this.quizLoop( this.questionsArray );
+//  console.log('all done, number answered: ', numberOfQuestionsAnswered); // undefined - why??
 // this doesn't happen in sequence - it gets to this line first time round with the variable undefined
 // even though I've initaialised it
+// ok that's going to annoy me. What can I usefully return if the program conitnues without waiting for it?
+// maybe just something with a warning note for a name
+// in any case, the program needs to go on to a stats / results / replay stage
+this.theVillage('You made it! Or did you? Hear the chimes of Big Ben!');
+// as I suspected, it's doing that before even answering any questions
+// will I need to destroy the QuizLooper object to re-initialise it for another round?
   }); // end subscribe
 }; // end bindEvents
 
 QuizLooper.prototype.quizLoop = function (questionsArray) {
   const loopCounter = 0;
   let currentQuestion = questionsArray[0];
-  return this.questionLoop(currentQuestion, loopCounter, questionsArray);
+  let numberOfQuestionsAnswered = this.questionLoop(currentQuestion, loopCounter, questionsArray);
+  console.log('numberOfQuestionsAnswered', this.numberOfQuestionsAnswered);
+  return this.numberOfQuestionsAnswered;
 };
 
 QuizLooper.prototype.questionLoop = function (currentQuestion, loopCounter, questionsArray) {
-  console.log("hello I'm in the question loop. Counter: ", loopCounter);
-  console.log("questions array: ", questionsArray);
   const numberOfQuestions = this.questionsArray.length;
+  this.loopCounter = loopCounter;
+  console.log("hello I'm in the question loop. Counter: ", this.loopCounter);
 
-//     this.currentQuestion = question;
-     let waitingForAnswer = false;
-//
-      console.log('current question: ', currentQuestion);
-       if (waitingForAnswer == false) {
+//     let waitingForAnswer = false;
+// don't think we need this flag now it's only looping when called
+//      console.log('current question: ', currentQuestion);
+  //     if (waitingForAnswer == false) {
+     if (this.loopCounter < numberOfQuestions) {
          PubSub.publish('QuizLooper:question-ready', currentQuestion)
-         waitingForAnswer = true;
-           console.log('waiting for answer: ', waitingForAnswer);
+//         waitingForAnswer = true;
+//           console.log('waiting for answer: ', waitingForAnswer);
            PubSub.subscribe('QuizView:answer-selected', (questionAndAnswer) => {
             const answerResult = this.processAnswer(questionAndAnswer.detail);
             PubSub.publish('QuizLooper:answer-checked', answerResult);
-            loopCounter++;
-              if (loopCounter < numberOfQuestions) {
-                currentQuestion = questionsArray[loopCounter];
-                this.questionLoop(currentQuestion, loopCounter, questionsArray);
-              } else {
-                console.log("LAst question answered: number ", loopCounter);
-                PubSub.publish('QuizLooper:last-question-answered', loopCounter);
-                return loopCounter;
-              };
+            this.loopCounter++;
+              // if (loopCounter < numberOfQuestions) {
+                nextQuestion = questionsArray[this.loopCounter];
+                this.questionLoop(nextQuestion, this.loopCounter, questionsArray);
+              // } else {
+              //   console.log("LAst question answered: number ", loopCounter);
+              //   PubSub.publish('QuizLooper:last-question-answered', loopCounter);
+              //   return loopCounter;
+          //    };
              }); // end subscribe
-         }; // end if
+    //     }; // end if
+  } else if (this.loopCounter == numberOfQuestions){
+    console.log("LAst question answered: number ", this.loopCounter);
+    PubSub.publish('QuizLooper:last-question-answered', this.loopCounter);
+    return this.loopCounter; // don't think we really need this but why is it returning as undefined??
+    // I should call this function The Village. Every time I think I should be out I'm back in again.
+    this.theVillage('Number 6 is Unmutual!');
+  } else {
+  return this.loopCounter;
+  this.theVillage('I am not a number!');
+// well I'm not getting to the village, but I'm still going bck into this function because of event handlers
+// the really puzzling thing is something is incrementing loopCounter outside the if statement.
+// where is that coming from?
+};
  };
 
+QuizLooper.prototype.theVillage = function (quote) {
+    console.log(quote);
+    // don't return?
+};
+
 QuizLooper.prototype.processAnswer = function (questionAndAnswerData) {
-  console.log('got answer to check: ', questionAndAnswerData);
+//  console.log('got answer to check: ', questionAndAnswerData);
  const answer = questionAndAnswerData[0];
  const question = questionAndAnswerData[1];
  this.answerResult = this.checkAnswer(question, answer);
