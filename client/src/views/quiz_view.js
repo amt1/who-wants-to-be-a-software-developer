@@ -6,16 +6,14 @@ const QuizView = function(quizWrapper) {
 };
 
 QuizView.prototype.bindEvents = function() {
-  PubSub.subscribe('Quiz:question-ready', (evt) => {
-    const question = evt.detail //PULL OUT QUESTION TEXT
-    const possibleAnswers = evt.detail //PULL OUT ANSWERS
-
-    // console.log(question);
-    // console.log(possibleAnswers);
+  PubSub.subscribe('QuizLooper:question-ready', (evt) => {
+    const question = evt.detail.question
+    console.log(question);
+    const possibleAnswers = this.gatherAnswers(evt.detail);
 
     this.emptyElement();
     this.renderQuizBox();
-    // this.renderQuestion(question);
+    this.renderQuestion(question);
     // this.renderPossibleAnswers(possibleAnswers);
   });
 
@@ -27,6 +25,10 @@ QuizView.prototype.bindEvents = function() {
   // });
 };
 
+QuizView.prototype.gatherAnswers = function(evt.detail) {
+
+};
+
 QuizView.prototype.emptyElement = function () {
   this.element.innerHTML = '';
 };
@@ -35,6 +37,14 @@ QuizView.prototype.renderQuizBox = function () {
   this.quizDiv = document.createElement('div');
   this.quizDiv.classList.add('quiz');
   this.element.appendChild(this.quizDiv);
+};
+
+
+QuizView.prototype.renderQuestion = function(question) {
+  const questionText = document.createElement('p');
+  questionText.classList.add('questions');
+  questionText.textContent = question;
+  this.quizDiv.appendChild(questionText);
 };
 
 QuizView.prototype.renderQuizHeader = function(quizName, questionNumber) {
@@ -67,13 +77,7 @@ QuizView.prototype.renderQuizHeader = function(quizName, questionNumber) {
 
   this.quizDiv.appendChild(quizName);
 };
-//
-// QuizView.prototype.renderQuestion = function(question) {
-//   const questionText = document.createElement('p');
-//   questionText.classList.add('questions');
-//   questionText.textContent = question;
-//   this.quizBox.appendChild(questionText);
-// };
+
 //
 // QuizView.prototype.renderPossibleAnswers = function (possibleAnswers) {
 //   const possibleAnswersBox = document.createElement('div');
