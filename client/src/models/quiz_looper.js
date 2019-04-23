@@ -27,8 +27,10 @@ QuizLooper.prototype.bindEvents = function () {
       console.log('waiting for answer: ', waitingForAnswer);
 
       PubSub.subscribe('QuizView:answer-selected', (questionAndAnswer) => {
-      //  console.log('got answer to check');
-        this.answerResult = this.checkAnswer(questionAndAnswer);
+        console.log('got answer to check: ', questionAndAnswer.detail);
+        const answer = questionAndAnswer.detail[0];
+        const question = questionAndAnswer.detail[1];
+        this.answerResult = this.checkAnswer(question, answer);
         if (this.answerResult[0] == false) {
           this.addScoreToTotal(this.answerResult[1]);
         }; // end if
@@ -53,6 +55,9 @@ QuizLooper.prototype.checkAnswer = function (question, answer) {
   let rightness = 0;
   let result = [];
   const currentQuestion = question;
+  console.log('answer is: ', answer);
+  console.log('question is: ', question);
+
   const playersAnswer = answer;
   const wrongAnswers = [];
   let counter = playersAnswer.length;

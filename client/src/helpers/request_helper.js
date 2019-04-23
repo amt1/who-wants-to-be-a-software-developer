@@ -4,8 +4,6 @@ const RequestHelper = function (url) {
 };
 
 RequestHelper.prototype.get = function () {
-
-
   // return fetch(this.url, {mode: 'no-cors', credentials: 'same-origin'})
     return fetch(this.url)
     .then((response) => response.json())
