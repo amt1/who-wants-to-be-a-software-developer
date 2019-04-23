@@ -1,4 +1,5 @@
 const QuizLooper = require('./models/quiz_looper.js');
+const QuestionGenerator = require('./models/question_generator.js');
 const QuestionFetcher = require('./models/question_fetcher.js');
 const QuizView = require('./views/quiz_view.js');
 const QuizSelectView = require('./views/quiz_select_view.js');
@@ -22,7 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
   questionFetcher.getData();
   questionFetcher.bindEvents();
 
-  const quizLooper = new QuizLooper();
-  quizLooper.bindEvents();
+  // const quizLooper = new QuizLooper();
+  // quizLooper.bindEvents();
+
+  const questionGenerator = new QuestionGenerator();
+  questionGenerator.bindEvents();
 
 });
