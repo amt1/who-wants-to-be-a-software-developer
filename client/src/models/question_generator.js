@@ -18,20 +18,23 @@ QuestionGenerator.prototype.getQuestions = function () {
     this.category = evt.detail[1];
 
     this.sendQuestion();
-    this.questionCounter += 1;
   });
 };
 
 QuestionGenerator.prototype.sendQuestion = function () {
+  console.log(`Counter is: ${this.questionCounter}`);
   const index = this.questionCounter;
   const question = this.allQuestions[index];
 
   if (question == null) {
+    console.log("GAME OVER");
     PubSub.publish('QuestionGenerator:no-more-questions', "END")
-  };
-
+  }
+  else {
   PubSub.publish('QuestionGenerator:question-ready', question)
   this.receiveAnswer(question);
+  this.questionCounter ++ ;
+  };
 };
 
 QuestionGenerator.prototype.receiveAnswer = function(question) {
@@ -44,9 +47,18 @@ QuestionGenerator.prototype.receiveAnswer = function(question) {
 };
 
 QuestionGenerator.prototype.respondToResult = function ([boolean, question]) {
+  this.readyForNextQuestion();
   PubSub.publish('QuestionGenerator:result-ready', [boolean, question])
   this.localScoreCounter.react(boolean);
   console.log(this.localScoreCounter.score);
+
+};
+
+QuestionGenerator.prototype.readyForNextQuestion = function () {
+  PubSub.subscribe('ResultView:next-question', (evt) => {
+
+    this.sendQuestion();
+  });
 };
 
 
