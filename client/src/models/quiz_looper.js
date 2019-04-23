@@ -26,9 +26,11 @@ QuizLooper.prototype.bindEvents = function () {
 //    while (waitingForAnswer) { // logic works but crashes / hangs browser
       console.log('waiting for answer: ', waitingForAnswer);
 
-      PubSub.subscribe('QuizView:question-answered', (questionAndAnswer) => {
-      //  console.log('got answer to check');
-        this.answerResult = this.checkAnswer(questionAndAnswer);
+      PubSub.subscribe('QuizView:answer-selected', (questionAndAnswer) => {
+        console.log('got answer to check: ', questionAndAnswer.detail);
+        const answer = questionAndAnswer.detail[0];
+        const question = questionAndAnswer.detail[1];
+        this.answerResult = this.checkAnswer(question, answer);
         if (this.answerResult[0] == false) {
           this.addScoreToTotal(this.answerResult[1]);
         }; // end if
@@ -52,8 +54,14 @@ QuizLooper.prototype.checkAnswer = function (question, answer) {
   let wrongness = 0;
   let rightness = 0;
   let result = [];
+  let playersAnswer = [];
   const currentQuestion = question;
-  const playersAnswer = answer;
+  console.log('answer is: ', answer);
+  console.log('question is: ', question);
+//  const playersAnswer = answer.value;
+// hardcode into an array until one can be sent
+//  this.playersAnswer[0] = answer;
+  playersAnswer.push(answer);
   const wrongAnswers = [];
   let counter = playersAnswer.length;
   while (counter--) {
@@ -63,6 +71,7 @@ QuizLooper.prototype.checkAnswer = function (question, answer) {
   }; // end while
   rightness = playersAnswer.length;
   result = [Boolean(wrongness), rightness];
+  console.log('result: ', result);
   return result;
 }; // end checkAnswer
 
