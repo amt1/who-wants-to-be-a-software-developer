@@ -33,13 +33,13 @@ GridView.prototype.renderAll = function (question) {
 
   const firstAnswerDiv = document.createElement('div');
   firstAnswerDiv.classList.add('answer1');
-  answersDiv.appendChild('firstAnswerDiv');
+  answersDiv.appendChild(firstAnswerDiv);
 
   const firstAnswerPara = document.createElement('p');
   firstAnswerPara.textContent = question.correct_answer.slice(2, -2);
   firstAnswerDiv.appendChild(firstAnswerPara);
 
-  const secondAnswerDiv = document.createEelemnt('div');
+  const secondAnswerDiv = document.createElement('div');
   secondAnswerDiv.classList.add('div');
   firstAnswerPara.appendChild(secondAnswerDiv);
 
@@ -47,7 +47,8 @@ GridView.prototype.renderAll = function (question) {
   secondAnswerPara.textContent = question.correct_answer.slice(2, -2);
   secondAnswerDiv.appendChild(secondAnswerPara);
 
-  this.container.appendChild(quizbox);
+  console.log(this.container);
+  // this.container.appendChild(quizBox);
 };
 
 
