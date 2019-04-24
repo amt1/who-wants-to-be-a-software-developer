@@ -19,7 +19,6 @@ QuizView.prototype.bindEvents = function() {
 QuizView.prototype.listenForQuestion = function () {
   PubSub.subscribe('QuizLooper:question-ready', (evt) => {
     const question = evt.detail[0];
-
     this.questionNumber = evt.detail[1];
     this.emptyElement();
     this.renderQuizBox();
