@@ -1,7 +1,8 @@
 const PubSub = require('../helpers/pub_sub.js');
 
-const GridView = function (container) {
+const GridView = function (container, question) {
   this.container = container;
+  this.question = question;
   // this.element = element;
 };
 
@@ -34,6 +35,9 @@ GridView.prototype.renderAll = function (question) {
   const firstAnswerDiv = document.createElement('div');
   firstAnswerDiv.classList.add('answer1');
   answersDiv.appendChild(firstAnswerDiv);
+  firstAnswerDiv.addEventListener('click', (evt) => {
+  this.handleAnswerClick(evt);
+  });
 
   const firstAnswerPara = document.createElement('p');
   firstAnswerPara.textContent = question.correct_answer;
@@ -46,6 +50,9 @@ GridView.prototype.renderAll = function (question) {
   const secondAnswerPara = document.createElement('p');
   secondAnswerPara.textContent = question.incorrect_answers;
   secondAnswerDiv.appendChild(secondAnswerPara);
+  secondAnswerDiv.addEventListener('click', (evt) => {
+  this.handleAnswerClick(evt);
+  })
 
 <<<<<<< HEAD
   console.log(this.container);
@@ -55,6 +62,16 @@ GridView.prototype.renderAll = function (question) {
 >>>>>>> feature/working_views_css
 };
 
+GridView.prototype.handleAnswerClick = function(evt) {
+const selectedAnswer = evt.target.value;
+
+  let answerObject = [];
+  answerObject.push(selectedAnswer);
+  answerObject.push(this.question);
+
+  PubSub.publish('QuizView:answer-selected', answerObject)
+  // this.element.innerHTML = '';
+};
 
 
 
