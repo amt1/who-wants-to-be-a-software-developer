@@ -4,20 +4,24 @@ const QuizView = require('./quiz_view.js');
 
 const ResultView = function (container) {
   this.container = container;
+  this.answer = null;
 };
 
 ResultView.prototype.bindEvents = function () {
   PubSub.subscribe('Answer:result-ready', (evt) => {
-    const result = evt.detail;
-    const view = this.displayResult(result);
+    this.emptyElement();
+    if (evt.detail == true) {
+     this.answer = "Correct!"
+    }
+    else {
+     this.answer = "Incorrect!"
+    };
+  this.displayResult(this.answer)
 
   });
   PubSub.subscribe('QuestionView:answer-selected', (evt) => {
     this.emptyElement();
-    const question = evt.detail[1];
-    const playerAnswer = evt.detail[0];
-    // this.populateAnswer(playerAnswer, question)
-    this.displayResult(playerAnswer)
+    console.log(evt.detail);
   });
 
 };
