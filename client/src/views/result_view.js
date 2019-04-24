@@ -8,13 +8,13 @@ const ResultView = function (container, answerContainer) {
 };
 
 ResultView.prototype.bindEvents = function () {
-  console.log("result view listening");
   // PubSub.subscribe('QuizLooper:answer-checked', (evt) => {
   //   const result = evt.detail[0];
   //   const view = this.displayResult(evt.detail[0]);
   //
   // });
   PubSub.subscribe('QuestionView:answer-selected', (evt) => {
+    this.emptyElement();
     const question = evt.detail[1];
     const playerAnswer = evt.detail[0];
     // this.populateAnswer(playerAnswer, question)
@@ -24,7 +24,7 @@ ResultView.prototype.bindEvents = function () {
 };
 
 ResultView.prototype.emptyElement = function () {
-  // this.container.innerHTML = '';
+  this.container.innerHTML = '';
 };
 ResultView.prototype.displayResult = function(result) {
   const quizContainer = document.createElement('div');
@@ -49,8 +49,7 @@ ResultView.prototype.createNextButton = function (quizContainer) {
   quizContainer.appendChild(button);
 
   button.addEventListener('click', (evt) => {
-    QuizView.listenForQuestion('ResultView:next-question');
-    // PubSub.publish('ResultView:next-question', evt);
+    PubSub.publish('ResultView:next-question', evt);
     console.log("next button clicked");
   });
 };

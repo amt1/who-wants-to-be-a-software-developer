@@ -26,7 +26,6 @@ QuizView.prototype.listenForQuestion = function () {
 
   PubSub.subscribe('QuestionGenerator:one-question-ready', (evt) => {
     const question = evt.detail
-    console.log(question);
 
     this.allQuestions.push(question)
     this.category = question.category_name;

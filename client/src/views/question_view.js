@@ -50,28 +50,6 @@ QuestionView.prototype.handleAnswerClick = function(evt) {
   answerObject.push(selectedAnswer);
   answerObject.push(this.question);
 
-  PubSub.publish('QuestionView:answer-selected', answerObject)
-  // this.element.innerHTML = '';
 };
 
 module.exports = QuestionView;
-
-
-// const answers = document.createElement('div');
-// answers.classList.add('answers');
-//
-// const answer1 = document.createElement('div');
-// answer1.classList.add('answer1');
-//
-// const firstAnswer = document.createElement('p');
-// firstAnswer.textContent = answer1text;
-// answer1.appendChild(firstAnswer);
-// answers.appendChild(answer1);
-//
-// const answer2 = document.createElement('div');
-// answer2.classList.add('answer2');
-//
-// const secondAnswer = document.createElement('p');
-// secondAnswer.textContent = answer2text;
-// answer2.appendChild(secondAnswer);
-// answers.appendChild(answer2);

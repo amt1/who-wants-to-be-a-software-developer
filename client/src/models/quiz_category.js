@@ -35,7 +35,7 @@ QuizCategory.prototype.getData = function () {
 //
 QuziCategory.prototype.publishCategoryDetail = function (category) {
   const selectedCategory = this.getData.filter(question => (question.category == 1));
-  console.log('selectedQuestions: ', selectedCategory);
+
   return selectedCategory;
   PubSub.publish('Quiz: QuestionReady', selectedCategory)
 };
