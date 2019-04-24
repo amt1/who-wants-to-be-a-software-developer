@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizSelectView = new QuizSelectView(quizSelectViewElement);
   quizSelectView.bindEvents();
 
-  const quizViewElement = document.querySelector('div.quiz-wrapper');
-  const quizView = new QuizView(quizViewElement);
-  quizView.bindEvents();
+  // const quizViewElement = document.querySelector('div.quiz-wrapper');
+  // const quizView = new QuizView(quizViewElement);
+  // quizView.bindEvents();
 
   const resultViewContainer = document.querySelector('div.checkAnswers');
   const resultView = new ResultView(resultViewContainer);
@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   questionFetcher.getData();
   questionFetcher.bindEvents();
 
-  const gridView = new GridView('div.quiz-wrapper')
+  const gridViewElement = document.querySelector('.quiz-wrapper');
+  const gridView = new GridView(gridViewElement)
   gridView.bindEvents();
 
   const quizLooper = new QuizLooper();
