@@ -53,7 +53,7 @@ QuestionView.prototype.handleAnswerClick = function(evt) {
   answerObject.push(selectedAnswer);
   answerObject.push(this.question);
 
-  PubSub.publish('QuizView:answer-selected', answerObject)
+  // PubSub.publish('QuizView:answer-selected', answerObject)
   // this.element.innerHTML = '';
 };
 
