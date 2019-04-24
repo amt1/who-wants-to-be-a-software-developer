@@ -1,7 +1,8 @@
 const PubSub = require('../helpers/pub_sub.js');
 
-const QuizSelectView = function(element) {
+const QuizSelectView = function(element, div) {
   this.selectElement = element;
+  this.div = div;
 };
 
 QuizSelectView.prototype.bindEvents = function () {
@@ -20,7 +21,13 @@ QuizSelectView.prototype.bindEvents = function () {
 };
 
 QuizSelectView.prototype.emptyElement = function () {
-  this.selectElement.innerHTML = '';
+    // const element = document.getElementById('menu')
+     this.selectElement.innerHTML = '';
+
+  // // const hidden = function myFunction() {
+  // document.getElementById('nav.circle-menu').style.visibility = "hidden";
+
+
 };
 
 module.exports = QuizSelectView;
