@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizViewElement = document.querySelector('div.quiz-wrapper');
   const quizView = new QuizView(quizViewElement);
   quizView.bindEvents();
-
+  quizView.listenForQuestion();
+  
   const resultViewContainer = document.querySelector('div.checkAnswers');
   const resultView = new ResultView(resultViewContainer);
   resultView.bindEvents();

@@ -57,7 +57,7 @@ QuizLooper.prototype.questionLoop = function (currentQuestion, loopCounter, ques
        console.log('this.loopCounter, numberOfQuestions: ', this.loopCounter, numberOfQuestions);
   // so once loopCounter goes over the limit it doesn't repeat this section but it still gets incremented
   // subscribe must keep looping - how do I stop it? Or is it not a problem?
-         PubSub.publish('QuizLooper:question-ready', currentQuestion)
+         PubSub.publish('QuizLooper:question-ready', [currentQuestion, (loopCounter + 1)]);
 //         waitingForAnswer = true;
 //           console.log('waiting for answer: ', waitingForAnswer);
            PubSub.subscribe('QuizView:answer-selected', (questionAndAnswer) => {
