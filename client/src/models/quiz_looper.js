@@ -118,7 +118,7 @@ QuizLooper.prototype.checkAnswer = function (question, answer) {
   let counter = playersAnswer.length;
   while (counter--) {
     if (currentQuestion.incorrect_answers.includes(playersAnswer[counter])) {
-      wrongness = wrongAnswers.push(playersAnswer.splice(counter,1));
+      wrongness = wrongAnswers.push(playersAnswer);
     } // end if
   }; // end while
   rightness = playersAnswer.length;

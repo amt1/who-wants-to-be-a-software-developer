@@ -45,7 +45,7 @@ GridView.prototype.renderAll = function (question) {
 
   const secondAnswerDiv = document.createElement('div');
   secondAnswerDiv.classList.add('div');
-  firstAnswerPara.appendChild(secondAnswerDiv);
+  answersDiv.appendChild(secondAnswerDiv);
 
   const secondAnswerPara = document.createElement('p');
   secondAnswerPara.textContent = question.incorrect_answers;
