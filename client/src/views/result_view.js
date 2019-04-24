@@ -44,7 +44,20 @@ ResultView.prototype.displayResult = function(result) {
 
   this.container.appendChild(quizContainer);
   this.createNextButton(quizContainer);
+};
 
+ResultView.prototype.createNextButton = function (quizContainer) {
+  const button = document.createElement('button');
+  button.classList.add('submit');
+  button.textContent = "Next";
+  quizContainer.appendChild(button);
+
+  button.addEventListener('click', (evt) => {
+    QuizView.listenForQuestion('ResultView:next-question');
+    // PubSub.publish('ResultView:next-question', evt);
+    console.log("next button clicked");
+  });
+  return button;
 };
 //
 ResultView.prototype.populateAnswer = function (playerAnswer, question) {
@@ -87,17 +100,6 @@ ResultView.prototype.createDetail = function (text, label) {
   console.log(detail.textContent);
 };
 
-ResultView.prototype.createNextButton = function (quizContainer) {
-  const button = document.createElement('button');
-  button.classList.add('submit');
-  button.textContent = "Next";
-  quizContainer.appendChild(button);
 
-  button.addEventListener('click', (evt) => {
-    QuizView.listenForQuestion('ResultView:next-question');
-    // PubSub.publish('ResultView:next-question', evt);
-    console.log("next button clicked");
-  });
-};
 
 module.exports = ResultView;
