@@ -3,7 +3,7 @@ const PubSub = require('../helpers/pub_sub.js');
 
 const QuestionView = function(questionDiv, questionObject) {
   this.element = questionDiv;
-  this.question = questionObject
+  this.question = questionObject[0]
   this.possibleAnswers = []
 };
 
@@ -14,7 +14,6 @@ QuestionView.prototype.render = function() {
 };
 
 QuestionView.prototype.gatherAnswers = function() {
-  this.possibleAnswers = [];
   this.possibleAnswers.push(this.question.correct_answer);
   this.possibleAnswers.push(this.question.incorrect_answers);
 };

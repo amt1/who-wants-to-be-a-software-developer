@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const resultViewContainer = document.querySelector('div.checkAnswers');
   const resultView = new ResultView(resultViewContainer);
-  resultView.bindEvents();
+  // resultView.bindEvents();
 
   const questionFetcher = new QuestionFetcher();
   questionFetcher.getData();
