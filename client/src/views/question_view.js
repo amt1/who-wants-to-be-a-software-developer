@@ -54,7 +54,7 @@ QuestionView.prototype.handleAnswerClick = function(evt) {
   answerObject.push(this.question);
 
   PubSub.publish('QuizView:answer-selected', answerObject)
-  this.element.innerHTML = '';
+  // this.element.innerHTML = '';
 };
 
 module.exports = QuestionView;
