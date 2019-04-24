@@ -19,15 +19,16 @@ QuizView.prototype.bindEvents = function() {
   //   this.category = evt.detail;
   // });
 
-  PubSub.subscribe('QuestionGenerator:question-ready', (evt) => {
+  PubSub.subscribe('QuizLooper:question-ready', (evt) => {
     const question = evt.detail
 
+    this.questionNumber += 1
     this.emptyElement();
     this.renderQuizBox();
     this.renderQuizHeader();
     const questionView = new QuestionView(this.element, question)
     questionView.render();
-    this.questionNumber += 1
+
   });
 
 };

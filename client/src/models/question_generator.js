@@ -18,35 +18,54 @@ QuestionGenerator.prototype.getQuestions = function () {
     this.category = evt.detail[1];
 
     this.sendQuestion();
-    this.questionCounter += 1;
   });
 };
 
 QuestionGenerator.prototype.sendQuestion = function () {
-  const index = this.questionCounter;
-  const question = this.allQuestions[index];
+  console.log(`Counter is: ${this.questionCounter}`);
+  let index = this.questionCounter;
+  let question = this.allQuestions[index];
 
   if (question == null) {
+    console.log("GAME OVER");
     PubSub.publish('QuestionGenerator:no-more-questions', "END")
-  };
-
+  }
+  else {
   PubSub.publish('QuestionGenerator:question-ready', question)
-  this.receiveAnswer(question);
+  this.prepareForAnswer(question);
+  this.questionCounter ++ ;
+  };
 };
 
-QuestionGenerator.prototype.receiveAnswer = function(question) {
+QuestionGenerator.prototype.prepareForAnswer = function(question) {
   PubSub.subscribe('QuestionView:answer-selected', (evt) => {
     const resultChecker = new BooleanChecker(evt.detail);
     resultChecker.checkAnswer();
-    const resultToPublish = [resultChecker.result, question]
-    this.respondToResult(resultToPublish);
+    const realResult = resultChecker.result;
+    const resultToPublish = [realResult, question];
+
+    PubSub.publish('QuestionGenerator:result-ready', (resultToPublish))
+
+    this.localScoreCounter.react(realResult);
+    console.log(this.questionCounter);
+    this.readyForNextQuestion();
   });
+
 };
 
+<<<<<<< HEAD
 QuestionGenerator.prototype.respondToResult = function ([boolean, question]) {
   PubSub.publish('QuestionGenerator:result-ready', [boolean, question])
   this.localScoreCounter.react(boolean);
   console.log(this.localScoreCounter.score);
+=======
+
+QuestionGenerator.prototype.readyForNextQuestion = function () {
+  PubSub.subscribe('ResultView:next-question', (evt) => {
+    console.log("subscribed to result view");
+    // this.sendQuestion();
+  });
+>>>>>>> develop
 };
 
 
