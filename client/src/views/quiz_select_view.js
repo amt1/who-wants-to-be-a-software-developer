@@ -13,7 +13,6 @@ QuizSelectView.prototype.bindEvents = function () {
 
    this.selectElement.addEventListener('click', (evt) => {
     const category = evt.target.id;
-    console.log(`From QuizView, Category is: ${category}`);
 
     PubSub.publish('QuizSelectView:quiz-selected', category);
     this.emptyElement();

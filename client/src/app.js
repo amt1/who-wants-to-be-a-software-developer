@@ -22,21 +22,17 @@ document.addEventListener('DOMContentLoaded', () => {
   questionFetcher.getData();
   questionFetcher.bindEvents();
 
-  const quizViewElement = document.querySelector('div.quiz-wrapper');
-  const quizView = new QuizView(quizViewElement);
-  quizView.bindEvents();
-
-  const gridView = new GridView('div.quiz-wrapper');
+  const gridViewElement = document.querySelector('.quiz-wrapper');
+  const gridView = new GridView(gridViewElement)
   gridView.bindEvents();
 
   // const quizLooper = new QuizLooper();
   // quizLooper.bindEvents();
+  const finalResultView = new FinalResultView('div.final-results');
+  finalResultView.bindEvents();
 
-  // const finalResults = new FinalResults();
-  // finalResults.bindEvents();
-  //
-  // const finalResultView = new FinalResultView();
-  // finalResultView.bindEvents();
+  const finalResults = new FinalResults();
+  finalResults.bindEvents();
 
   const questionGenerator = new QuestionGenerator();
   questionGenerator.bindEvents();
