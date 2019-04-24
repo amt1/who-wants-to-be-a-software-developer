@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   questionFetcher.getData();
   questionFetcher.bindEvents();
 
-  const gridView = new GridView('div.quiz-wrapper')
+  const gridView = new GridView('div.quiz-wrapper');
   gridView.bindEvents();
 
   const quizLooper = new QuizLooper();
