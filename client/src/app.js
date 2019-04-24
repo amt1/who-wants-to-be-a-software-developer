@@ -1,4 +1,3 @@
-// const QuizLooper = require('./models/quiz_looper.js');
 const QuestionGenerator = require('./models/question_generator.js');
 const Answer = require('./models/answer.js');
 const LocalScoreCounter = require('./models/local_score_counter.js');
@@ -34,9 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const gridView = new GridView(gridViewElement)
   gridView.bindEvents();
 
-  // const quizLooper = new QuizLooper();
-  // quizLooper.bindEvents();
-  const finalResultView = new FinalResultView('.quiz-wrapper');
+  const quizWrapper = document.querySelector('div.quiz-wrapper');
+  const finalResultView = new FinalResultView(quizWrapper);
   finalResultView.bindEvents();
 
   const finalResults = new FinalResults();

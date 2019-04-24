@@ -12,24 +12,76 @@ const FinalResultView = function (container) {
 FinalResultView.prototype.bindEvents = function (){
   PubSub.subscribe('FinalResults:results-ready', (evt) => {
 
-    this.emptyQuizBox();
-
     this.answeredQuestionsArray = evt.detail[0];
     this.answerArray = evt.detail[1];
     this.playerScore = evt.detail[2];
+
     console.log(evt.detail);
 
-    this.answeredQuestionsArray.forEach((question) => {this.renderResults(question)})
-    this.answerArray.forEach((answer) => {this.renderResults(answer)})
+    this.emptyQuizWrapper();
+    this.renderCongrats();
+    this.renderFinalScore();
+    this.renderDivs();
+    this.renderResults();
   });
 };
 
-FinalResultView.prototype.emptyQuizBox = function() {
+FinalResultView.prototype.emptyQuizWrapper = function() {
   quizWrapper = document.querySelector('div.quiz-wrapper');
   quizWrapper.innerHTML = '';
 };
 
-FinalResultView.prototype.renderResults = function (element) {
+FinalResultView.prototype.renderCongrats = function() {
+  this.congrats = document.createElement('h2');
+  this.congrats.textContent = "Congratulations! You finished the Quiz."
+  this.congrats.classList.add('congrats-text');
+  this.container.appendChild(this.congrats);
+};
+
+FinalResultView.prototype.renderDivs = function() {
+  this.question0Div = document.createElement('div');
+  this.question0Div.classList.add('question-0');
+  this.container.appendChild(this.question0Div);
+
+  this.question1Div = document.createElement('div');
+  this.question1Div.classList.add('question-1');
+  this.container.appendChild(this.question1Div);
+
+  this.question2Div = document.createElement('div');
+  this.question2Div.classList.add('question-2');
+  this.container.appendChild(this.question2Div);
+
+  this.question3Div = document.createElement('div');
+  this.question3Div.classList.add('question-3');
+  this.container.appendChild(this.question3Div);
+
+  this.question4Div = document.createElement('div');
+  this.question4Div.classList.add('question-4');
+  this.container.appendChild(this.question4Div);
+
+  this.finalScoreDiv = document.createElement('div');
+  this.finalScoreDiv.classList.add('final-score');
+  this.container.appendChild(this.finalScoreDiv);
+};
+
+FinalResultView.prototype.renderResults = function() {
+  this.answeredQuestionsArray.forEach((question, index) => {
+    questionText = document.createElement('p');
+    questionText.textContent = question.question;
+    const whereToAppend = document.querySelector(`div.question-${index}`);
+    whereToAppend.appendChild(questionText);
+
+  })
+  this.answerArray.forEach((answer, index) => {})
+};
+
+FinalResultView.prototype.renderFinalScore = function() {
+  finalScoreText = document.createElement('h3');
+  finalScoreText.textContent = `You answered ${this.playerScore} out of 5 questions correctly.`;
+  this.container.appendChild(finalScoreText);
+};
+
+FinalResultView.prototype.renderAllResults = function (element) {
   const text = document.createElement('p');
   text.textContent = element
   this.container.appendChild(text);
@@ -78,16 +130,6 @@ FinalResultView.prototype.renderResults = function (element) {
 //   learnMoreDiv.appendChild(learnMore)
 
   // this.container.appendChild(resultQuestionContainer);
-};
-
-FinalResultView.prototype.emptyElement = function () {
-  this.container.innerHTML = '';
-};
-
-FinalResultView.prototype.renderDiv = function () {
-  this.summaryContainer = document.createElement('div');
-  this.summaryContainer.classList.add('quiz-wrapper');
-  this.container.appendChild(this.summaryContainer);
 };
 
 module.exports = FinalResultView;
