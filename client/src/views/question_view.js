@@ -14,6 +14,7 @@ QuestionView.prototype.render = function() {
 };
 
 QuestionView.prototype.gatherAnswers = function() {
+  this.possibleAnswers = [];
   this.possibleAnswers.push(this.question.correct_answer);
   this.possibleAnswers.push(this.question.incorrect_answers);
 };
