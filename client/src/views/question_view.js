@@ -49,11 +49,12 @@ QuestionView.prototype.renderPossibleAnswers = function () {
 QuestionView.prototype.handleAnswerClick = function(evt) {
   const selectedAnswer = evt.target.value;
 
-  const answerObject = [];
+  let answerObject = [];
   answerObject.push(selectedAnswer);
   answerObject.push(this.question);
 
   PubSub.publish('QuestionView:answer-selected', answerObject)
+  this.element.innerHTML = '';
 };
 
 module.exports = QuestionView;
