@@ -1,4 +1,5 @@
 const PubSub = require('../helpers/pub_sub.js');
+const QuizView = require('./quiz_view.js');
 
 
 const ResultView = function (container, answerContainer) {
@@ -9,25 +10,24 @@ const ResultView = function (container, answerContainer) {
 ResultView.prototype.bindEvents = function () {
 
 
-  PubSub.subscribe('QuizLooper:result-ready', (evt) => {
+  PubSub.subscribe('QuizLooper:answer-checked', (evt) => {
     const result = evt.detail[0];
     const view = this.displayResult(evt.detail[0]);
 
   });
 
-  PubSub.subscribe('QuestionView:answer-selected', (evt) => {
-    const question = evt.detail[1];
-    const playerAnswer = evt.detail[0];
-    this.populateAnswer(playerAnswer, question)
-    console.log(playerAnswer);
-    console.log(question);
-  });
+  // PubSub.subscribe('QuizView:answer-selected', (evt) => {
+  //   const question = evt.detail[1];
+  //   const playerAnswer = evt.detail[0];
+  //   this.populateAnswer(playerAnswer, question)
+  //
+  // });
 
 };
 
 //  this.emptyElement(); Question View or Resuly View?
 ResultView.prototype.emptyElement = function () {
-  this.container.innerHTML = '';
+  // this.container.innerHTML = '';
 
 };
 ResultView.prototype.displayResult = function(result) {
@@ -94,10 +94,10 @@ ResultView.prototype.createNextButton = function (quizContainer) {
   quizContainer.appendChild(button);
 
   button.addEventListener('click', (evt) => {
-    PubSub.publish('ResultView:next-question', evt);
+    QuizView.listenForQuestion('ResultView:next-question');
+    // PubSub.publish('ResultView:next-question', evt);
     console.log("next button clicked");
   });
-
 };
 
 module.exports = ResultView;

@@ -13,12 +13,10 @@ QuizView.prototype.bindEvents = function() {
     this.allQuestions = evt.detail[0];
     this.category = evt.detail[1];
   });
+  this.listenForQuestion();
+};
 
-
-  // PubSub.subscribe('QuizSelectView:quiz-selected', (evt) => {
-  //   this.category = evt.detail;
-  // });
-
+QuizView.prototype.listenForQuestion = function () {
   PubSub.subscribe('QuizLooper:question-ready', (evt) => {
     const question = evt.detail
 
@@ -28,7 +26,6 @@ QuizView.prototype.bindEvents = function() {
     this.renderQuizHeader();
     const questionView = new QuestionView(this.element, question)
     questionView.render();
-
   });
 
 };
@@ -45,7 +42,7 @@ QuizView.prototype.renderQuizBox = function () {
 
 QuizView.prototype.renderQuizHeader = function() {
   quizCategory = document.createElement('h1');
-  quizCategory.textContent = `Category:${this.category} ---- Question Number: ${this.questionNumber}/10`;
+  quizCategory.textContent = `Category:${this.category_name} ---- Question Number: ${this.questionNumber}/10`;
   quizCategory.classList.add('quiz-category');
 
   this.quizDiv.appendChild(quizCategory);
