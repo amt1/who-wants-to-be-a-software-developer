@@ -57,7 +57,7 @@ QuestionGenerator.prototype.prepareForAnswer = function(question) {
 QuestionGenerator.prototype.readyForNextQuestion = function () {
   PubSub.subscribe('ResultView:next-question', (evt) => {
     console.log("subscribed to result view");
-    // this.sendQuestion();
+    this.sendQuestion();
   });
 };
 

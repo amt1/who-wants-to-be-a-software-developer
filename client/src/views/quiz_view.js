@@ -9,8 +9,9 @@ const QuizView = function(quizWrapper) {
 
 
 QuizView.prototype.bindEvents = function() {
-  PubSub.subscribe('QuestionFetcher:questions-by-category-ready', (evt) => {
-    this.allQuestions = evt.detail[0];
+  PubSub.subscribe('QuestionGenerator:question-ready', (evt) => {
+    console.log();
+    this.allQuestions.push(evt.detail)
     this.category = evt.detail[1];
   });
   this.listenForQuestion();
@@ -29,13 +30,8 @@ QuizView.prototype.bindEvents = function() {
 
 
 
-
-
-
-
-
 QuizView.prototype.listenForQuestion = function () {
-  PubSub.subscribe('QuizLooper:question-ready', (evt) => {
+  PubSub.subscribe('QuestionGenerator:question-ready', (evt) => {
     const question = evt.detail
 
     this.questionNumber += 1

@@ -27,8 +27,6 @@ QuizSelectView.prototype.emptyElement = function () {
 
   // // const hidden = function myFunction() {
   // document.getElementById('nav.circle-menu').style.visibility = "hidden";
-
-
 };
 
 module.exports = QuizSelectView;
