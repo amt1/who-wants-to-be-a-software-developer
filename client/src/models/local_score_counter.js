@@ -19,9 +19,7 @@ LocalScoreCounter.prototype.react = function (boolean) {
 LocalScoreCounter.prototype.keepStats = function(array) {
   this.allQuestions.push(array[0])
   this.allAnswers.push(array[1])
-  console.log(this.score);
-  console.log(this.allQuestions);
-  console.log(this.allAnswers);
+
 };
 
 

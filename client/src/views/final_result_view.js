@@ -12,29 +12,36 @@ const FinalResultView = function (container) {
 FinalResultView.prototype.bindEvents = function (){
   PubSub.subscribe('FinalResults:results-ready', (evt) => {
 
-    const answeredQuestionsArray = evt.detail;
+    this.emptyQuizBox();
 
-    answeredQuestionsArray.forEach((question, index) => {
-      const quizQuestion = question.question;
-      // console.log(question);
-      // console.log(index);
-      // const playerAnswer = answerArray[index];
-      // this.renderDiv();
-      // this.renderResults(quizQuestion, playerAnswer);
+    this.answeredQuestionsArray = evt.detail[0];
+    this.answerArray = evt.detail[1];
+    this.playerScore = evt.detail[2];
+    console.log(evt.detail);
 
-        });
-});
+    this.answeredQuestionsArray.forEach((question) => {this.renderResults(question)})
+    this.answerArray.forEach((answer) => {this.renderResults(answer)})
+  });
 };
 
-FinalResultView.prototype.renderResults = function (question, selectedAnswer) {
-  const resultQuestionContainer = document.createElement('div');
-  console.log(resultQuestionContainer)
-  resultQuestionContainer.id = 'final-results';
+FinalResultView.prototype.emptyQuizBox = function() {
+  quizWrapper = document.querySelector('div.quiz-wrapper');
+  quizWrapper.innerHTML = '';
+};
 
-  const heading = document.createElement('h1');
-   heading.textContent = question.category_name
-  heading.classList.add('quiz-name');
-  resultQuestionContainer.appendChild(heading);
+FinalResultView.prototype.renderResults = function (element) {
+  const text = document.createElement('p');
+  text.textContent = element
+  this.container.appendChild(text);
+
+  // const resultQuestionContainer = document.createElement('div');
+  // console.log(resultQuestionContainer)
+  // resultQuestionContainer.id = 'final-results';
+  //
+  // const heading = document.createElement('h1');
+  //  heading.textContent = question.category_name
+  // heading.classList.add('quiz-name');
+  // resultQuestionContainer.appendChild(heading);
 
 //   const questionP = document.createElement('p');
 //   questionP.textContent = question.question;
