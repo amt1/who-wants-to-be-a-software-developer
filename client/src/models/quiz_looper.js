@@ -22,7 +22,7 @@ QuizLooper.prototype.bindEvents = function () {
 // as I suspected, it's doing that before even answering any questions
 
 // in any case, the program needs to go on to a stats / results / replay stage
-PubSub.subscribe('QuizLooper:last-question-answered', (lastQuestionNumer) => {
+PubSub.subscribe('QuizLooper:last-question-answered', (lastQuestionNumber) => {
   this.theVillage('You made it! Or did you? Hear the chimes of Big Ben!');
   // this would go on to the results stage
 });
