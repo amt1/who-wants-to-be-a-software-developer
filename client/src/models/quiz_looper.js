@@ -11,11 +11,8 @@ QuizLooper.prototype.bindEvents = function () {
       PubSub.subscribe('QuestionFetcher:questions-by-category-ready', (allSelectedQuestions) => {
       this.questionsArray = allSelectedQuestions.detail[0];
       this.currentCategory = allSelectedQuestions.detail[1];
-
       let finishesAfterNotReturningThis = this.quizLoop( this.questionsArray );
-
       PubSub.subscribe('QuizLooper:last-question-answered', (lastQuestionNumber) => {
-      this.theVillage('You made it! Or did you? Hear the chimes of Big Ben!');
     });
   }); // end subscribe
 }; // end bindEvents
@@ -24,7 +21,6 @@ QuizLooper.prototype.quizLoop = function (questionsArray) {
   let loopCounter = 0;
   let currentQuestion = questionsArray[0];
   if (loopCounter <= questionsArray.length){
-    console.log(loopCounter, questionsArray.length);
     loopCounter = this.questionLoop(currentQuestion, loopCounter, questionsArray);
   };
   return this.numberOfQuestionsAnswered;
@@ -47,7 +43,6 @@ QuizLooper.prototype.questionLoop = function (currentQuestion, loopCounter, ques
               });
              }); // end subscribe
   } else if (this.loopCounter == this.numberOfQuestions){
-    console.log("LAst question answered: number ", this.loopCounter);
     PubSub.publish('QuizLooper:last-question-answered', this.loopCounter);
     return this.loopCounter;
   } else {
