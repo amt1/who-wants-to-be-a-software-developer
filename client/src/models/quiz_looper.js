@@ -19,9 +19,13 @@ QuizLooper.prototype.bindEvents = function () {
 // even though I've initaialised it
 // ok that's going to annoy me. What can I usefully return if the program conitnues without waiting for it?
 // maybe just something with a warning note for a name
-// in any case, the program needs to go on to a stats / results / replay stage
-this.theVillage('You made it! Or did you? Hear the chimes of Big Ben!');
 // as I suspected, it's doing that before even answering any questions
+
+// in any case, the program needs to go on to a stats / results / replay stage
+PubSub.subscribe('QuizLooper:last-question-answered', (lastQuestionNumer) => {
+  this.theVillage('You made it! Or did you? Hear the chimes of Big Ben!');
+  // this would go on to the results stage
+});
 // will I need to destroy the QuizLooper object to re-initialise it for another round?
   }); // end subscribe
 }; // end bindEvents
@@ -59,15 +63,12 @@ QuizLooper.prototype.questionLoop = function (currentQuestion, loopCounter, ques
            PubSub.subscribe('QuizView:answer-selected', (questionAndAnswer) => {
             const answerResult = this.processAnswer(questionAndAnswer.detail);
             PubSub.publish('QuizLooper:answer-checked', answerResult);
-            this.loopCounter++;
-              // if (loopCounter < numberOfQuestions) {
+    //        let waiting = true;
+            PubSub.subscribe('ResultView:next-question', (evt) => {
+                this.loopCounter++;
                 nextQuestion = questionsArray[this.loopCounter];
                 this.questionLoop(nextQuestion, this.loopCounter, questionsArray);
-              // } else {
-              //   console.log("LAst question answered: number ", loopCounter);
-              //   PubSub.publish('QuizLooper:last-question-answered', loopCounter);
-              //   return loopCounter;
-          //    };
+              });
              }); // end subscribe
     //     }; // end if
   } else if (this.loopCounter == numberOfQuestions){
