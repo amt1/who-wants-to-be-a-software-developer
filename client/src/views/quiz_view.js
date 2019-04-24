@@ -13,14 +13,13 @@ QuizView.prototype.bindEvents = function() {
     this.allQuestions = evt.detail[0];
     this.category = evt.detail[1];
   });
-  this.listenForQuestion();
+//  this.listenForQuestion();
 };
 
 QuizView.prototype.listenForQuestion = function () {
   PubSub.subscribe('QuizLooper:question-ready', (evt) => {
-    const question = evt.detail
-
-    this.questionNumber += 1
+    const question = evt.detail[0];
+    this.questionNumber = evt.detail[1];
     this.emptyElement();
     this.renderQuizBox();
     this.renderQuizHeader();
