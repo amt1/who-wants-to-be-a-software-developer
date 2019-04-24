@@ -5,13 +5,12 @@ const PubSub = require('../helpers/pub_sub.js');
 const FinalResults = function () {
 
   this.button = button;
-  this.results = [];
 };
 
 FinalResults.prototype.bindEvents = function () {
 
-  PubSub.subscribe('QuestionGenerator:no-more-questions', (evt) => {
-      // const summary = this.results;
+  PubSub.subscribe('Stats:stats-ready', (evt) => {
+
       PubSub.publish('FinalResults:results-ready', evt.detail);
     });
 };
