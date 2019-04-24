@@ -70,7 +70,7 @@ ResultView.prototype.displayResult = function(result) {
 ResultView.prototype.createNextButton = function (quizContainer) {
   const button = document.createElement('button');
   button.classList.add('submit');
-  button.textContent = "Next";
+  button.textContent = "Next >>";
   quizContainer.appendChild(button);
 
   button.addEventListener('click', (evt) => {

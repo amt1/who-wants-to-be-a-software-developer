@@ -244,6 +244,18 @@ p.questions {
   margin-top: 0;
 }
 
+button.submit {
+  background: none;
+  border: none;
+  font-size: 2em;
+  color: #6efaf1;
+  padding-bottom: 10px;
+}
+
+button.submit:hover {
+  
+}
+
 /* FOOTER */
 
 
