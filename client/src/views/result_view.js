@@ -16,18 +16,18 @@ ResultView.prototype.bindEvents = function () {
 
   });
 
-  PubSub.subscribe('QuizView:answer-selected', (evt) => {
-    const question = evt.detail[1];
-    const playerAnswer = evt.detail[0];
-    this.populateAnswer(playerAnswer, question)
-
-  });
+  // PubSub.subscribe('QuizView:answer-selected', (evt) => {
+  //   const question = evt.detail[1];
+  //   const playerAnswer = evt.detail[0];
+  //   this.populateAnswer(playerAnswer, question)
+  //
+  // });
 
 };
 
 //  this.emptyElement(); Question View or Resuly View?
 ResultView.prototype.emptyElement = function () {
-  this.container.innerHTML = '';
+  // this.container.innerHTML = '';
 
 };
 ResultView.prototype.displayResult = function(result) {
@@ -94,7 +94,7 @@ ResultView.prototype.createNextButton = function (quizContainer) {
   quizContainer.appendChild(button);
 
   button.addEventListener('click', (evt) => {
-    QuizView.listenForQuestion();
+    QuizView.listenForQuestion('ResultView:next-question');
     // PubSub.publish('ResultView:next-question', evt);
     console.log("next button clicked");
   });
