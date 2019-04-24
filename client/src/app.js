@@ -1,6 +1,7 @@
 // const QuizLooper = require('./models/quiz_looper.js');
 const QuestionGenerator = require('./models/question_generator.js');
 const Answer = require('./models/answer.js');
+const LocalScoreCounter = require('./models/local_score_counter.js');
 const QuestionFetcher = require('./models/question_fetcher.js');
 const QuizView = require('./views/quiz_view.js');
 const QuizSelectView = require('./views/quiz_select_view.js');
@@ -15,7 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizSelectView = new QuizSelectView(quizSelectViewElement);
   quizSelectView.bindEvents();
 
-  const answer = new Answer();
+  const localScoreCounter = new LocalScoreCounter();
+  localScoreCounter.bindEvents();
+
+  const answer = new Answer(localScoreCounter);
   answer.bindEvents();
 
   const resultViewContainer = document.querySelector('div.checkAnswers');
@@ -37,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const finalResults = new FinalResults();
   finalResults.bindEvents();
-
 
   const questionGenerator = new QuestionGenerator();
   questionGenerator.bindEvents();

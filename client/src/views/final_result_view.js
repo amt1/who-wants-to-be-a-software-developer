@@ -5,21 +5,22 @@ const ResultView = require('./result_view.js');
 
 const FinalResultView = function (container) {
   this.container = container;
+  this.answeredQuestionsArray = [];
+  this.answerArray = [];
 };
 
 FinalResultView.prototype.bindEvents = function (){
   PubSub.subscribe('FinalResults:results-ready', (evt) => {
-    console.log("building final results");
 
-    // this.emptyElement(this.container);
-    const answeredQuestionsArray = evt.detail[0];
-    const answerArray = evt.detail[1];
+    const answeredQuestionsArray = evt.detail;
 
     answeredQuestionsArray.forEach((question, index) => {
       const quizQuestion = question.question;
-      const playerAnswer = answerArray[index];
+      // console.log(question);
+      // console.log(index);
+      // const playerAnswer = answerArray[index];
       // this.renderDiv();
-      this.renderResults(quizQuestion, playerAnswer);
+      // this.renderResults(quizQuestion, playerAnswer);
 
         });
 });
