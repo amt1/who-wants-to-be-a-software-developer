@@ -7,16 +7,10 @@ const QuizView = function(quizWrapper) {
   this.allQuestions = []
 };
 
-
 QuizView.prototype.bindEvents = function() {
-  PubSub.subscribe('QuestionGenerator:question-ready', (evt) => {
-    console.log();
-    this.allQuestions.push(evt.detail)
-    this.category = evt.detail[1];
-  });
+  this.allQuestions = []
   this.listenForQuestion();
 };
-
 
 // render .quiz-wrapper DIV
 // & #quiz DIV
@@ -28,13 +22,17 @@ QuizView.prototype.bindEvents = function() {
 // & .answer2 DIV
 // & answer2 P
 
-
-
 QuizView.prototype.listenForQuestion = function () {
-  PubSub.subscribe('QuestionGenerator:question-ready', (evt) => {
-    const question = evt.detail
 
-    this.questionNumber += 1
+  PubSub.subscribe('QuestionGenerator:one-question-ready', (evt) => {
+    const question = evt.detail
+    console.log(question);
+
+    this.allQuestions.push(question)
+    this.category = question.category_name;
+    console.log(this.allQuestions);
+
+    this.questionNumber = this.allQuestions.length;
     this.emptyElement();
     this.renderQuizBox();
     this.renderQuizHeader();
@@ -56,7 +54,7 @@ QuizView.prototype.renderQuizBox = function () {
 
 QuizView.prototype.renderQuizHeader = function() {
   quizCategory = document.createElement('h1');
-  quizCategory.textContent = `Category:${this.category_name} ---- Question Number: ${this.questionNumber}/10`;
+  quizCategory.textContent = `Category:${this.category} ---- Question Number: ${this.questionNumber}/10`;
   quizCategory.classList.add('quiz-category');
 
   this.quizDiv.appendChild(quizCategory);

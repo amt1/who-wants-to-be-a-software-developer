@@ -8,24 +8,23 @@ const ResultView = function (container, answerContainer) {
 };
 
 ResultView.prototype.bindEvents = function () {
-  PubSub.subscribe('QuizLooper:answer-checked', (evt) => {
-    const result = evt.detail[0];
-    const view = this.displayResult(evt.detail[0]);
-
-  });
-
-  // PubSub.subscribe('QuizView:answer-selected', (evt) => {
-  //   const question = evt.detail[1];
-  //   const playerAnswer = evt.detail[0];
-  //   this.populateAnswer(playerAnswer, question)
+  console.log("result view listening");
+  // PubSub.subscribe('QuizLooper:answer-checked', (evt) => {
+  //   const result = evt.detail[0];
+  //   const view = this.displayResult(evt.detail[0]);
+  //
   // });
+  PubSub.subscribe('QuestionView:answer-selected', (evt) => {
+    const question = evt.detail[1];
+    const playerAnswer = evt.detail[0];
+    // this.populateAnswer(playerAnswer, question)
+    this.displayResult(playerAnswer)
+  });
 
 };
 
-//  this.emptyElement(); Question View or Resuly View?
 ResultView.prototype.emptyElement = function () {
   // this.container.innerHTML = '';
-
 };
 ResultView.prototype.displayResult = function(result) {
   const quizContainer = document.createElement('div');
@@ -54,9 +53,8 @@ ResultView.prototype.createNextButton = function (quizContainer) {
     // PubSub.publish('ResultView:next-question', evt);
     console.log("next button clicked");
   });
-  return button;
 };
-//
+
 ResultView.prototype.populateAnswer = function (playerAnswer, question) {
   const answerContainer = document.createElement('div');
   answerContainer.class = 'answer-result';
@@ -72,10 +70,10 @@ ResultView.prototype.populateAnswer = function (playerAnswer, question) {
   label.textContent= `The correct answer is: ${question.correct_answer.slice(2, -2)}`;
   answerContainer.appendChild(label);
 
-  // const info = document.createElement('p');
-  // // workaround the storedvalue in db until permanet fix
-  // info.textContent = question.correct_answer.slice(2, -2);
-  // answerContainer.appendChild(info);
+  const info = document.createElement('p');
+  // workaround the storedvalue in db until permanet fix
+  info.textContent = question.correct_answer.slice(2, -2);
+  answerContainer.appendChild(info);
 
 
   const moreInfo = document.createElement('p', question.link);
@@ -99,11 +97,5 @@ ResultView.prototype.createDetail = function (text, label) {
 
 
 
-  button.addEventListener('click', (evt) => {
-  //  QuizView.listenForQuestion('ResultView:next-question');
-     PubSub.publish('ResultView:next-question', evt);
-    console.log("next button clicked");
-  });
-};
 
 module.exports = ResultView;

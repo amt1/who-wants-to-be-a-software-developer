@@ -47,7 +47,6 @@ GridView.prototype.renderAll = function (question) {
   secondAnswerPara.textContent = question.correct_answer.slice(2, -2);
   secondAnswerDiv.appendChild(secondAnswerPara);
 
-  console.log(this.container);
   // this.container.appendChild(quizBox);
 };
 

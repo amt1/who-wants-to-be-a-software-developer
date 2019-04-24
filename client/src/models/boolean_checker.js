@@ -7,18 +7,12 @@ const BooleanChecker = function(answerObject) {
 };
 
 BooleanChecker.prototype.checkAnswer = function() {
-  const readableAnswer = this.trimAnswer();
-  if (this.playerAnswer == readableAnswer) {
+  const correctAnswer = this.question.correct_answer;
+  console.log(correctAnswer);
+  if (this.playerAnswer == correctAnswer) {
     this.result = true;
   } else {this.result = false; };
 };
 
-
-BooleanChecker.prototype.trimAnswer = function () {
-  const answer = this.question.correct_answer;
-  const answerLength = answer.length;
-  const trimAnswer = answer.substring(2, (answerLength-2));
-  return trimAnswer;
-};
 
 module.exports = BooleanChecker;

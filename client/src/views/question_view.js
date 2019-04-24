@@ -3,7 +3,7 @@ const PubSub = require('../helpers/pub_sub.js');
 
 const QuestionView = function(questionDiv, questionObject) {
   this.element = questionDiv;
-  this.question = questionObject[0]
+  this.question = questionObject
   this.possibleAnswers = []
 };
 
@@ -32,11 +32,8 @@ QuestionView.prototype.renderPossibleAnswers = function () {
     const possibleAnswer = document.createElement('button');
     possibleAnswer.classList.add('answer`${answer.index}`');
 
-    const answerLength = answer.length;
-    const answerString = answer.substring(2, (answerLength-2));
-
-    possibleAnswer.textContent = answerString;
-    possibleAnswer.value = answerString
+    possibleAnswer.textContent = answer;
+    possibleAnswer.value = answer
 
     possibleAnswer.addEventListener('click', (evt) => {
       this.handleAnswerClick(evt);
@@ -53,7 +50,7 @@ QuestionView.prototype.handleAnswerClick = function(evt) {
   answerObject.push(selectedAnswer);
   answerObject.push(this.question);
 
-  PubSub.publish('QuizView:answer-selected', answerObject)
+  PubSub.publish('QuestionView:answer-selected', answerObject)
   // this.element.innerHTML = '';
 };
 
