@@ -15,7 +15,7 @@ GridView.prototype.bindEvents = function () {
 };
 GridView.prototype.renderAll = function (question) {
   const quizBox = document.createElement('div');
-  quizBox.id = 'quiz';
+  quizBox.id = 'quizBox';
 
   const header = document.createElement('h1')
   header.textContent = question.category_name;
@@ -33,21 +33,21 @@ GridView.prototype.renderAll = function (question) {
 
   const firstAnswerDiv = document.createElement('div');
   firstAnswerDiv.classList.add('answer1');
-  answersDiv.appendChild('firstAnswerDiv');
+  answersDiv.appendChild(firstAnswerDiv);
 
   const firstAnswerPara = document.createElement('p');
-  firstAnswerPara.textContent = question.correct_answer.slice(2, -2);
+  firstAnswerPara.textContent = question.correct_answer;
   firstAnswerDiv.appendChild(firstAnswerPara);
 
-  const secondAnswerDiv = document.createEelemnt('div');
+  const secondAnswerDiv = document.createElement('div');
   secondAnswerDiv.classList.add('div');
   firstAnswerPara.appendChild(secondAnswerDiv);
 
   const secondAnswerPara = document.createElement('p');
-  secondAnswerPara.textContent = question.correct_answer.slice(2, -2);
+  secondAnswerPara.textContent = question.incorrect_answers;
   secondAnswerDiv.appendChild(secondAnswerPara);
 
-  this.container.appendChild(quizbox);
+  this.container.appendChild(quizBox);
 };
 
 
