@@ -13,13 +13,32 @@ QuizView.prototype.bindEvents = function() {
     this.allQuestions = evt.detail[0];
     this.category = evt.detail[1];
   });
-//  this.listenForQuestion();
+  this.listenForQuestion();
 };
+
+
+// render .quiz-wrapper DIV
+// & #quiz DIV
+// & .quiz-name H1
+// & .questions P
+// & .answers DIV
+// & .answer1 DIV
+// & answer1 P
+// & .answer2 DIV
+// & answer2 P
+
+
+
+
+
+
+
 
 QuizView.prototype.listenForQuestion = function () {
   PubSub.subscribe('QuizLooper:question-ready', (evt) => {
-    const question = evt.detail[0];
-    this.questionNumber = evt.detail[1];
+    const question = evt.detail
+
+    this.questionNumber += 1
     this.emptyElement();
     this.renderQuizBox();
     this.renderQuizHeader();
