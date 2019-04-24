@@ -18,7 +18,7 @@ QuestionFetcher.prototype.getData = function () {
 };
 
 QuestionFetcher.prototype.bindEvents = function () {
-  // PubSub.publish('QuestionFetcher:all-questions-ready', this.questions)
+
   PubSub.subscribe('QuizSelectView:quiz-selected', (evt) => {
     const category = evt.detail;
     this.selectQuestionsByCategory(category);
