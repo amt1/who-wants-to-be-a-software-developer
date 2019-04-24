@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizView = new QuizView(quizViewElement);
   quizView.bindEvents();
   quizView.listenForQuestion();
-  
+
   const resultViewContainer = document.querySelector('div.checkAnswers');
   const resultView = new ResultView(resultViewContainer);
   resultView.bindEvents();
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   questionFetcher.getData();
   questionFetcher.bindEvents();
 
-  const gridView = new GridView('div.quiz-wrapper')
+  const gridView = new GridView('div.quiz-wrapper');
   gridView.bindEvents();
 
   const quizLooper = new QuizLooper();
