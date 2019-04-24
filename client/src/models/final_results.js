@@ -10,11 +10,9 @@ const FinalResults = function () {
 FinalResults.prototype.bindEvents = function () {
 
   PubSub.subscribe('Stats:stats-ready', (evt) => {
-    console.log(evt.detail);
 
-    //   PubSub.publish('FinalResults:results-ready', evt.detail);
-    // });
-});
+      PubSub.publish('FinalResults:results-ready', evt.detail);
+    });
 };
 
 module.exports = FinalResults;

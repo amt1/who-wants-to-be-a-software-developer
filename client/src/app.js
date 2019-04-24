@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // const quizLooper = new QuizLooper();
   // quizLooper.bindEvents();
-  const finalResultView = new FinalResultView('div.final-results');
+  const finalResultView = new FinalResultView('.quiz-wrapper');
   finalResultView.bindEvents();
 
   const finalResults = new FinalResults();
