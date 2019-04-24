@@ -94,8 +94,8 @@ ResultView.prototype.createNextButton = function (quizContainer) {
   quizContainer.appendChild(button);
 
   button.addEventListener('click', (evt) => {
-    QuizView.listenForQuestion('ResultView:next-question');
-    // PubSub.publish('ResultView:next-question', evt);
+  //  QuizView.listenForQuestion('ResultView:next-question');
+     PubSub.publish('ResultView:next-question', evt);
     console.log("next button clicked");
   });
 };
