@@ -8,8 +8,6 @@ const ResultView = function (container, answerContainer) {
 };
 
 ResultView.prototype.bindEvents = function () {
-
-
   PubSub.subscribe('QuizLooper:answer-checked', (evt) => {
     const result = evt.detail[0];
     const view = this.displayResult(evt.detail[0]);
@@ -101,14 +99,12 @@ ResultView.prototype.createDetail = function (text, label) {
 };
 
 
-<<<<<<< HEAD
-=======
-  button.addEventListener('click', (evt) => {
-  //  QuizView.listenForQuestion('ResultView:next-question');
-     PubSub.publish('ResultView:next-question', evt);
-    console.log("next button clicked");
-  });
-};
->>>>>>> 6e9a3ba0e205ee5d787a64832befe506a296a7ff
+
+//   button.addEventListener('click', (evt) => {
+//   //  QuizView.listenForQuestion('ResultView:next-question');
+//      PubSub.publish('ResultView:next-question', evt);
+//     console.log("next button clicked");
+//   });
+// };
 
 module.exports = ResultView;
