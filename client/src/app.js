@@ -1,5 +1,6 @@
 // const QuizLooper = require('./models/quiz_looper.js');
 const QuestionGenerator = require('./models/question_generator.js');
+const Answer = require('./models/answer.js');
 const QuestionFetcher = require('./models/question_fetcher.js');
 const QuizView = require('./views/quiz_view.js');
 const QuizSelectView = require('./views/quiz_select_view.js');
@@ -13,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizSelectViewElement = document.querySelector('nav.circle-menu');
   const quizSelectView = new QuizSelectView(quizSelectViewElement);
   quizSelectView.bindEvents();
+
+  const answer = new Answer();
+  answer.bindEvents();
 
   const resultViewContainer = document.querySelector('div.checkAnswers');
   const resultView = new ResultView(resultViewContainer);
@@ -33,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const finalResults = new FinalResults();
   finalResults.bindEvents();
+
 
   const questionGenerator = new QuestionGenerator();
   questionGenerator.bindEvents();

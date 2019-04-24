@@ -1,9 +1,7 @@
 const PubSub = require('../helpers/pub_sub.js');
 
-const GridView = function (container, question) {
+const GridView = function (container) {
   this.container = container;
-  this.question = question;
-  // this.element = element;
 };
 
   GridView.prototype.bindEvents = function () {
@@ -48,11 +46,12 @@ GridView.prototype.renderAll = function (question) {
   firstAnswerDiv.classList.add('answer1');
   answersDiv.appendChild(firstAnswerDiv);
   firstAnswerDiv.addEventListener('click', (evt) => {
-  this.handleAnswerClick(evt);
+  this.handleAnswerClick(evt, question);
   });
 
   const firstAnswerPara = document.createElement('p');
   firstAnswerPara.textContent = question.correct_answer;
+  firstAnswerPara.value = question.correct_answer;
   firstAnswerDiv.appendChild(firstAnswerPara);
 
   const secondAnswerDiv = document.createElement('div');
@@ -61,9 +60,10 @@ GridView.prototype.renderAll = function (question) {
 
   const secondAnswerPara = document.createElement('p');
   secondAnswerPara.textContent = question.incorrect_answers;
+  secondAnswerPara.value = question.incorrect_answers;
   secondAnswerDiv.appendChild(secondAnswerPara);
   secondAnswerDiv.addEventListener('click', (evt) => {
-  this.handleAnswerClick(evt);
+  this.handleAnswerClick(evt, question);
   })
 
   // this.container.appendChild(quizBox);
@@ -71,15 +71,10 @@ GridView.prototype.renderAll = function (question) {
   this.container.appendChild(quizBox);
 };
 
-GridView.prototype.handleAnswerClick = function(evt) {
-const selectedAnswer = evt.target.textContent;
-console.log(evt.target.textContent);
+GridView.prototype.handleAnswerClick = function(evt, question) {
+const selectedAnswer = evt.target.value;
 
-  // let answerObject = [];
-  // answerObject.push(selectedAnswer);
-  // answerObject.push(this.question);
-
-  PubSub.publish('QuestionView:answer-selected', selectedAnswer)
+  PubSub.publish('GridView:answer-selected', [selectedAnswer, question])
   // this.element.innerHTML = '';
 
 };

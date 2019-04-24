@@ -8,11 +8,11 @@ const ResultView = function (container, answerContainer) {
 };
 
 ResultView.prototype.bindEvents = function () {
-  // PubSub.subscribe('QuizLooper:answer-checked', (evt) => {
-  //   const result = evt.detail[0];
-  //   const view = this.displayResult(evt.detail[0]);
-  //
-  // });
+  PubSub.subscribe('Answer:result-ready', (evt) => {
+    const result = evt.detail;
+    const view = this.displayResult(result);
+
+  });
   PubSub.subscribe('QuestionView:answer-selected', (evt) => {
     this.emptyElement();
     const question = evt.detail[1];
@@ -50,6 +50,7 @@ ResultView.prototype.createNextButton = function (quizContainer) {
 
   button.addEventListener('click', (evt) => {
     PubSub.publish('ResultView:next-question', evt);
+    this.emptyElement();
     console.log("next button clicked");
   });
 };
