@@ -1,5 +1,5 @@
-const QuizLooper = require('./models/quiz_looper.js');
-// const QuestionGenerator = require('./models/question_generator.js');
+// const QuizLooper = require('./models/quiz_looper.js');
+const QuestionGenerator = require('./models/question_generator.js');
 const QuestionFetcher = require('./models/question_fetcher.js');
 const QuizView = require('./views/quiz_view.js');
 const QuizSelectView = require('./views/quiz_select_view.js');
@@ -30,16 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const gridView = new GridView('div.quiz-wrapper');
   gridView.bindEvents();
 
-  const quizLooper = new QuizLooper();
-  quizLooper.bindEvents();
+  // const quizLooper = new QuizLooper();
+  // quizLooper.bindEvents();
 
-  const finalResults = new FinalResults();
-  finalResults.bindEvents();
+  // const finalResults = new FinalResults();
+  // finalResults.bindEvents();
+  //
+  // const finalResultView = new FinalResultView();
+  // finalResultView.bindEvents();
 
-  const finalResultView = new FinalResultView();
-  finalResultView.bindEvents();
-
-  // const questionGenerator = new QuestionGenerator();
-  // questionGenerator.bindEvents();
+  const questionGenerator = new QuestionGenerator();
+  questionGenerator.bindEvents();
 
 });
