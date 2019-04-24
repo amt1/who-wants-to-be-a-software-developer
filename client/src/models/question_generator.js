@@ -9,32 +9,33 @@ const QuestionGenerator = function () {
 };
 
 QuestionGenerator.prototype.bindEvents = function() {
-  this.getQuestions();
-};
-
-QuestionGenerator.prototype.getQuestions = function () {
   PubSub.subscribe('QuestionFetcher:questions-by-category-ready', (evt) => {
     this.allQuestions = evt.detail[0];
     this.category = evt.detail[1];
 
-    this.sendQuestion();
+    this.prepareQuestionToSend();
   });
 };
 
-QuestionGenerator.prototype.sendQuestion = function () {
+QuestionGenerator.prototype.prepareQuestionToSend = function () {
   console.log(`Counter is: ${this.questionCounter}`);
   let index = this.questionCounter;
-  let question = this.allQuestions[index];
+  this.currentQuestion = this.allQuestions[index];
 
-  if (question == null) {
+  if (this.currentQuestion == null) {
     console.log("GAME OVER");
     PubSub.publish('QuestionGenerator:no-more-questions', "END")
   }
   else {
-  PubSub.publish('QuestionGenerator:question-ready', question)
-  this.prepareForAnswer(question);
-  this.questionCounter ++ ;
+    this.startSendingQuestion();
   };
+};
+
+QuestionGenerator.prototype.startSendingQuestion = function () {
+
+  PubSub.publish('QuestionGenerator:one-question-ready', this.currentQuestion)
+  this.prepareForAnswer(this.currentQuestion);
+  this.questionCounter ++ ;
 };
 
 QuestionGenerator.prototype.prepareForAnswer = function(question) {
@@ -44,6 +45,8 @@ QuestionGenerator.prototype.prepareForAnswer = function(question) {
     const realResult = resultChecker.result;
     const resultToPublish = [realResult, question];
 
+    console.log(resultToPublish);
+
     PubSub.publish('QuestionGenerator:result-ready', (resultToPublish))
 
     this.localScoreCounter.react(realResult);
@@ -52,7 +55,6 @@ QuestionGenerator.prototype.prepareForAnswer = function(question) {
   });
 
 };
-
 
 QuestionGenerator.prototype.readyForNextQuestion = function () {
   PubSub.subscribe('ResultView:next-question', (evt) => {

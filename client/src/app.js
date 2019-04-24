@@ -14,18 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizSelectView = new QuizSelectView(quizSelectViewElement);
   quizSelectView.bindEvents();
 
-  const quizViewElement = document.querySelector('div.quiz-wrapper');
-  const quizView = new QuizView(quizViewElement);
-  quizView.bindEvents();
-  quizView.listenForQuestion();
-
   const resultViewContainer = document.querySelector('div.checkAnswers');
   const resultView = new ResultView(resultViewContainer);
-  // resultView.bindEvents();
+  resultView.bindEvents();
 
   const questionFetcher = new QuestionFetcher();
   questionFetcher.getData();
   questionFetcher.bindEvents();
+
+  const quizViewElement = document.querySelector('div.quiz-wrapper');
+  const quizView = new QuizView(quizViewElement);
+  quizView.bindEvents();
 
   const gridView = new GridView('div.quiz-wrapper');
   gridView.bindEvents();
