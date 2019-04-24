@@ -17,6 +17,7 @@ QuizSelectView.prototype.bindEvents = function () {
 
     PubSub.publish('QuizSelectView:quiz-selected', category);
     this.emptyElement();
+
   });
 };
 

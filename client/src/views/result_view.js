@@ -1,4 +1,5 @@
 const PubSub = require('../helpers/pub_sub.js');
+const QuizView = require('./quiz_view.js');
 
 
 const ResultView = function (container, answerContainer) {
@@ -93,7 +94,8 @@ ResultView.prototype.createNextButton = function (quizContainer) {
   quizContainer.appendChild(button);
 
   button.addEventListener('click', (evt) => {
-    PubSub.publish('ResultView:next-question', evt);
+    QuizView.listenForQuestion();
+    // PubSub.publish('ResultView:next-question', evt);
     console.log("next button clicked");
   });
 };
