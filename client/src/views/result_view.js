@@ -9,7 +9,7 @@ const ResultView = function (container, answerContainer) {
 ResultView.prototype.bindEvents = function () {
 
 
-  PubSub.subscribe('QuestionGenerator:result-ready', (evt) => {
+  PubSub.subscribe('QuizLooper:result-ready', (evt) => {
     const result = evt.detail[0];
     const view = this.displayResult(evt.detail[0]);
 

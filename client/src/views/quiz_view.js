@@ -19,7 +19,7 @@ QuizView.prototype.bindEvents = function() {
   //   this.category = evt.detail;
   // });
 
-  PubSub.subscribe('QuestionGenerator:question-ready', (evt) => {
+  PubSub.subscribe('QuizLooper:question-ready', (evt) => {
     const question = evt.detail
 
     this.questionNumber += 1
