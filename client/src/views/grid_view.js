@@ -55,7 +55,7 @@ GridView.prototype.renderAll = function (question) {
   firstAnswerDiv.appendChild(firstAnswerPara);
 
   const secondAnswerDiv = document.createElement('div');
-  secondAnswerDiv.classList.add('div');
+  secondAnswerDiv.classList.add('answer2');
   answersDiv.appendChild(secondAnswerDiv);
 
   const secondAnswerPara = document.createElement('p');
