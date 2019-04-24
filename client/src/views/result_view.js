@@ -101,5 +101,14 @@ ResultView.prototype.createDetail = function (text, label) {
 };
 
 
+<<<<<<< HEAD
+=======
+  button.addEventListener('click', (evt) => {
+  //  QuizView.listenForQuestion('ResultView:next-question');
+     PubSub.publish('ResultView:next-question', evt);
+    console.log("next button clicked");
+  });
+};
+>>>>>>> 6e9a3ba0e205ee5d787a64832befe506a296a7ff
 
 module.exports = ResultView;

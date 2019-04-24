@@ -466,23 +466,23 @@ hr{
 
 .circle-menu {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 600px;
     margin: 0px auto;
 }
 
 .circle-menu span {
     position: absolute;
-    top: 30px;
-    left: 24px;
+    top: 45px;
+    left: 36px;
     color: #fff;
 }
 
 .circle-menu ul {
     position: absolute;
-    width: 300px;
-    height: 300px;
-    margin: 50px;
+    width: 450px;
+    height: 450px;
+    margin: 75px;
     padding: 0;
     list-style: none;
     border-radius: 50%;
@@ -493,8 +493,8 @@ hr{
     position: absolute;
     width: 75px;
     height: 75px;
-    top: 162px;
-    left: 162px;
+    top: 265px;
+    left: 265px;
     z-index: 1;
     border-radius: 50%;
     background-color: #0b0c10;
@@ -528,8 +528,8 @@ hr{
     position: absolute;
     top: -10px;
     left: -10px;
-    width: 160px;
-    height: 160px;
+    width: 240px;
+    height: 240px;
     transform-origin: 100% 100%;
     overflow: hidden;
 }
@@ -560,17 +560,17 @@ hr{
 
 .circle-menu li a{
     display: block;
-    width: 160px;
-    height: 160px;
+    width: 240px;
+    height: 240px;
     margin-top: 40px;
     margin-left: 40px;
-    background: rgba(197,198,199, 08) url('../images/1.png') no-repeat 50% 40%;
+    background: rgba(122, 136, 150, 0.8) url(../images/1.png) no-repeat 50% 40%;
     transform: skew(-30deg) rotate(-60deg);
     transition: background-color 0.5s;
 }
 
 .circle-menu li:nth-child(even) a {
-    background-color: rgba(31,40,51, 0.8);
+    background-color: rgba(58, 138, 134, 0.8);
 }
 
 .circle-menu li a:hover {
