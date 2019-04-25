@@ -356,4 +356,7 @@
     image: "",
     link: "https://reqtest.com/requirements-blog/functional-vs-non-functional-requirements",
   },
+    {user_name: "Alan",
+    user_score: 1,
+   },
 ]);

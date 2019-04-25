@@ -14,13 +14,18 @@ LocalScoreCounter.prototype.bindEvents = function() {
 
 LocalScoreCounter.prototype.react = function (boolean) {
   if (boolean == true) {this.score += 1};
+
+  PubSub.publish('Score:score', this.score);
 };
 
+<<<<<<< HEAD
 LocalScoreCounter.prototype.keepStats = function(array) {
   this.allQuestions.push(array[0])
   this.allAnswers.push(array[1])
 
 };
+=======
+>>>>>>> feature/user_view_model
 
 
 module.exports = LocalScoreCounter;
