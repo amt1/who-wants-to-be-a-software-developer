@@ -8,6 +8,10 @@ const ResultView = require('./views/result_view.js');
 const FinalResults = require('./models/final_results.js');
 const FinalResultView = require('./views/final_result_view.js');
 const GridView = require('./views/grid_view.js');
+const UserFormView = require('./views/user_form_view.js');
+const UserGridView = require('./views/user_grid_view.js');
+const User = require('./models/user.js');
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -41,5 +45,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const questionGenerator = new QuestionGenerator();
   questionGenerator.bindEvents();
+
+ const userForm = document.querySelector('form#user');
+ const userFormView = new UserFormView(userForm);
+ userFormView.bindEvents();
+
+ const userContainer = document.querySelector('#inp');
+ const userGridView = new UserGridView(userContainer);
+ userGridView.bindEvents();
+
+
+ // const userUrl = 'http://localhost:3000/api/user';
+ const user = new User();
+ user.bindEvents();
+ user.getData();
+
 
 });
