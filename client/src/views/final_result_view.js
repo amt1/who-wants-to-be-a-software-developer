@@ -67,7 +67,8 @@ FinalResultView.prototype.renderDivs = function() {
 FinalResultView.prototype.renderResults = function() {
   this.answeredQuestionsArray.forEach((question, index) => {
     questionText = document.createElement('p');
-    questionText.textContent = question.question;
+    questionText.textContent = `Question: ${question.question} The correct answer was ${question.correct_answer}. Learn more: ${question.link}`;
+    questionText.classList.add('questionText');
     const whereToAppend = document.querySelector(`div.question-${index}`);
     whereToAppend.appendChild(questionText);
 
@@ -79,6 +80,7 @@ FinalResultView.prototype.renderResults = function() {
     appendTo.appendChild(playerAnswer);
   })
 };
+
 
 FinalResultView.prototype.renderFinalScore = function() {
   finalScoreText = document.createElement('h3');

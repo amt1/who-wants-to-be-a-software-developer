@@ -253,7 +253,17 @@ button.submit {
 }
 
 button.submit:hover {
-  
+
+}
+
+.questionText {
+  border-top: 1px solid #66fcf1;
+  padding: 20px;
+}
+
+.congrats-text {
+  border-bottom: 1px solid #66fcf1;
+  padding: 20px;
 }
 
 /* FOOTER */
