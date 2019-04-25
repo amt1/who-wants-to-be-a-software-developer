@@ -8,7 +8,7 @@ const GridView = function (container) {
     PubSub.subscribe('QuestionFetcher:questions-by-category-ready', (evt) => {
       this.allQuestions = evt.detail[0];
       this.category = evt.detail[1];
-      this.renderAll(this.allQuestions[0]);
+      // this.renderAll(this.allQuestions[0]);
       // this.emptyElement();
     });
 
