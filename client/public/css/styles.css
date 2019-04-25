@@ -636,3 +636,25 @@ hr{
 
 
 /* progress bars */
+
+
+/* final result view */
+.questionText {
+  font-size: 20px;
+}
+
+.playerAnswer {
+  font-size: 20px;
+}
+
+.learnMoreText {
+  font-size: 20px;
+}
+
+.congratsText {
+  font-size: 60px;
+}
+
+.finalScoreText {
+  font-size: 40px;
+}
