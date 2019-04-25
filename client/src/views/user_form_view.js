@@ -20,8 +20,11 @@ UserFormView.prototype.handleSubmit = function(evt) {
 UserFormView.prototype.createUser = function(form) {
   const newUser = {
     name: form.name.value,
-    score: form.score.value
-  };
+    };
+    // PubSub.subscribe('Score:score', (evt) => {
+    //   const score = evt.detail;
+    //   console.log(score)
+    // });
   return newUser;
 
 };

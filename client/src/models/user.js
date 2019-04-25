@@ -2,8 +2,8 @@ const PubSub = require('../helpers/pub_sub.js')
 const RequestHelper = require('../helpers/request_helper.js')
 const QuestionFetcher = require('./question_fetcher.js')
 
-const User = function (url) {
-  this.url = url;
+const User = function () {
+  this.url = 'http://localhost:3000/api/pda_questions';
   this.request = new RequestHelper(this.url);
 
 };
@@ -34,15 +34,15 @@ const User = function (url) {
 User.prototype.getData = function() {
   const request = new RequestHelper(this.url);
   request.get()
-    .then((user) => {
-      PubSub.publish('UserList:data-loaded', user);
+    .then((questions) => {
+      PubSub.publish('UserList:data-loaded', questions);
     })
     .catch(console.error);
 
 };
 
-User.prototype.postUser = function(user) {
-  this.request.post(user)
+User.prototype.postUser = function(question) {
+  this.request.post(question)
     .then((questions) => {
       PubSub.publish('UserList:data-loaded', questions)
 

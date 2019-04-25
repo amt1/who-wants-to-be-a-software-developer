@@ -6,20 +6,23 @@ const UserView = function(container) {
 };
 
 UserView.prototype.render = function(user) {
+  this.emptyElement();
+
   const userContainer = document.createElement('div');
-  userContainer.id = 'user';
+  userContainer.id = 'users';
 
-  const name = this.createHeading(user.user_name);
+  const name = this.createHeading(user.name);
   userContainer.appendChild(name);
-  console.log(name)
 
-  const score = this.createDetail(user.score);
-  userContainer.appendChild(score);
+  // 
+  // //
+  // const score = this.createHeading();
+  // userContainer.appendChild(score);
 
- const completeButton = document.createElement('button');
- completeButton.textContent = 'Complete';
- completeButton.value = user._id;
- userContainer.appendChild(completeButton);
+ // const completeButton = document.createElement('button');
+ // completeButton.textContent = 'Complete';
+ // completeButton.value = user._id;
+ // userContainer.appendChild(completeButton);
 
   // const button = document.createElement('submit');
   // button.classList.add('submit');
@@ -34,12 +37,14 @@ UserView.prototype.render = function(user) {
   // completeButton.addEventListener('click', (evt) => {
   //   PubSub.publish('UserView:update-completed', evt.target.value);
   // });
-
-  const deleteButton = this.createDeleteButton(user._id);
-  userContainer.appendChild(deleteButton);
+  // //
+  // const deleteButton = this.createDeleteButton(user._id);
+  // userContainer.appendChild(deleteButton);
 
   this.container.appendChild(userContainer);
+
 };
+
 
  UserView.prototype.createHeading = function(textContent) {
   const heading = document.createElement('h3');
@@ -53,17 +58,21 @@ UserView.prototype.render = function(user) {
   return detail;
 };
 
- UserView.prototype.createDeleteButton = function(bucketId) {
-  const button = document.createElement('button');
-  button.classList.add('delete-btn');
-  button.value = userId;
-  button.textContent = "delete";
-
-  button.addEventListener('click', (evt) => {
-    PubSub.publish('UserView:user-delete-cliked', evt.target.value);
-  });
-  return button;
+UserView.prototype.emptyElement = function () {
+  this.container.innerHTML = '';
 };
+
+//  UserView.prototype.createDeleteButton = function(userId) {
+//   const button = document.createElement('button');
+//
+//   button.value = user.Id;
+//   button.textContent = "delete";
+//
+//   button.addEventListener('click', (evt) => {
+//     PubSub.publish('UserView:user-delete-cliked', evt.target.value);
+//   });
+//   return button;
+// };
 
 
 
