@@ -76,6 +76,7 @@ FinalResultView.prototype.renderResults = function() {
     this.answerArray.forEach((answer, index) => {
     playerAnswer = document.createElement('p');
     playerAnswer.textContent = `Your chose the answer: ${answer}`;
+    playerAnswer.classList.add('playerAnswer');
     const appendTo = document.querySelector(`div.question-${index}`);
     appendTo.appendChild(playerAnswer);
 
@@ -93,6 +94,7 @@ FinalResultView.prototype.renderResults = function() {
 FinalResultView.prototype.renderFinalScore = function() {
   finalScoreText = document.createElement('h3');
   finalScoreText.textContent = `You answered ${this.playerScore} out of 5 questions correctly.`;
+  finalScoreText.classList.add('finalScoreText')
   this.container.appendChild(finalScoreText);
 };
 
