@@ -3,14 +3,15 @@ const PubSub = require('../helpers/pub_sub.js');
 const BooleanChecker = function(answer, question) {
   this.playerAnswer = answer;
   this.question = question;
-  this.result = "no result";
 };
 
 BooleanChecker.prototype.checkAnswer = function() {
   const correctAnswer = this.question.correct_answer;
+  const incorrectAnswer = this.question.incorrect_answers;
   if (this.playerAnswer == correctAnswer) {
     this.result = true;
-  } else {this.result = false; };
+  } else if (this.playerAnswer == incorrectAnswer){
+    this.result = false; }
 };
 
 

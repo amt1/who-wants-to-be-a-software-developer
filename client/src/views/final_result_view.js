@@ -72,7 +72,12 @@ FinalResultView.prototype.renderResults = function() {
     whereToAppend.appendChild(questionText);
 
   })
-  this.answerArray.forEach((answer, index) => {})
+    this.answerArray.forEach((answer, index) => {
+    playerAnswer = document.createElement('p');
+    playerAnswer.textContent = answer;
+    const appendTo = document.querySelector(`div.question-${index}`);
+    appendTo.appendChild(playerAnswer);
+  })
 };
 
 FinalResultView.prototype.renderFinalScore = function() {
