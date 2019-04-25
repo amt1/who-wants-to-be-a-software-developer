@@ -50,8 +50,8 @@ GridView.prototype.renderAll = function (question) {
   });
 
   const firstAnswerPara = document.createElement('p');
-  firstAnswerPara.textContent = question.correct_answer;
-  firstAnswerPara.value = question.correct_answer;
+  firstAnswerPara.textContent = "true";
+  firstAnswerPara.value = "true";
   firstAnswerDiv.appendChild(firstAnswerPara);
 
   const secondAnswerDiv = document.createElement('div');
@@ -59,8 +59,8 @@ GridView.prototype.renderAll = function (question) {
   answersDiv.appendChild(secondAnswerDiv);
 
   const secondAnswerPara = document.createElement('p');
-  secondAnswerPara.textContent = question.incorrect_answers;
-  secondAnswerPara.value = question.incorrect_answers;
+  secondAnswerPara.textContent = "false";
+  secondAnswerPara.value = "false";
   secondAnswerDiv.appendChild(secondAnswerPara);
   secondAnswerDiv.addEventListener('click', (evt) => {
   this.handleAnswerClick(evt, question);
@@ -72,7 +72,7 @@ GridView.prototype.renderAll = function (question) {
 };
 
 GridView.prototype.handleAnswerClick = function(evt, question) {
-const selectedAnswer = evt.target.value;
+  const selectedAnswer = evt.target.value;
 
   PubSub.publish('GridView:answer-selected', [selectedAnswer, question])
   // this.element.innerHTML = '';
