@@ -67,18 +67,26 @@ FinalResultView.prototype.renderDivs = function() {
 FinalResultView.prototype.renderResults = function() {
   this.answeredQuestionsArray.forEach((question, index) => {
     questionText = document.createElement('p');
-    questionText.textContent = `Question: ${question.question} The correct answer was ${question.correct_answer}. Learn more: ${question.link}`;
+    questionText.textContent = `${question.question}. The correct answer is ${question.correct_answer}.`;
     questionText.classList.add('questionText');
     const whereToAppend = document.querySelector(`div.question-${index}`);
     whereToAppend.appendChild(questionText);
 
-  })
+  });
     this.answerArray.forEach((answer, index) => {
     playerAnswer = document.createElement('p');
-    playerAnswer.textContent = answer;
+    playerAnswer.textContent = `Your chose the answer: ${answer}`;
     const appendTo = document.querySelector(`div.question-${index}`);
     appendTo.appendChild(playerAnswer);
-  })
+
+  });
+  this.answeredQuestionsArray.forEach((question, index) => {
+    learnMoreText = document.createElement('p');
+    learnMoreText.textContent = `Learn more: ${question.link}`;
+    learnMoreText.classList.add('learnMoreText');
+    const appendTo = document.querySelector(`div.question-${index}`);
+    appendTo.appendChild(learnMoreText);
+});
 };
 
 
@@ -92,6 +100,8 @@ FinalResultView.prototype.renderAllResults = function (element) {
   const text = document.createElement('p');
   text.textContent = element
   this.container.appendChild(text);
+
+
 
   // const resultQuestionContainer = document.createElement('div');
   // console.log(resultQuestionContainer)

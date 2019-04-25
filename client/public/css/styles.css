@@ -14,6 +14,10 @@ body, html {
 p {
   font-family: 'Lora', serif;
 }
+
+p.selected {
+  font-color: green;
+}
 /* NAVBAR */
 
 #user {
@@ -156,7 +160,7 @@ header {
 .quiz-wrapper {
   background-color: #1f2833;
 
-  width: 430px;
+  width: 1000px;
   margin: 0 auto;
   padding-top: 0px;
 }
@@ -174,11 +178,11 @@ header {
 #quizBox > h1 {
   text-align: center;
   padding-top: 25px;
-  font-size: 20px;
+  font-size: 35px;
 }
 
 .questions {
-  font-size: 28px;
+  font-size: 35px;
   font-weight: 700;
   font-style: italic;
   border-top: 1px solid #66fcf1;
@@ -188,7 +192,7 @@ header {
 
 .answers div {
   padding: 10px 0 0 0;
-  font-size: 16px;
+  font-size: 30px;
 }
 
 .answers div:hover {
